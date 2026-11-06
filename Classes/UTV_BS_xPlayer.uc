@@ -1,5 +1,3 @@
-
-
 class UTV_BS_xPlayer extends BS_xPlayer;
 
 var string utvOverideUpdate;
@@ -80,7 +78,7 @@ state Spectating
 
 defaultproperties
 {
-    utvOverideUpdate="false"
-    utvFreeFlight="false"
-    bAllActorsRelevant=True
+	utvOverideUpdate="false"
+	utvFreeFlight="false"
+	bAllActorsRelevant=True
 }

@@ -1,4 +1,3 @@
-
 class NewNet_BioChargedFire extends UTComp_BioChargedFire;
 
 var float PingDT;

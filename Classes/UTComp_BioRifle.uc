@@ -1,4 +1,3 @@
-
 class UTComp_BioRifle extends BioRifle
     HideDropDown
 	CacheExempt;

@@ -1,5 +1,3 @@
-
-
 class UTComp_OverlayUpdate extends Info;
 
 var MutUTComp UTCompMutator;

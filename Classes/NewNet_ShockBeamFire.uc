@@ -1,4 +1,3 @@
-
 class NewNet_ShockBeamFire extends UTComp_ShockBeamFire;
 
 var bool bUseReplicatedInfo;
@@ -417,5 +416,5 @@ function SpawnBeamEffect(Vector Start, Rotator Dir, Vector HitLocation, Vector H
 
 defaultproperties
 {
-    BeamEffectClass=Class'UTCompvBoM.NewNet_ShockBeamEffect'
+	BeamEffectClass=Class'UTCompvBoM.NewNet_ShockBeamEffect'
 }

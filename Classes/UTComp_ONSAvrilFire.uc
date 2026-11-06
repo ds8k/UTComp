@@ -1,5 +1,3 @@
-
-
 class UTComp_ONSAvrilFire extends ONSAvrilFire;
 
 event ModeDoFire()

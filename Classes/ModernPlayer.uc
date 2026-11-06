@@ -265,6 +265,6 @@ function SavedMove GetFreeMoveEx() {
 
 defaultproperties
 {
-    MaxSavedMoves=750
-    SavedMovesWarningInterval=5.0
+	MaxSavedMoves=750
+	SavedMovesWarningInterval=5.000000
 }

@@ -1,4 +1,3 @@
-
 class NewNet_ChildLightningBolt extends ChildLightningBolt;
 
 simulated function PostNetBeginPlay()
@@ -17,6 +16,6 @@ simulated function PostNetBeginPlay()
 
 defaultproperties
 {
-    bReplicateInstigator=True
-    bSkipActorPropertyReplication=False
+	bReplicateInstigator=True
+	bSkipActorPropertyReplication=False
 }

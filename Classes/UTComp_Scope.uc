@@ -23,7 +23,7 @@ simulated function PostBeginPlay()
 
 defaultproperties
 {
-    ScopeName="Scope"
-    ScopeAuthor="ds8k"
-    bHidden=True
+	ScopeName="Scope"
+	ScopeAuthor="ds8k"
+	bHidden=True
 }

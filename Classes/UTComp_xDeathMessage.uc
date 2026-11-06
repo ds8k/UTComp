@@ -1,6 +1,3 @@
-
-
-
 class UTComp_xDeathMessage extends xDeathMessage;
 
 var config bool drawcolorednamesindeathmessages;
@@ -96,5 +93,5 @@ static function string MakeColorCode(color NewColor)
 
 defaultproperties
 {
-    bEnableTeamColoredDeaths=True
+	bEnableTeamColoredDeaths=True
 }

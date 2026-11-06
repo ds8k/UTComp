@@ -1,5 +1,3 @@
-
-
 class utcomp_ScoreBoardDM extends ScoreBoardDeathMatch;
 
 var font SmallerFont;

@@ -1,4 +1,3 @@
-
 class UTComp_BioChargedFire extends BioChargedFire;
 
 event ModeDoFire()

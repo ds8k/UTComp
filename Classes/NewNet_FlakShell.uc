@@ -1,4 +1,3 @@
-
 class NewNet_FlakShell extends FlakShell
 	HideDropDown
 	CacheExempt;

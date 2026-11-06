@@ -1,38 +1,36 @@
-
-
 //-----------------------------------------------------------
 // Part of TeamOverlay by Adam 'Heywood' Booth - heywood@malevolence.com.au
 // altered/recoded by Aaron 'Lotus' Everitt for use in UTCompvBoM
 //-----------------------------------------------------------
 class UTComp_Overlay extends Interaction;
 
-#exec texture Import File=textures\weaponicon_assaultrifle.dds Name=AssaultIcon Mips=Off Alpha=1
-#exec texture Import File=textures\weaponicon_biorifle.dds Name=BioIcon Mips=Off Alpha=1
-#exec texture Import File=textures\weaponicon_linkgun.dds Name=LinkIcon Mips=Off Alpha=1
-#exec texture Import File=textures\weaponicon_flakcannon.dds Name=FlakIcon Mips=Off Alpha=1
-#exec texture Import File=textures\weaponicon_rocketlauncher.dds Name=RocketIcon Mips=Off Alpha=1
-#exec texture Import File=textures\weaponicon_minigun.dds Name=MiniIcon Mips=Off Alpha=1
-#exec texture Import File=textures\weaponicon_shockrifle.dds Name=ShockIcon Mips=Off Alpha=1
-#exec texture Import File=textures\weaponicon_lightninggun.dds Name=LightningIcon Mips=Off Alpha=1
-#exec texture Import File=textures\weaponicon_shieldgun.dds Name=ShieldIcon Mips=Off Alpha=1
-#exec texture Import File=textures\weaponicon_SniperRifle.dds Name=SniperIcon Mips=Off Alpha=1
-#exec texture Import File=textures\weaponicon_dualassaultrifle.dds Name=DualARIcon Mips=Off Alpha=1
-#exec texture Import File=textures\weaponicon_GrenadeLauncher.dds Name=GrenadeIcon Mips=Off Alpha=1
-#exec texture Import File=textures\weaponicon_MineLayer.dds Name=SpiderIcon Mips=Off Alpha=1
-#exec texture Import File=textures\weaponicon_Avril.dds Name=AvrilIcon Mips=Off Alpha=1
-#exec texture Import File=textures\weaponicon_Redeemer.dds Name=RedeemerIcon Mips=Off Alpha=1
-#exec texture Import File=textures\weaponicon_Painter.dds Name=PainterIcon Mips=Off Alpha=1
-#exec texture Import File=textures\weaponicon_Translocator.dds Name=TranslocIcon Mips=Off Alpha=1
-#exec texture Import File=textures\vehicle_Manta.dds Name=MantaIcon Mips=Off Alpha=1
-#exec texture Import File=textures\vehicle_Goliath.dds Name=GoliathIcon Mips=Off Alpha=1
-#exec texture Import File=textures\vehicle_Hellbender.dds Name=HellbenderIcon Mips=Off Alpha=1
-#exec texture Import File=textures\vehicle_Scorpion.dds Name=ScorpionIcon Mips=Off Alpha=1
-#exec texture Import File=textures\vehicle_Raptor.dds Name=RaptorIcon Mips=Off Alpha=1
-#exec texture Import File=textures\vehicle_Leviathan.dds Name=LeviathanIcon Mips=Off Alpha=1
-#exec texture Import File=textures\vehicle_Turret.dds Name=TurretIcon Mips=Off Alpha=1
-#exec texture Import File=textures\vehicle_SPMA.tga Name=SPMAIcon Mips=Off Alpha=1
-#exec texture Import File=textures\vehicle_Cicada.tga Name=CicadaIcon Mips=Off Alpha=1
-#exec texture Import File=textures\vehicle_Paladin.tga Name=PaladinIcon Mips=Off Alpha=1
+//#exec texture Import File=textures\weaponicon_assaultrifle.dds Name=AssaultIcon Mips=Off Alpha=1
+//#exec texture Import File=textures\weaponicon_biorifle.dds Name=BioIcon Mips=Off Alpha=1
+//#exec texture Import File=textures\weaponicon_linkgun.dds Name=LinkIcon Mips=Off Alpha=1
+//#exec texture Import File=textures\weaponicon_flakcannon.dds Name=FlakIcon Mips=Off Alpha=1
+//#exec texture Import File=textures\weaponicon_rocketlauncher.dds Name=RocketIcon Mips=Off Alpha=1
+//#exec texture Import File=textures\weaponicon_minigun.dds Name=MiniIcon Mips=Off Alpha=1
+//#exec texture Import File=textures\weaponicon_shockrifle.dds Name=ShockIcon Mips=Off Alpha=1
+//#exec texture Import File=textures\weaponicon_lightninggun.dds Name=LightningIcon Mips=Off Alpha=1
+//#exec texture Import File=textures\weaponicon_shieldgun.dds Name=ShieldIcon Mips=Off Alpha=1
+//#exec texture Import File=textures\weaponicon_SniperRifle.dds Name=SniperIcon Mips=Off Alpha=1
+//#exec texture Import File=textures\weaponicon_dualassaultrifle.dds Name=DualARIcon Mips=Off Alpha=1
+//#exec texture Import File=textures\weaponicon_GrenadeLauncher.dds Name=GrenadeIcon Mips=Off Alpha=1
+//#exec texture Import File=textures\weaponicon_MineLayer.dds Name=SpiderIcon Mips=Off Alpha=1
+//#exec texture Import File=textures\weaponicon_Avril.dds Name=AvrilIcon Mips=Off Alpha=1
+//#exec texture Import File=textures\weaponicon_Redeemer.dds Name=RedeemerIcon Mips=Off Alpha=1
+//#exec texture Import File=textures\weaponicon_Painter.dds Name=PainterIcon Mips=Off Alpha=1
+//#exec texture Import File=textures\weaponicon_Translocator.dds Name=TranslocIcon Mips=Off Alpha=1
+//#exec texture Import File=textures\vehicle_Manta.dds Name=MantaIcon Mips=Off Alpha=1
+//#exec texture Import File=textures\vehicle_Goliath.dds Name=GoliathIcon Mips=Off Alpha=1
+//#exec texture Import File=textures\vehicle_Hellbender.dds Name=HellbenderIcon Mips=Off Alpha=1
+//#exec texture Import File=textures\vehicle_Scorpion.dds Name=ScorpionIcon Mips=Off Alpha=1
+//#exec texture Import File=textures\vehicle_Raptor.dds Name=RaptorIcon Mips=Off Alpha=1
+//#exec texture Import File=textures\vehicle_Leviathan.dds Name=LeviathanIcon Mips=Off Alpha=1
+//#exec texture Import File=textures\vehicle_Turret.dds Name=TurretIcon Mips=Off Alpha=1
+//#exec texture Import File=textures\vehicle_SPMA.tga Name=SPMAIcon Mips=Off Alpha=1
+//#exec texture Import File=textures\vehicle_Cicada.tga Name=CicadaIcon Mips=Off Alpha=1
+//#exec texture Import File=textures\vehicle_Paladin.tga Name=PaladinIcon Mips=Off Alpha=1
 
 
 //#exec texture import file=textures\Powerup_Doubledamage.tga name=DDIcon Mips=Off Alpha=1
@@ -473,14 +471,14 @@ function string GetDebugLoc(vector tempLoc)
 
 defaultproperties
 {
-    DesiredOnJoinMessageTime=6.0
-    OverlayEnabled=True
-    bDrawIcons=True
-    VertPosition=0.07
-    HorizPosition=0.003
-    BGColor=(R=10,G=10,B=10,A=155)
-    InfoTextColor=(R=255,G=255,B=255,A=255)
-    LocTextColor=(R=155,G=155,B=155,A=255)
-    theFontSize=-5
-    bVisible=True
+	DesiredOnJoinMessageTime=6.000000
+	OverlayEnabled=True
+	bDrawIcons=True
+	VertPosition=0.070000
+	HorizPosition=0.003000
+	BGColor=(B=10,G=10,R=10,A=155)
+	InfoTextColor=(B=255,G=255,R=255,A=255)
+	LocTextColor=(B=155,G=155,R=155,A=255)
+	theFontSize=-5
+	bVisible=True
 }

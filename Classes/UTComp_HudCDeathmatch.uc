@@ -958,6 +958,12 @@ simulated function WideDrawWeaponBar(Canvas C)
 
 simulated function DrawWeaponBar(Canvas C)
 {
+	if (int(PlayerOwner.Level.EngineVersion) >= 3374)
+	{
+		Super.DrawWeaponBar( C );
+		return;
+	}
+
 	WideDrawWeaponBar(C);
 }
 
@@ -1063,16 +1069,16 @@ function DisplayEnemyName(Canvas C, PlayerReplicationInfo PRI)
 
 defaultproperties
 {
-    XShifts(1)=0.5
-    XShifts(2)=1.0
-    XShifts(3)=1.0
-    XShifts(4)=1.0
-    XShifts(5)=0.5
-    XShifts(8)=0.5
-    YShifts(3)=0.5
-    YShifts(4)=1.0
-    YShifts(5)=1.0
-    YShifts(6)=1.0
-    YShifts(7)=0.5
-    YShifts(8)=0.5
+	XShifts(1)=0.500000
+	XShifts(2)=1.000000
+	XShifts(3)=1.000000
+	XShifts(4)=1.000000
+	XShifts(5)=0.500000
+	XShifts(8)=0.500000
+	YShifts(3)=0.500000
+	YShifts(4)=1.000000
+	YShifts(5)=1.000000
+	YShifts(6)=1.000000
+	YShifts(7)=0.500000
+	YShifts(8)=0.500000
 }

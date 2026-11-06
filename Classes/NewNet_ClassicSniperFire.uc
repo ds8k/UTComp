@@ -1,4 +1,3 @@
-
 class NewNet_ClassicSniperFire extends UTComp_ClassicSniperFire;
 
 var float PingDT;

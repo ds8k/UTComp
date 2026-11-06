@@ -1,4 +1,3 @@
-
 class NewNet_AssaultGrenade extends UTComp_AssaultGrenade;
 
 var float PingDT;

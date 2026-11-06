@@ -1,4 +1,3 @@
-
 //-----------------------------------------------------------
 //
 //-----------------------------------------------------------
@@ -21,11 +20,11 @@ static function string GetString(
 
 defaultproperties
 {
-    RoundWord="Round"
-    OfWord="Of"
-    bIsConsoleMessage=False
-    DrawColor=(R=255,G=255,B=0,A=255)
-    StackMode=SM_Down
-    PosY=0.85
-    FontSize=0
+	RoundWord="Round"
+	OfWord="Of"
+	bIsConsoleMessage=False
+	DrawColor=(B=0,G=255,R=255)
+	StackMode=SM_Down
+	PosY=0.850000
+	FontSize=0
 }

@@ -1,5 +1,3 @@
-
-
 class UTComp_HudSettings extends Object;
 
 struct SpecialCrosshair
@@ -21,5 +19,5 @@ var SpecialCrosshair TempxHair;
 
 defaultproperties
 {
-    bEnableCrosshairSizing=True
+	bEnableCrosshairSizing=True
 }

@@ -5,8 +5,8 @@ class UTComp_Settings extends Info
 HideDropDown
 CacheExempt;
 
-#exec AUDIO IMPORT FILE=Sounds\HitSound.wav     GROUP=Sounds
-#exec AUDIO IMPORT FILE=Sounds\HitSoundFriendly.wav    GROUP=Sounds
+//#exec AUDIO IMPORT FILE=Sounds\HitSound.wav     GROUP=Sounds
+//#exec AUDIO IMPORT FILE=Sounds\HitSoundFriendly.wav    GROUP=Sounds
 
 var config bool bFirstRun;
 var config bool bStats;
@@ -73,52 +73,52 @@ var config bool bUseNewEyeHeightAlgorithm;
 
 defaultproperties
 {
-    bFirstRun=True
-    bStats=True
-    DemoRecordingMask="%d-(%t)-%m-%p"
-    ScreenShotMask="%d-(%t)-%m-%p"
-    FriendlySound="UTCompvBoM.Sounds.HitSoundFriendly"
-    EnemySound="UTCompvBoM.Sounds.HitSound"
-    bEnableHitSounds=True
-    HitSoundVolume=1.0
-    bCPMAStyleHitsounds=True
-    CPMAPitchModifier=1.4
-    SavedSpectateSpeed=800.0
-    bShowSelfInTeamOverlay=True
-    bEnableEnhancedNetCode=True
-    ballowcoloredmessages=True
-    bEnableColoredNamesInTalk=True
-    CurrentSelectedColoredName=255
-    colorname(0)=(R=255,G=255,B=255,A=255)
-    colorname(1)=(R=255,G=255,B=255,A=255)
-    colorname(2)=(R=255,G=255,B=255,A=255)
-    colorname(3)=(R=255,G=255,B=255,A=255)
-    colorname(4)=(R=255,G=255,B=255,A=255)
-    colorname(5)=(R=255,G=255,B=255,A=255)
-    colorname(6)=(R=255,G=255,B=255,A=255)
-    colorname(7)=(R=255,G=255,B=255,A=255)
-    colorname(8)=(R=255,G=255,B=255,A=255)
-    colorname(9)=(R=255,G=255,B=255,A=255)
-    colorname(10)=(R=255,G=255,B=255,A=255)
-    colorname(11)=(R=255,G=255,B=255,A=255)
-    colorname(12)=(R=255,G=255,B=255,A=255)
-    colorname(13)=(R=255,G=255,B=255,A=255)
-    colorname(14)=(R=255,G=255,B=255,A=255)
-    colorname(15)=(R=255,G=255,B=255,A=255)
-    colorname(16)=(R=255,G=255,B=255,A=255)
-    colorname(17)=(R=255,G=255,B=255,A=255)
-    colorname(18)=(R=255,G=255,B=255,A=255)
-    colorname(19)=(R=255,G=255,B=255,A=255)
-    FallbackCharacterName="Arclite"
-    ClientSkinModeRedTeammate=3
-    ClientSkinModeBlueEnemy=3
-    PreferredSkinColorRedTeammate=5
-    PreferredSkinColorBlueEnemy=6
-    BlueEnemyUTCompSkinColor=(R=0,G=0,B=128,A=255)
-    RedTeammateUTCompSkinColor=(R=128,G=0,B=0,A=255)
-    bBlueEnemyModelsForced=True
-    bRedTeammateModelsForced=True
-    BlueEnemyModelName="Arclite"
-    RedTeammateModelName="Arclite"
-    bEnableDarkSkinning=True
+	bFirstRun=True
+	bStats=True
+	DemoRecordingMask="%d-(%t)-%m-%p"
+	ScreenShotMask="%d-(%t)-%m-%p"
+	FriendlySound="UTCompvBoM.Sounds.HitSoundFriendly"
+	EnemySound="UTCompvBoM.Sounds.HitSound"
+	bEnableHitSounds=True
+	HitSoundVolume=1.000000
+	bCPMAStyleHitsounds=True
+	CPMAPitchModifier=1.400000
+	SavedSpectateSpeed=800.000000
+	bShowSelfInTeamOverlay=True
+	bEnableEnhancedNetCode=True
+	ballowcoloredmessages=True
+	bEnableColoredNamesInTalk=True
+	CurrentSelectedColoredName=255
+	colorname(0)=(B=255,G=255,R=255,A=255)
+	colorname(1)=(B=255,G=255,R=255,A=255)
+	colorname(2)=(B=255,G=255,R=255,A=255)
+	colorname(3)=(B=255,G=255,R=255,A=255)
+	colorname(4)=(B=255,G=255,R=255,A=255)
+	colorname(5)=(B=255,G=255,R=255,A=255)
+	colorname(6)=(B=255,G=255,R=255,A=255)
+	colorname(7)=(B=255,G=255,R=255,A=255)
+	colorname(8)=(B=255,G=255,R=255,A=255)
+	colorname(9)=(B=255,G=255,R=255,A=255)
+	colorname(10)=(B=255,G=255,R=255,A=255)
+	colorname(11)=(B=255,G=255,R=255,A=255)
+	colorname(12)=(B=255,G=255,R=255,A=255)
+	colorname(13)=(B=255,G=255,R=255,A=255)
+	colorname(14)=(B=255,G=255,R=255,A=255)
+	colorname(15)=(B=255,G=255,R=255,A=255)
+	colorname(16)=(B=255,G=255,R=255,A=255)
+	colorname(17)=(B=255,G=255,R=255,A=255)
+	colorname(18)=(B=255,G=255,R=255,A=255)
+	colorname(19)=(B=255,G=255,R=255,A=255)
+	FallbackCharacterName="Arclite"
+	ClientSkinModeRedTeammate=3
+	ClientSkinModeBlueEnemy=3
+	PreferredSkinColorRedTeammate=5
+	PreferredSkinColorBlueEnemy=6
+	BlueEnemyUTCompSkinColor=(B=128,A=255)
+	RedTeammateUTCompSkinColor=(R=128,A=255)
+	bBlueEnemyModelsForced=True
+	bRedTeammateModelsForced=True
+	BlueEnemyModelName="Arclite"
+	RedTeammateModelName="Arclite"
+	bEnableDarkSkinning=True
 }

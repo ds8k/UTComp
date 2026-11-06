@@ -1,5 +1,3 @@
-
-
 class UTComp_Vote_TimeOut extends CriticalEventPlus;
 
 

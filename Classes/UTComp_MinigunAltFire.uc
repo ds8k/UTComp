@@ -1,5 +1,3 @@
-
-
 class UTComp_MinigunAltFire extends MinigunAltFire;
 
 event ModeDoFire()

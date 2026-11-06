@@ -1,4 +1,3 @@
-
 class NewNet_RocketFire extends UTComp_RocketFire;
 
 var float PingDT;
@@ -285,5 +284,5 @@ function DoFireEffect()
 
 defaultproperties
 {
-    FakeProjectileClass=Class'UTCompvBoM.NewNet_Fake_RocketProj'
+	FakeProjectileClass=Class'UTCompvBoM.NewNet_Fake_RocketProj'
 }
