@@ -7,7 +7,6 @@ static function string GetString (optional int Switch, optional PlayerReplicatio
      return "Voting Has failed due to a serverside setting.";
 }
 
-DefaultProperties
+defaultproperties
 {
-
 }

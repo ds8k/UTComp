@@ -1,7 +1,7 @@
 
 class NewNet_ONSGrenadePickup extends ONSGrenadePickup;
 
-DefaultProperties
+defaultproperties
 {
-    InventoryType=class'UTCompv18bK.NewNet_ONSGrenadeLauncher'
+    InventoryType=Class'UTCompvBoM.NewNet_ONSGrenadeLauncher'
 }

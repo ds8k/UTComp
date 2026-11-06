@@ -436,9 +436,8 @@ function UnTimeTravel()
         PCC.TurnOffCollision();
 }
 
-
 defaultproperties
 {
-    FakeProjectileClass=Class'NewNet_Fake_FlakChunk'
-    ProjectileClass=Class'NewNet_FlakChunk'
+    FakeProjectileClass=Class'UTCompvBoM.NewNet_Fake_FlakChunk'
+    ProjectileClass=Class'UTCompvBoM.NewNet_FlakChunk'
 }

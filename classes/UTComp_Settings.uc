@@ -28,6 +28,7 @@ var config bool bEnableColoredNamesOnEnemies;
 var config bool ballowcoloredmessages;
 var config bool bEnableColoredNamesInTalk;
 var config array<byte> DontDrawInStats;
+// var config float InstaFireRate;
 
 
 var config int CurrentSelectedColoredName;
@@ -70,21 +71,19 @@ var config array<string> DisallowedEnemyNames;
 var config bool bEnemyBasedModels;
 var config bool bUseNewEyeHeightAlgorithm;
 
-
-
 defaultproperties
 {
     bFirstRun=True
     bStats=True
     DemoRecordingMask="%d-(%t)-%m-%p"
     ScreenShotMask="%d-(%t)-%m-%p"
-    FriendlySound="UTCompv18bK.Sounds.HitSoundFriendly"
-    EnemySound="UTCompv18bK.Sounds.HitSound"
-    bEnableHitSounds=true
+    FriendlySound="UTCompvBoM.Sounds.HitSoundFriendly"
+    EnemySound="UTCompvBoM.Sounds.HitSound"
+    bEnableHitSounds=True
     HitSoundVolume=1.0
-    bCPMAStyleHitsounds=true
-    CPMAPitchModifier=1.40
-    SavedSpectateSpeed=800.00
+    bCPMAStyleHitsounds=True
+    CPMAPitchModifier=1.4
+    SavedSpectateSpeed=800.0
     bShowSelfInTeamOverlay=True
     bEnableEnhancedNetCode=True
     ballowcoloredmessages=True

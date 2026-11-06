@@ -57,7 +57,6 @@ function ExtraMarking(Canvas Canvas, int PlayerCount, int OwnerOffset, int XPos,
 
 defaultproperties
 {
-	BottomFeederMarker=Material'MutantSkins.BFeeder_icon'
-	MutantMarker=Material'MenuEffects.ScoreboardU_FB'
+    BottomFeederMarker=Texture'MutantSkins.HUD.BFeeder_icon'
+    MutantMarker=FinalBlend'MenuEffects.ScoreBoard.ScoreboardU_FB'
 }
-

@@ -2,7 +2,7 @@
 
 //-----------------------------------------------------------
 // Part of TeamOverlay by Adam 'Heywood' Booth - heywood@malevolence.com.au
-// altered/recoded by Aaron 'Lotus' Everitt for use in UTCompv18bK
+// altered/recoded by Aaron 'Lotus' Everitt for use in UTCompvBoM
 //-----------------------------------------------------------
 class UTComp_Overlay extends Interaction;
 
@@ -473,14 +473,14 @@ function string GetDebugLoc(vector tempLoc)
 
 defaultproperties
 {
-     DesiredOnJoinMessageTime=6.000000
-     OverlayEnabled=True
-     bDrawIcons=True
-     VertPosition=0.070000
-     HorizPosition=0.003000
-     BGColor=(B=10,G=10,R=10,A=155)
-     InfoTextColor=(B=255,G=255,R=255,A=255)
-     LocTextColor=(B=155,G=155,R=155,A=255)
-     theFontSize=-5
-     bVisible=True
+    DesiredOnJoinMessageTime=6.0
+    OverlayEnabled=True
+    bDrawIcons=True
+    VertPosition=0.07
+    HorizPosition=0.003
+    BGColor=(R=10,G=10,B=10,A=155)
+    InfoTextColor=(R=255,G=255,B=255,A=255)
+    LocTextColor=(R=155,G=155,B=155,A=255)
+    theFontSize=-5
+    bVisible=True
 }

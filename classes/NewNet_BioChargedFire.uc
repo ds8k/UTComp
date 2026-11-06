@@ -197,9 +197,6 @@ function UnTimeTravel()
         PCC.TurnOffCollision();
 }
 
-
-
-DefaultProperties
+defaultproperties
 {
-
 }

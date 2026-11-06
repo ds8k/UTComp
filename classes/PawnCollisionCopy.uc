@@ -331,27 +331,13 @@ function RemoveOutdatedHistory()
 
 defaultproperties
 {
-    RemoteRole=ROLE_NONE
-    Physics==PHYS_NONE
-
-    //Dont collide with ANYTHING but the traces if we can avoid it
-    bCollideActors=false
-    bCollideWorld=false
-    bBlockActors=false
-    bBlockPlayers=false
-    bProjTarget=false
-    bBlockProjectiles=false
-    bDisturbFluidSurface=false
-    bCanBeDamaged=false
-    bAcceptsProjectors=false
-    bCanTeleport=false
-    bHidden=true
-    bOnlyDirtyReplication=true
-	bSkipActorPropertyReplication=true
-
-    CollisionRadius=25.000000    //Direct copies from xPawn
-    CollisionHeight=44.000000
-
-    CrouchHeight=29.000000   //Direct copies from xPawn
-    CrouchRadius=25.000000
+    CrouchHeight=29.0
+    CrouchRadius=25.0
+    bHidden=True
+    bAcceptsProjectors=False
+    bSkipActorPropertyReplication=True
+    bOnlyDirtyReplication=True
+    RemoteRole=ROLE_None
+    CollisionRadius=25.0
+    CollisionHeight=44.0
 }

@@ -297,9 +297,8 @@ simulated function FindFPM()
         break;
 }
 
-
-DefaultProperties
+defaultproperties
 {
-    FakeProjectileClass=class'NewNet_Fake_LinkProjectile'
-    ProjectileClass=class'NewNet_LinkProjectile'
+    FakeProjectileClass=Class'UTCompvBoM.NewNet_Fake_LinkProjectile'
+    ProjectileClass=Class'UTCompvBoM.NewNet_LinkProjectile'
 }

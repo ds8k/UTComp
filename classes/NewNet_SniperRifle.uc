@@ -86,7 +86,7 @@ simulated function NewNet_ClientStartFire(int mode)
         {
             R.Pitch = Pawn(Owner).Controller.Rotation.Pitch;
             R.Yaw = Pawn(Owner).Controller.Rotation.Yaw;
-            STart=Pawn(Owner).Location + Pawn(Owner).EyePosition();
+            Start = Pawn(Owner).Location + Pawn(Owner).EyePosition();
 
             V.X = Start.X;
             V.Y = Start.Y;
@@ -183,14 +183,6 @@ function NewNet_ServerStartFire(byte Mode, byte ClientTimeStamp, float DT, Repli
         NewNet_SniperFire(FireMode[Mode]).SavedRot.Yaw = R.Yaw;
         NewNet_SniperFire(FireMode[Mode]).SavedRot.Pitch = R.Pitch;
         NewNet_SniperFire(FireMode[Mode]).bUseReplicatedInfo=IsReasonable(NewNet_SniperFire(FireMode[Mode]).SavedVec);
-   //     NewNet_SniperFire(FireMode[Mode]).bBelievesHit=bBelievesHit;
-   //     NewNet_SniperFire(FireMode[Mode]).bCount=true;
-   /*     NewNet_SniperFire(FireMode[Mode]).BelievedHLDelta.X = BelievedHLDelta.X;
-        NewNet_SniperFire(FireMode[Mode]).BelievedHLDelta.Y = BelievedHLDelta.Y;
-        NewNet_SniperFire(FireMode[Mode]).BelievedHLDelta.Z = BelievedHLDelta.Z;
-        NewNet_SniperFire(FireMode[Mode]).SavedVec = Pawn(Owner).Location;
-        NewNet_SniperFire(FireMode[Mode]).SavedRot = Pawn(Owner).Controller.Rotation;
-    */
     }
     else if ( FireMode[Mode].AllowFire() )
     {
@@ -238,7 +230,6 @@ simulated function bool StartFire(int Mode)
         alt = 0;
 
     FireMode[Mode].bIsFiring = true;
-
     FireMode[Mode].NextFireTime = Level.TimeSeconds-LastDT*0.5 + FireMode[Mode].PreFireTime;
 
     if (FireMode[alt].bModeExclusive)
@@ -259,9 +250,8 @@ simulated function bool StartFire(int Mode)
     return true;
 }
 
-
 defaultproperties
 {
-    FireModeClass(0) = class'NewNet_SniperFire'
-    PickupClass=Class'UTCompv18bK.NewNet_SniperRiflePickup'
+    FireModeClass=Class'UTCompvBoM.NewNet_SniperFire'
+    PickupClass=Class'UTCompvBoM.NewNet_SniperRiflePickup'
 }

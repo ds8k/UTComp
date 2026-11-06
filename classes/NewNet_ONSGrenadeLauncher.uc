@@ -3,7 +3,7 @@ class NewNet_ONSGrenadeLauncher extends ONSGrenadeLauncher
     HideDropDown
 	CacheExempt;
 
-DefaultProperties
+defaultproperties
 {
-    PickupClass=Class'UTCompv18bK.NewNet_ONSGrenadePickup'
+    PickupClass=Class'UTCompvBoM.NewNet_ONSGrenadePickup'
 }

@@ -4,10 +4,9 @@
 //-----------------------------------------------------------
 class UTComp_HealthDrain extends DamageType;
 
-DefaultProperties
+defaultproperties
 {
-     DeathString="%o was killed by %k."
-     MaleSuicide="%o's time is up."
-     FeMaleSuicide="%o's time is up."
-     bArmorStops=false
+    FemaleSuicide="%o's time is up."
+    MaleSuicide="%o's time is up."
+    bArmorStops=False
 }

@@ -10,9 +10,9 @@ function bool InternalOnClick(GUIComponent C)
 {
     switch(C)
     {
-        case bu_GameTypeMenu:  PlayerOwner().ClientReplaceMenu("UTCompv18bK.UTComp_Menu_Voting_GameType"); break;
-        case bu_MapChangeMenu:  PlayerOwner().ClientReplaceMenu("UTCompv18bK.UTComp_Menu_Voting_Map");  break;
-        case bu_UTComp_SettingsMenu:  PlayerOwner().ClientReplaceMenu("UTCompv18bK.UTComp_Menu_Voting_Settings");    break;
+        case bu_GameTypeMenu:  PlayerOwner().ClientReplaceMenu("UTCompvBoM.UTComp_Menu_Voting_GameType"); break;
+        case bu_MapChangeMenu:  PlayerOwner().ClientReplaceMenu("UTCompvBoM.UTComp_Menu_Voting_Map");  break;
+        case bu_UTComp_SettingsMenu:  PlayerOwner().ClientReplaceMenu("UTCompvBoM.UTComp_Menu_Voting_Settings");    break;
     }
     Blehz();
     return super.InternalOnClick(C);
@@ -47,47 +47,41 @@ function Blehz()
 
 defaultproperties
 {
-     Begin Object Class=GUIButton Name=GameTypeButton
-         Caption="Gametype"
-		WinWidth=0.180000
-		WinHeight=0.123437
-		WinLeft=0.312500
-		WinTop=0.572916
-         OnClick=UTComp_Menu_Voting.InternalOnClick
-         OnKeyEvent=GameTypeButton.InternalOnKeyEvent
-     End Object
-     bu_GameTypeMenu=GUIButton'UTCompv18bK.UTComp_Menu_Voting.GameTypeButton'
-
-     Begin Object Class=GUIButton Name=MapChangeButton
-         Caption="Change Map"
-		WinWidth=0.373751
-		WinHeight=0.123437
-		WinLeft=0.315625
-		WinTop=0.449999
-         OnClick=UTComp_Menu_Voting.InternalOnClick
-         OnKeyEvent=MapChangeButton.InternalOnKeyEvent
-     End Object
-     bu_MapChangeMenu=GUIButton'UTCompv18bK.UTComp_Menu_Voting.MapChangeButton'
-
-     Begin Object Class=GUIButton Name=UTComp_SettingsButton
-         Caption="Settings"
-		WinWidth=0.180000
-		WinHeight=0.123437
-		WinLeft=0.512501
-		WinTop=0.572916
-         OnClick=UTComp_Menu_Voting.InternalOnClick
-         OnKeyEvent=UTComp_SettingsButton.InternalOnKeyEvent
-     End Object
-     bu_UTComp_SettingsMenu=GUIButton'UTCompv18bK.UTComp_Menu_Voting.UTComp_SettingsButton'
-
-     Begin Object class=GUILabel Name=DemnoHeadingLabel
+    Begin Object Class=XInterface.GUIButton Name=GameTypeButton
+        Caption="Gametype"
+        WinTop=0.572916
+        WinLeft=0.3125
+        WinWidth=0.18
+        WinHeight=0.123437
+        OnClick=InternalOnClick
+        OnKeyEvent=InternalOnKeyEvent
+    End Object
+    Begin Object Class=XInterface.GUIButton Name=MapChangeButton
+        Caption="Change Map"
+        WinTop=0.449999
+        WinLeft=0.315625
+        WinWidth=0.373751
+        WinHeight=0.123437
+        OnClick=InternalOnClick
+        OnKeyEvent=InternalOnKeyEvent
+    End Object
+    Begin Object Class=XInterface.GUIButton Name=UTComp_SettingsButton
+        Caption="Settings"
+        WinTop=0.572916
+        WinLeft=0.512501
+        WinWidth=0.18
+        WinHeight=0.123437
+        OnClick=InternalOnClick
+        OnKeyEvent=InternalOnKeyEvent
+    End Object
+    Begin Object Class=XInterface.GUILabel Name=DemnoHeadingLabel
         Caption="------- Select your voting type -------"
-        TextColor=(B=0,G=200,R=230)
-		WinWidth=1.000000
-		WinHeight=0.060000
-		WinLeft=0.281250
-		WinTop=0.385000
-     End Object
-     l_VotingLabel=GUILabel'DemnoHeadingLabel'
-
+        TextColor=(R=230,G=200,B=0,A=255)
+        WinTop=0.385
+        WinLeft=0.28125
+    End Object
+    bu_GameTypeMenu=GameTypeButton
+    bu_MapChangeMenu=MapChangeButton
+    bu_UTComp_SettingsMenu=UTComp_SettingsButton
+    l_VotingLabel=DemnoHeadingLabel
 }

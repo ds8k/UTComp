@@ -2,7 +2,6 @@
 
 class UTComp_ScoreBoard extends UTComp_ScoreBoardDM;
 #exec texture Import File=textures\UTCompLogo.TGA Name=UTCompLogo Mips=Off Alpha=1
-#exec texture Import File=textures\forward_logo.dds name=ForwardLogo Mips=Off Alpha=1 LodSet=5
 #exec texture Import File=textures\ScoreboardText.TGA Name=ScoreboardText Mips=Off Alpha=1
 
 var font MainFont, NotReducedFont, sortareducedfont, ReducedFont, SoTiny;
@@ -508,13 +507,12 @@ simulated function DrawPlayerInformation(Canvas C, PlayerReplicationInfo PRI, fl
 
 defaultproperties
 {
-     fraglimitteam="SCORE LIMIT:"
-     TmpFontSize=1
-     tmp1=0.156000
-     tmp2=0.172000
-     tmp3=0.189000
-     bEnableColoredNamesOnScoreboard=True
-     bDrawStats=True
-     bDrawPickups=True
-     bOverrideDisplayStats=false
+    fraglimitteam="SCORE LIMIT:"
+    TmpFontSize=1
+    tmp1=0.156
+    tmp2=0.172
+    tmp3=0.189
+    bEnableColoredNamesOnScoreboard=True
+    bDrawStats=True
+    bDrawPickups=True
 }

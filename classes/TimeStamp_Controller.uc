@@ -27,7 +27,7 @@ function tick(float deltatime)
    TimeStamp+=1;        */
 }
 
-DefaultProperties
+defaultproperties
 {
-   pawnclass=class'TimeStamp_Pawn'
+    PawnClass=Class'UTCompvBoM.TimeStamp_Pawn'
 }

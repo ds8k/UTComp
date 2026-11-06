@@ -151,7 +151,6 @@ function DoTrace(Vector Start, Rotator Dir)
     }
 }
 
-
 defaultproperties
 {
 }

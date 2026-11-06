@@ -36,14 +36,13 @@ static function ClientReceive(
 
 }
 
-
-DefaultProperties
+defaultproperties
 {
     RedWon="The red team has won the round!"
     BlueWon="The blue team has won the round!"
-     DrawColor=(B=0,G=255,R=255)
-     StackMode=SM_Down
-     PosY=0.850000
-     FontSize=0
-     bIsConsoleMessage=False
+    bIsConsoleMessage=False
+    DrawColor=(R=255,G=255,B=0,A=255)
+    StackMode=SM_Down
+    PosY=0.85
+    FontSize=0
 }

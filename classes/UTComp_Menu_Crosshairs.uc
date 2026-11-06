@@ -333,267 +333,243 @@ function bool InternalOnClick( GUIComponent Sender )
 
 defaultproperties
 {
-    Begin Object class=GUIComboBox name=CrosshairCombo
-    	WinWidth=0.248444
-		WinHeight=0.035000
-		WinLeft=0.350001
-		WinTop=0.366666
-		OnChange=InternalOnChange
+    Begin Object Class=XInterface.GUIImage Name=TotalHairImage0
+        ImageStyle=ISTY_Scaled
+        ImageAlign=IMGA_Center
+        X1=0
+        Y1=0
+        X2=64
+        Y2=64
     End Object
-    co_UTCompCrosshairs=GUIComboBox'CrosshairCombo'
-
-    Begin Object class=GUIListBox name=CrosshairListBox
-		WinWidth=0.160000
-		WinHeight=0.264375
-		WinLeft=0.140000
-		WinTop=0.392917
+    Begin Object Class=XInterface.GUISlider Name=VertCrossSlider
+        MinValue=0.4
+        MaxValue=0.6
+        Value=0.5
+        WinTop=0.655
+        WinLeft=0.41
+        WinWidth=0.25
+        OnClick=InternalOnClick
+        OnMousePressed=InternalOnMousePressed
+        OnMouseRelease=InternalOnMouseRelease
+        OnChange=InternalOnChange
+        OnKeyEvent=InternalOnKeyEvent
+        OnCapturedMouseMove=InternalCapturedMouseMove
+    End Object
+    Begin Object Class=XInterface.GUISlider Name=RedCrossSlider
+        MaxValue=255.0
+        Value=255.0
+        bIntSlider=True
+        WinTop=0.415
+        WinLeft=0.41
+        WinWidth=0.25
+        OnClick=InternalOnClick
+        OnMousePressed=InternalOnMousePressed
+        OnMouseRelease=InternalOnMouseRelease
+        OnChange=InternalOnChange
+        OnKeyEvent=InternalOnKeyEvent
+        OnCapturedMouseMove=InternalCapturedMouseMove
+    End Object
+    Begin Object Class=XInterface.GUISlider Name=GreenCrossSlider
+        MaxValue=255.0
+        Value=255.0
+        bIntSlider=True
+        WinTop=0.455
+        WinLeft=0.41
+        WinWidth=0.25
+        OnClick=InternalOnClick
+        OnMousePressed=InternalOnMousePressed
+        OnMouseRelease=InternalOnMouseRelease
+        OnChange=InternalOnChange
+        OnKeyEvent=InternalOnKeyEvent
+        OnCapturedMouseMove=InternalCapturedMouseMove
+    End Object
+    Begin Object Class=XInterface.GUISlider Name=HorizCrossSlider
+        MinValue=0.4
+        MaxValue=0.6
+        Value=0.5
+        WinTop=0.615
+        WinLeft=0.41
+        WinWidth=0.25
+        OnClick=InternalOnClick
+        OnMousePressed=InternalOnMousePressed
+        OnMouseRelease=InternalOnMouseRelease
+        OnChange=InternalOnChange
+        OnKeyEvent=InternalOnKeyEvent
+        OnCapturedMouseMove=InternalCapturedMouseMove
+    End Object
+    Begin Object Class=XInterface.GUISlider Name=BlueCrossSlider
+        MaxValue=255.0
+        Value=255.0
+        bIntSlider=True
+        WinTop=0.495
+        WinLeft=0.41
+        WinWidth=0.25
+        OnClick=InternalOnClick
+        OnMousePressed=InternalOnMousePressed
+        OnMouseRelease=InternalOnMouseRelease
+        OnChange=InternalOnChange
+        OnKeyEvent=InternalOnKeyEvent
+        OnCapturedMouseMove=InternalCapturedMouseMove
+    End Object
+    Begin Object Class=XInterface.GUISlider Name=SizeCrossSlider
+        MaxValue=4.0
+        Value=1.0
+        WinTop=0.575
+        WinLeft=0.41
+        WinWidth=0.25
+        OnClick=InternalOnClick
+        OnMousePressed=InternalOnMousePressed
+        OnMouseRelease=InternalOnMouseRelease
+        OnChange=InternalOnChange
+        OnKeyEvent=InternalOnKeyEvent
+        OnCapturedMouseMove=InternalCapturedMouseMove
+    End Object
+    Begin Object Class=XInterface.GUISlider Name=OpacityCrossSlider
+        MaxValue=255.0
+        Value=255.0
+        bIntSlider=True
+        WinTop=0.535
+        WinLeft=0.41
+        WinWidth=0.25
+        OnClick=InternalOnClick
+        OnMousePressed=InternalOnMousePressed
+        OnMouseRelease=InternalOnMouseRelease
+        OnChange=InternalOnChange
+        OnKeyEvent=InternalOnKeyEvent
+        OnCapturedMouseMove=InternalCapturedMouseMove
+    End Object
+    Begin Object Class=XInterface.GUIComboBox Name=CrosshairCombo
+        WinTop=0.366666
+        WinLeft=0.350001
+        WinWidth=0.248444
+        WinHeight=0.035
+        OnChange=InternalOnChange
+        OnKeyEvent=InternalOnKeyEvent
+    End Object
+    Begin Object Class=XInterface.GUIListBox Name=CrosshairListBox
         bVisibleWhenEmpty=True
+        OnCreateComponent=InternalOnCreateComponent
+        WinTop=0.392917
+        WinLeft=0.14
+        WinWidth=0.16
+        WinHeight=0.264375
         OnChange=InternalOnChange
     End Object
-    lb_Crosshairs=GUIListBox'CrosshairListBox'
-
-    Begin Object class=GUIImage name=ListBoxBackgroundImage
-        Image=Texture'2K4Menus.Controls.thinpipe_b'
-		WinWidth=0.200000
-		WinHeight=0.304688
-		WinLeft=0.120000
-		WinTop=0.372917
-		bVisible=True
-		ImageStyle=ISTY_Stretched
-	End Object
-    i_ListBoxBG=GUIImage'ListBoxBackgroundImage'
-
-    Begin Object class=GUISlider name=RedCrossSlider
-         WinTop=0.415
-         WinLeft=0.41
-         WinWidth=0.25
-         MinValue=0
-         MaxValue=255
-         bIntSlider=True
-         Value=255
-         OnChange=InternalOnChange
-    End Object
-    sl_RedHair=GUISlider'RedCrossSlider'
-
-    Begin Object class=GUILabel name=RedCrossLabel
-         WinTop=0.40
-         WinLeft=0.34
-         Caption="Red"
-         TextColor=(R=255)
-    End Object
-    l_Red=GUILabel'RedCrossLabel'
-
-    Begin Object class=GUILabel name=GreenCrossLabel
-         WinTop=0.44
-         WinLeft=0.34
-         Caption="Green"
-         TextColor=(G=255)
-    End Object
-    l_Green=GUILabel'GreenCrossLabel'
-
-    Begin Object class=GUILabel name=BlueCrossLabel
-         WinTop=0.48
-         WinLeft=0.34
-         Caption="Blue"
-         TextColor=(B=255)
-    End Object
-    l_Blue=GUILabel'BlueCrossLabel'
-
-    Begin Object class=GUILabel name=OpacityCrossLabel
-         WinTop=0.52
-         WinLeft=0.34
-         Caption="Alpha"
-         TextColor=(B=255,R=255,G=255)
-    End Object
-    l_Opacity=GUILabel'OpacityCrossLabel'
-
-    Begin Object class=GUILabel name=SizeCrossLabel
-         WinTop=0.56
-         WinLeft=0.34
-         Caption="Size"
-         TextColor=(B=255,R=255,G=255)
-    End Object
-    l_Size=GUILabel'SizeCrossLabel'
-
-   Begin Object class=GUILabel name=HorizCrossLabel
-         WinTop=0.60
-         WinLeft=0.34
-         Caption="Left"
-         TextColor=(B=255,R=255,G=255)
-    End Object
-    l_Horiz=GUILabel'HorizCrossLabel'
-
-    Begin Object class=GUILabel name=VertCrossLabel
-         WinTop=0.64
-         WinLeft=0.34
-         Caption="Up"
-         TextColor=(B=255,R=255,G=255)
-    End Object
-    l_Vert=GUILabel'VertCrossLabel'
-
-    Begin Object class=GUISlider name=GreenCrossSlider
-         WinTop=0.455
-         WinLeft=0.41
-         WinWidth=0.25
-         MinValue=0
-         MaxValue=255
-         Value=255
-         bIntSlider=True
-         OnChange=InternalOnChange
-    End Object
-    sl_GreenHair=GUISlider'GreenCrossSlider'
-
-    Begin Object class=GUISlider name=BlueCrossSlider
-         WinTop=0.495
-         WinLeft=0.41
-         WinWidth=0.25
-         MinValue=0
-         MaxValue=255
-         Value=255
-         bIntSlider=True
-         OnChange=InternalOnChange
-    End Object
-    sl_BlueHair=GUISlider'BlueCrossSlider'
-
-    Begin Object class=GUISlider name=OpacityCrossSlider
-         WinTop=0.535
-         WinLeft=0.41
-         WinWidth=0.25
-         MinValue=0
-         MaxValue=255
-         Value=255
-         bIntSlider=True
-         OnChange=InternalOnChange
-    End Object
-    sl_OpacityHair=GUISlider'OpacityCrossSlider'
-
-    Begin Object class=GUISlider name=SizeCrossSlider
-         WinTop=0.575
-         WinLeft=0.41
-         WinWidth=0.25
-         MinValue=0
-         MaxValue=4
-         Value=1.00
-         OnChange=InternalOnChange
-    End Object
-    sl_SizeHair=GUISlider'SizeCrossSlider'
-
-    Begin Object class=GUISlider name=HorizCrossSlider
-         WinTop=0.615
-         WinLeft=0.41
-         WinWidth=0.25
-         MinValue=0.4
-         MaxValue=0.6
-         Value=0.50
-         OnChange=InternalOnChange
-    End Object
-    sl_HorizHair=GUISlider'HorizCrossSlider'
-
-    Begin Object class=GUISlider name=VertCrossSlider
-         WinTop=0.655
-         WinLeft=0.41
-         WinWidth=0.25
-         MinValue=0.4
-         MaxValue=0.6
-         Value=0.50
-         OnChange=InternalOnChange
-    End Object
-    sl_VertHair=GUISlider'VertCrossSlider'
-
-    Begin Object class=moCheckBox name=UseFactoryCheck
-		WinWidth=0.350000
-		WinHeight=0.030000
-		WinLeft=0.126562
-		WinTop=0.324583
+    Begin Object Class=XInterface.moCheckBox Name=UseFactoryCheck
         Caption="Use Crosshair Factory"
+        OnCreateComponent=InternalOnCreateComponent
+        WinTop=0.324583
+        WinLeft=0.126562
+        WinWidth=0.35
         OnChange=InternalOnChange
     End Object
-    ch_UseFactory=moCheckBox'UseFactoryCheck'
-
-   Begin Object class=moCheckBox name=SizeIncreaseCheck
-		WinWidth=0.350000
-		WinHeight=0.030000
-		WinLeft=0.548751
-		WinTop=0.328750
+    Begin Object Class=XInterface.moCheckBox Name=SizeIncreaseCheck
         Caption="Crosshair Size Increase"
+        OnCreateComponent=InternalOnCreateComponent
+        WinTop=0.32875
+        WinLeft=0.548751
+        WinWidth=0.35
         OnChange=InternalOnChange
     End Object
-    ch_SizeIncrease=moCheckBox'SizeIncreaseCheck'
-
-    Begin Object class=GUIButton name=AddHairButton
-		WinWidth=0.080000
-		WinHeight=0.040000
-		WinLeft=0.126562
-		WinTop=0.688559
+    Begin Object Class=XInterface.GUIButton Name=AddHairButton
         Caption="Add"
+        WinTop=0.688559
+        WinLeft=0.126562
+        WinWidth=0.08
         OnClick=InternalOnClick
+        OnKeyEvent=InternalOnKeyEvent
     End Object
-    bu_AddHair=GUIButton'AddHairButton'
-
-    Begin Object class=GUIButton name=DeleteHairButton
-		WinWidth=0.080000
-		WinHeight=0.040000
-		WinLeft=0.206562
-		WinTop=0.688559
+    Begin Object Class=XInterface.GUIButton Name=DeleteHairButton
         Caption="Delete"
+        WinTop=0.688559
+        WinLeft=0.206562
+        WinWidth=0.08
         OnClick=InternalOnClick
+        OnKeyEvent=InternalOnKeyEvent
     End Object
-    bu_DeleteHair=GUIButton'DeleteHairButton'
-
-    Begin Object class=GUIButton name=MoveUpHairButton
-		WinWidth=0.080000
-		WinHeight=0.040000
-		WinLeft=0.126562
-		WinTop=0.734384
+    Begin Object Class=XInterface.GUIButton Name=MoveUpHairButton
         Caption="Up"
+        WinTop=0.734384
+        WinLeft=0.126562
+        WinWidth=0.08
         OnClick=InternalOnClick
+        OnKeyEvent=InternalOnKeyEvent
     End Object
-    bu_MoveUp=GUIButton'MoveUpHairButton'
-
-    Begin Object class=GUIButton name=MoveDownHairButton
-		WinWidth=0.080000
-		WinHeight=0.040000
-		WinLeft=0.206562
-		WinTop=0.734384
+    Begin Object Class=XInterface.GUIButton Name=MoveDownHairButton
         Caption="Down"
+        WinTop=0.734384
+        WinLeft=0.206562
+        WinWidth=0.08
         OnClick=InternalOnClick
+        OnKeyEvent=InternalOnKeyEvent
     End Object
-    bu_MoveDown=GUIButton'MoveDownHairButton'
-
-    Begin Object class=GUIImage name=CurrentHairBackgroundImage
+    Begin Object Class=XInterface.GUIImage Name=ListBoxBackgroundImage
         Image=Texture'2K4Menus.Controls.thinpipe_b'
-		WinWidth=0.200000
-		WinHeight=0.200000
-		WinLeft=0.680000
-		WinTop=0.372917
-		bVisible=True
-		ImageStyle=ISTY_Stretched
-	End Object
-    i_CurrentHairBG=GUIImage'CurrentHairBackgroundImage'
-
-
-    Begin Object class=GUIImage name=TotalHairBackgroundImage
+        ImageStyle=ISTY_Stretched
+        WinTop=0.372917
+        WinLeft=0.12
+        WinWidth=0.2
+        WinHeight=0.304688
+    End Object
+    Begin Object Class=XInterface.GUILabel Name=RedCrossLabel
+        Caption="Red"
+        TextColor=(R=255,G=0,B=64,A=255)
+        WinTop=0.4
+        WinLeft=0.34
+    End Object
+    Begin Object Class=XInterface.GUILabel Name=GreenCrossLabel
+        Caption="Green"
+        TextColor=(R=0,G=255,B=64,A=255)
+        WinTop=0.44
+        WinLeft=0.34
+    End Object
+    Begin Object Class=XInterface.GUILabel Name=BlueCrossLabel
+        Caption="Blue"
+        TextColor=(R=0,G=0,B=255,A=255)
+        WinTop=0.48
+        WinLeft=0.34
+    End Object
+    Begin Object Class=XInterface.GUILabel Name=OpacityCrossLabel
+        Caption="Alpha"
+        TextColor=(R=255,G=255,B=255,A=255)
+        WinTop=0.52
+        WinLeft=0.34
+    End Object
+    Begin Object Class=XInterface.GUILabel Name=SizeCrossLabel
+        Caption="Size"
+        TextColor=(R=255,G=255,B=255,A=255)
+        WinTop=0.56
+        WinLeft=0.34
+    End Object
+    Begin Object Class=XInterface.GUILabel Name=HorizCrossLabel
+        Caption="Left"
+        TextColor=(R=255,G=255,B=255,A=255)
+        WinTop=0.6
+        WinLeft=0.34
+    End Object
+    Begin Object Class=XInterface.GUILabel Name=VertCrossLabel
+        Caption="Up"
+        TextColor=(R=255,G=255,B=255,A=255)
+        WinTop=0.64
+        WinLeft=0.34
+    End Object
+    Begin Object Class=XInterface.GUIImage Name=CurrentHairBackgroundImage
         Image=Texture'2K4Menus.Controls.thinpipe_b'
-		WinWidth=0.200000
-		WinHeight=0.200000
-		WinLeft=0.680000
-		WinTop=0.58335
-		bVisible=True
-		ImageStyle=ISTY_Stretched
-	End Object
-    i_TotalHairBG=GUIImage'TotalHairBackgroundImage'
-
-    Begin Object class=GUIImage name=CurrentHAirImage
-        ImageStyle=ISTY_Scaled
-        ImageAlign=IMGA_Center
-        X1=0
-        Y1=0
-        X2=64
-        Y2=64
-      End Object
-    i_CurrentHair=GUIImage'CurrentHairImage'
-
-    Begin Object class=GUIImage name=TotalHairImage0
+        ImageStyle=ISTY_Stretched
+        WinTop=0.372917
+        WinLeft=0.68
+        WinWidth=0.2
+        WinHeight=0.2
+    End Object
+    Begin Object Class=XInterface.GUIImage Name=TotalHairBackgroundImage
+        Image=Texture'2K4Menus.Controls.thinpipe_b'
+        ImageStyle=ISTY_Stretched
+        WinTop=0.58335
+        WinLeft=0.68
+        WinWidth=0.2
+        WinHeight=0.2
+    End Object
+    Begin Object Class=XInterface.GUIImage Name=CurrentHAirImage
         ImageStyle=ISTY_Scaled
         ImageAlign=IMGA_Center
         X1=0
@@ -601,148 +577,68 @@ defaultproperties
         X2=64
         Y2=64
     End Object
-    i_TotalHair(0)=GUIImage'TotalHairImage0'
-
-        Begin Object class=GUIImage name=TotalHairImage1
-        ImageStyle=ISTY_Scaled
-        ImageAlign=IMGA_Center
-        X1=0
-        Y1=0
-        X2=64
-        Y2=64
-     End Object
-    i_TotalHair(1)=GUIImage'TotalHairImage0'
-
-        Begin Object class=GUIImage name=TotalHairImage2
-        ImageStyle=ISTY_Scaled
-        ImageAlign=IMGA_Center
-        X1=0
-        Y1=0
-        X2=64
-        Y2=64
-      End Object
-    i_TotalHair(2)=GUIImage'TotalHairImage0'
-
-        Begin Object class=GUIImage name=TotalHairImage3
-        ImageStyle=ISTY_Scaled
-        ImageAlign=IMGA_Center
-        X1=0
-        Y1=0
-        X2=64
-        Y2=64
-    End Object
-    i_TotalHair(3)=GUIImage'TotalHairImage0'
-
-        Begin Object class=GUIImage name=TotalHairImage4
-        ImageStyle=ISTY_Scaled
-        ImageAlign=IMGA_Center
-        X1=0
-        Y1=0
-        X2=64
-        Y2=64
-     End Object
-    i_TotalHair(4)=GUIImage'TotalHairImage0'
-
-        Begin Object class=GUIImage name=TotalHairImage5
-        ImageStyle=ISTY_Scaled
-        ImageAlign=IMGA_Center
-        X1=0
-        Y1=0
-        X2=64
-        Y2=64
-    End Object
-    i_TotalHair(5)=GUIImage'TotalHairImage0'
-
-        Begin Object class=GUIImage name=TotalHairImage6
-        ImageStyle=ISTY_Scaled
-        ImageAlign=IMGA_Center
-        X1=0
-        Y1=0
-        X2=64
-        Y2=64
-    End Object
-    i_TotalHair(6)=GUIImage'TotalHairImage0'
-
-        Begin Object class=GUIImage name=TotalHairImage7
-        ImageStyle=ISTY_Scaled
-        ImageAlign=IMGA_Center
-        X1=0
-        Y1=0
-        X2=64
-        Y2=64
-    End Object
-    i_TotalHair(7)=GUIImage'TotalHairImage0'
-
-        Begin Object class=GUIImage name=TotalHairImage8
-        ImageStyle=ISTY_Scaled
-        ImageAlign=IMGA_Center
-        X1=0
-        Y1=0
-        X2=64
-        Y2=64
-    End Object
-    i_TotalHair(8)=GUIImage'TotalHairImage0'
-
-        Begin Object class=GUIImage name=TotalHairImage9
-        ImageStyle=ISTY_Scaled
-        ImageAlign=IMGA_Center
-        X1=0
-        Y1=0
-        X2=64
-        Y2=64
-    End Object
-    i_TotalHair(9)=GUIImage'TotalHairImage0'
-
-        Begin Object class=GUIImage name=TotalHairImage10
-        ImageStyle=ISTY_Scaled
-        ImageAlign=IMGA_Center
-        X1=0
-        Y1=0
-        X2=64
-        Y2=64
-    End Object
-    i_TotalHair(10)=GUIImage'TotalHairImage0'
-
-    Begin Object class=GUIImage name=TotalHairImage11
-        ImageStyle=ISTY_Scaled
-        ImageAlign=IMGA_Center
-        X1=0
-        Y1=0
-        X2=64
-        Y2=64
-    End Object
-    i_TotalHair(11)=GUIImage'TotalHairImage0'
-
-    UTCompNewHairs(0)=(xHairName="Big Circle(0)",xHairTexture=Texture'UTCompv18bK.BigCircle')
-    UTCompNewHairs(1)=(xHairName="Big Circle(1)",xHairTexture=Texture'UTCompv18bK.MedCircle')
-    UTCompNewHairs(2)=(xHairName="Big Circle(2)",xHairTexture=Texture'UTCompv18bK.SmallCircle')
-    UTCompNewHairs(3)=(xHairName="Big Circle(3)",xHairTexture=Texture'UTCompv18bK.UberSmallCircle')
-
-    UTCompNewHairs(4)=(xHairName="Small Circle(0)",xHairTexture=Texture'UTCompv18bK.BigCircle_2')
-    UTCompNewHairs(5)=(xHairName="Small Circle(1)",xHairTexture=Texture'UTCompv18bK.MedCircle_2')
-    UTCompNewHairs(6)=(xHairName="Small Circle(2)",xHairTexture=Texture'UTCompv18bK.SmallCircle_2')
-    UTCompNewHairs(7)=(xHairName="Small Circle(3)",xHairTexture=Texture'UTCompv18bK.UberSmallCircle_2')
-
-    UTCompNewHairs(8)=(xHairName="Big Square(0)",xHairTexture=Texture'UTCompv18bK.BigSquare')
-    UTCompNewHairs(9)=(xHairName="Big Square(1)",xHairTexture=Texture'UTCompv18bK.BigSquare_2')
-    UTCompNewHairs(10)=(xHairName="Big Square(2)",xHairTexture=Texture'UTCompv18bK.BigSquare_3')
-
-    UTCompNewHairs(11)=(xHairName="Big diamond(0)",xHairTexture=Texture'UTCompv18bK.Bigdiamond')
-    UTCompNewHairs(12)=(xHairName="Big Diamond(1)",xHairTexture=Texture'UTCompv18bK.Bigdiamond_2')
-    UTCompNewHairs(13)=(xHairName="Big Diamond(2)",xHairTexture=Texture'UTCompv18bK.Bigdiamond_3')
-
-    UTCompNewHairs(14)=(xHairName="Big Horiz",xHairTexture=Texture'UTCompv18bK.SmallVert')
-    UTCompNewHairs(15)=(xHairName="Small Horiz",xHairTexture=Texture'UTCompv18bK.BigVert')
-    UTCompNewHairs(16)=(xHairName="Big Vert",xHairTexture=Texture'UTCompv18bK.SmallHoriz')
-    UTCompNewHairs(17)=(xHairName="Small Vert",xHairTexture=Texture'UTCompv18bK.BigHoriz')
-
-    UTCompNewHairs(18)=(xHairName="Big 'L'(0)",xHairTexture=Texture'UTCompv18bK.BigBracket')
-    UTCompNewHairs(19)=(xHairName="Big 'L'(1)",xHairTexture=Texture'UTCompv18bK.BigBracket_1')
-    UTCompNewHairs(20)=(xHairName="Big 'L'(2)",xHairTexture=Texture'UTCompv18bK.BigBracket_2')
-    UTCompNewHairs(21)=(xHairName="Big 'L'(3)",xHairTexture=Texture'UTCompv18bK.BigBracket_3')
-    UTCompNewHairs(22)=(xHairName="Big 'L'(4)",xHairTexture=Texture'UTCompv18bK.BigBracket_4')
-    UTCompNewHairs(23)=(xHairName="Big 'L'(5)",xHairTexture=Texture'UTCompv18bK.BigBracket_5')
-    UTCompNewHairs(24)=(xHairName="Big 'L'(6)",xHairTexture=Texture'UTCompv18bK.BigBracket_6')
-    UTCompNewHairs(25)=(xHairName="Big 'L'(7)",xHairTexture=Texture'UTCompv18bK.BigBracket_7')
-
+    lb_CrossHairs=CrosshairListBox
+    co_UTCompCrosshairs=CrosshairCombo
+    bu_MoveUp=MoveUpHairButton
+    bu_MoveDown=MoveDownHairButton
+    bu_AddHair=AddHairButton
+    bu_DeleteHair=DeleteHairButton
+    ch_UseFactory=UseFactoryCheck
+    ch_SizeIncrease=SizeIncreaseCheck
+    sl_SizeHair=SizeCrossSlider
+    sl_OpacityHair=OpacityCrossSlider
+    sl_HorizHair=HorizCrossSlider
+    sl_VertHair=VertCrossSlider
+    sl_RedHair=RedCrossSlider
+    sl_GreenHair=GreenCrossSlider
+    sl_BlueHair=BlueCrossSlider
+    l_Size=SizeCrossLabel
+    l_Opacity=OpacityCrossLabel
+    l_Horiz=HorizCrossLabel
+    l_Vert=VertCrossLabel
+    l_Red=RedCrossLabel
+    l_Green=GreenCrossLabel
+    l_Blue=BlueCrossLabel
+    i_CurrentHairBG=CurrentHairBackgroundImage
+    i_CurrentHair=CurrentHAirImage
+    i_TotalHairBG=TotalHairBackgroundImage
+    i_ListBoxBG=ListBoxBackgroundImage
+    i_TotalHair(0)=TotalHairImage0
+    i_TotalHair(1)=TotalHairImage0
+    i_TotalHair(2)=TotalHairImage0
+    i_TotalHair(3)=TotalHairImage0
+    i_TotalHair(4)=TotalHairImage0
+    i_TotalHair(5)=TotalHairImage0
+    i_TotalHair(6)=TotalHairImage0
+    i_TotalHair(7)=TotalHairImage0
+    i_TotalHair(8)=TotalHairImage0
+    i_TotalHair(9)=TotalHairImage0
+    i_TotalHair(10)=TotalHairImage0
+    i_TotalHair(11)=TotalHairImage0
+    UTCompNewHairs(0)=(xHairName="Big Circle(0)",xHairTexture=Texture'UTCompvBoM.BigCircle')
+    UTCompNewHairs(1)=(xHairName="Big Circle(1)",xHairTexture=Texture'UTCompvBoM.MedCircle')
+    UTCompNewHairs(2)=(xHairName="Big Circle(2)",xHairTexture=Texture'UTCompvBoM.SmallCircle')
+    UTCompNewHairs(3)=(xHairName="Big Circle(3)",xHairTexture=Texture'UTCompvBoM.UberSmallCircle')
+    UTCompNewHairs(4)=(xHairName="Small Circle(0)",xHairTexture=Texture'UTCompvBoM.BigCircle_2')
+    UTCompNewHairs(5)=(xHairName="Small Circle(1)",xHairTexture=Texture'UTCompvBoM.MedCircle_2')
+    UTCompNewHairs(6)=(xHairName="Small Circle(2)",xHairTexture=Texture'UTCompvBoM.SmallCircle_2')
+    UTCompNewHairs(7)=(xHairName="Small Circle(3)",xHairTexture=Texture'UTCompvBoM.UberSmallCircle_2')
+    UTCompNewHairs(8)=(xHairName="Big Square(0)",xHairTexture=Texture'UTCompvBoM.BigSquare')
+    UTCompNewHairs(9)=(xHairName="Big Square(1)",xHairTexture=Texture'UTCompvBoM.BigSquare_2')
+    UTCompNewHairs(10)=(xHairName="Big Square(2)",xHairTexture=Texture'UTCompvBoM.BigSquare_3')
+    UTCompNewHairs(11)=(xHairName="Big diamond(0)",xHairTexture=Texture'UTCompvBoM.Bigdiamond')
+    UTCompNewHairs(12)=(xHairName="Big Diamond(1)",xHairTexture=Texture'UTCompvBoM.Bigdiamond_2')
+    UTCompNewHairs(13)=(xHairName="Big Diamond(2)",xHairTexture=Texture'UTCompvBoM.Bigdiamond_3')
+    UTCompNewHairs(14)=(xHairName="Big Horiz",xHairTexture=Texture'UTCompvBoM.SmallVert')
+    UTCompNewHairs(15)=(xHairName="Small Horiz",xHairTexture=Texture'UTCompvBoM.BigVert')
+    UTCompNewHairs(16)=(xHairName="Big Vert",xHairTexture=Texture'UTCompvBoM.SmallHoriz')
+    UTCompNewHairs(17)=(xHairName="Small Vert",xHairTexture=Texture'UTCompvBoM.BigHoriz')
+    UTCompNewHairs(18)=(xHairName="Big 'L'(0)",xHairTexture=Texture'UTCompvBoM.Bigbracket')
+    UTCompNewHairs(19)=(xHairName="Big 'L'(1)",xHairTexture=Texture'UTCompvBoM.Bigbracket_1')
+    UTCompNewHairs(20)=(xHairName="Big 'L'(2)",xHairTexture=Texture'UTCompvBoM.Bigbracket_2')
+    UTCompNewHairs(21)=(xHairName="Big 'L'(3)",xHairTexture=Texture'UTCompvBoM.Bigbracket_3')
+    UTCompNewHairs(22)=(xHairName="Big 'L'(4)",xHairTexture=Texture'UTCompvBoM.Bigbracket_4')
+    UTCompNewHairs(23)=(xHairName="Big 'L'(5)",xHairTexture=Texture'UTCompvBoM.Bigbracket_5')
+    UTCompNewHairs(24)=(xHairName="Big 'L'(6)",xHairTexture=Texture'UTCompvBoM.Bigbracket_6')
+    UTCompNewHairs(25)=(xHairName="Big 'L'(7)",xHairTexture=Texture'UTCompvBoM.Bigbracket_7')
 }

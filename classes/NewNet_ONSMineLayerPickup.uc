@@ -1,7 +1,7 @@
 
 class NewNet_ONSMineLayerPickup extends ONSMineLayerPickup;
 
-DefaultProperties
+defaultproperties
 {
-    InventoryType=class'UTCompv18bK.NewNet_ONSMineLayer'
+    InventoryType=Class'UTCompvBoM.NewNet_ONSMineLayer'
 }

@@ -20,5 +20,5 @@ simulated function ProcessTouch (Actor Other, vector HitLocation)
 
 defaultproperties
 {
-     bNetTemporary=False
+    bNetTemporary=False
 }

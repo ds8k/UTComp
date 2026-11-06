@@ -16,7 +16,6 @@ function SetPawnClass(string inClass, string inCharacter)
     PlayerReplicationInfo.SetCharacterName(inCharacter);
 }
 
-
 defaultproperties
 {
 }

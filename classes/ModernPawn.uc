@@ -195,3 +195,7 @@ simulated function PlayRunningBackground()
 
     LoopAnim(NewAnim, VSize(Velocity) / AnimSpeed, 0.1);
 }
+
+defaultproperties
+{
+}

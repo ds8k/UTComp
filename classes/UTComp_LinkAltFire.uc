@@ -27,5 +27,4 @@ function Projectile SpawnProjectile(Vector Start, Rotator Dir)
 
 defaultproperties
 {
-
 }

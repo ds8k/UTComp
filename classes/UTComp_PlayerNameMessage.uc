@@ -22,8 +22,6 @@ static function string GetString(
     return RelatedPRI_1.PlayerName;
 }
 
-
-DefaultProperties
+defaultproperties
 {
-
 }

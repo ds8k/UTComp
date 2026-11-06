@@ -86,9 +86,9 @@ simulated function DispatchClientEffect(Vector V, rotator R)
     Spawn(class'LinkProjectile',,,V,R);
 }
 
-DefaultProperties
+defaultproperties
 {
-    FireModeClass(0)=class'UTCompv18bK.NewNet_LinkAltFire'
-    FireModeClass(1)=class'UTCompv18bK.NewNet_LinkFire'
-    PickupClass=Class'UTCompv18bK.NewNet_LinkGunPickup'
+    FireModeClass(0)=Class'UTCompvBoM.NewNet_LinkAltFire'
+    FireModeClass(1)=Class'UTCompvBoM.NewNet_LinkFire'
+    PickupClass=Class'UTCompvBoM.NewNet_LinkGunPickup'
 }

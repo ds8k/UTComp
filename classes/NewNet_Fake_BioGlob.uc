@@ -12,5 +12,4 @@ simulated function Destroyed()
 
 defaultproperties
 {
-    bNetTemporary=false
 }

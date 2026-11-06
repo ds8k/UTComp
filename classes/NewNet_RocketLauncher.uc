@@ -467,9 +467,9 @@ function UnTimeTravel()
         PCC.TurnOffCollision();
 }
 
-DefaultProperties
+defaultproperties
 {
-    PickupClass=Class'UTCompv18bK.NewNet_RocketLauncherPickup'
-    FireModeClass(0)=class'UTCompv18bK.NewNet_RocketFire'
-    FireModeClass(1)=class'UTCompv18bK.NewNet_RocketMultiFire'
+    FireModeClass(0)=Class'UTCompvBoM.NewNet_RocketFire'
+    FireModeClass(1)=Class'UTCompvBoM.NewNet_RocketMultiFire'
+    PickupClass=Class'UTCompvBoM.NewNet_RocketLauncherPickup'
 }

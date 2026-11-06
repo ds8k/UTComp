@@ -267,5 +267,4 @@ defaultproperties
 {
     MaxSavedMoves=750
     SavedMovesWarningInterval=5.0
-    LastSavedMovesWarning=0
 }

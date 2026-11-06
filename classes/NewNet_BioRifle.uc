@@ -77,9 +77,9 @@ function NewNet_ServerStartFire(byte Mode, byte ClientTimeStamp, float DT)
     ServerStartFire(Mode);
 }
 
-DefaultProperties
+defaultproperties
 {
-    FireModeClass(0)=class'UTCompv18bK.NewNet_BioFire'
-    FireModeClass(1)=class'UTCompv18bK.NewNet_BioChargedFire'
-    PickupClass=Class'UTCompv18bK.NewNet_BioRiflePickup'
+    FireModeClass(0)=Class'UTCompvBoM.NewNet_BioFire'
+    FireModeClass(1)=Class'UTCompvBoM.NewNet_BioChargedFire'
+    PickupClass=Class'UTCompvBoM.NewNet_BioRiflePickup'
 }

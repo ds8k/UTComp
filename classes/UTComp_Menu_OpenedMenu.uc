@@ -11,18 +11,8 @@ var UTComp_ServerReplicationInfo RepInfo;
 
 function InitComponent(GUIController MyController, GUIComponent MyOwner)
 {
-   // local mutator mut;
-
     l_Mode[2].Caption=class'MutUTComp'.default.FriendlyVersionPrefix $ class'Gameinfo'.Static.MakeColorCode(GoldColor) @ class'MutUTComp'.default.FriendlyVersionNumber;
 
-
-  /*  for ( mut=PlayerOwner().Level.Game.BaseMutator; mut!=None; mut=mut.NextMutator )
-	if ( mut.IsA('Forward_Mutator') )
-	{
-         i_UTCompLogo.Image = texture'UTCompv18bK.ForwardLogo';
-         return;
-	}
-  */
 	Super.InitComponent(myController,MyOwner);
 }
 
@@ -101,107 +91,85 @@ function bool InternalOnClick( GUIComponent C )
     return super.internalonclick(C);
 }
 
-DefaultProperties
+defaultproperties
 {
-     Begin Object Class=GUILabel Name=BrightSkinsModeLabel
-         TextColor=(B=255,G=255,R=255)
-		WinWidth=1.000000
-		WinHeight=0.049485
-		WinLeft=0.000000
-		WinTop=0.494433
-         TextAlign=TXTA_Center
-     End Object
-     l_Mode(0)=GUILabel'BrightSkinsModeLabel'
-
-     Begin Object Class=GUILabel Name=HitSoundsModeLabel
-         TextColor=(B=255,G=255,R=255)
-         WinTop=0.530000
-         WinLeft=0.000000
-         WinHeight=24.000000
-         TextAlign=TXTA_Center
-     End Object
-     l_Mode(1)=GUILabel'HitSoundsModeLabel'
-
-     Begin Object Class=GUILabel Name=VersionLabel
-         TextColor=(B=255,G=255,R=255)
-		WinWidth=1.000000
-		WinHeight=0.049485
-		WinLeft=0.000000
-		WinTop=0.417011
-         TextAlign=TXTA_Center
-     End Object
-     l_Mode(2)=GUILabel'VersionLabel'
-
-     Begin Object class=GUIButton name=ReadyButton
-         WinTop=.65
-         WinLeft=.25
-         WinWidth=.20
-         WinHeight=.06
-         OnClick=InternalOnClick
-     End Object
-     bu_Ready=GUIButton'readybutton'
-
-     Begin Object class=GUIButton name=NotReadyButton
-         WinTop=.65
-         WinLeft=.55
-         WinWidth=.20
-         WinHeight=.06
-         OnClick=InternalOnClick
-     End Object
-     bu_NotReady=GUIButton'notreadybutton'
-
-
-     Begin Object Class=GUILabel Name=AmpModeLabel
-         TextColor=(B=255,G=255,R=255)
-         WinTop=0.570000
-         WinLeft=0.000000
-         WinHeight=24.000000
-         TextAlign=TXTA_Center
-     End Object
-     l_Mode(3)=GUILabel'AmpModeLabel'
-
-     Begin Object Class=GUILabel Name=NetCodeModeLabel
-         TextColor=(B=255,G=255,R=255)
-         WinTop=0.610000
-         WinLeft=0.000000
-         WinHeight=24.000000
-         TextAlign=TXTA_Center
-     End Object
-     l_Mode(5)=GUILabel'NetCodeModeLabel'
-
-     Begin Object Class=GUILabel Name=ServerSetLabel
-		WinWidth=1.000000
-		WinHeight=0.049485
-		WinLeft=0.000000
-		WinTop=0.454433
-		TextColor=(B=0,G=200,R=230)
-        Caption = "------Server Settings------"
-         TextAlign=TXTA_Center
-     End Object
-     l_Mode(6)=GUILabel'ServerSetLabel'
-
-     Begin Object class=GUIImage name=UTCompLogo
-     ImageStyle=ISTY_Scaled
-         ImageRenderStyle=MSTY_Alpha
-		WinWidth=0.375000
-		WinHeight=0.125000
-		WinLeft=0.312500
-		WinTop=0.307113
-        Image=Texture'UTCompv18bK.UTCompLogo'
-     End Object
-     i_UTCompLogo=GUIImage'UTCompLogo'
-
-
-     Begin Object Class=GUILabel Name=NewVersions
-         TextColor=(B=255,G=255,R=255)
-     	 WinWidth=1.000000
-		 WinHeight=0.050000
-		 WinLeft=0.000000
-		 WinTop=0.727502
-         TextAlign=TXTA_Center
-         Caption="Visit https://GitHub.com/Deaod/UTComp for new versions."
-     End Object
-     l_Mode(4)=GUILabel'NewVersions'
-
-     GoldColor=(B=0,G=200,R=230)
+    Begin Object Class=XInterface.GUIButton Name=ReadyButton
+        WinTop=0.65
+        WinLeft=0.25
+        WinWidth=0.2
+        WinHeight=0.06
+        OnClick=InternalOnClick
+        OnKeyEvent=InternalOnKeyEvent
+    End Object
+    Begin Object Class=XInterface.GUIButton Name=NotReadyButton
+        WinTop=0.65
+        WinLeft=0.55
+        WinWidth=0.2
+        WinHeight=0.06
+        OnClick=InternalOnClick
+        OnKeyEvent=InternalOnKeyEvent
+    End Object
+    Begin Object Class=XInterface.GUILabel Name=BrightSkinsModeLabel
+        TextAlign=TXTA_Center
+        TextColor=(R=255,G=255,B=255,A=255)
+        WinTop=0.494433
+        WinHeight=0.049485
+    End Object
+    Begin Object Class=XInterface.GUILabel Name=HitSoundsModeLabel
+        TextAlign=TXTA_Center
+        TextColor=(R=255,G=255,B=255,A=255)
+        WinTop=0.53
+        WinHeight=24.0
+    End Object
+    Begin Object Class=XInterface.GUILabel Name=VersionLabel
+        TextAlign=TXTA_Center
+        TextColor=(R=255,G=255,B=255,A=255)
+        WinTop=0.417011
+        WinHeight=0.049485
+    End Object
+    Begin Object Class=XInterface.GUILabel Name=AmpModeLabel
+        TextAlign=TXTA_Center
+        TextColor=(R=255,G=255,B=255,A=255)
+        WinTop=0.57
+        WinHeight=24.0
+    End Object
+    Begin Object Class=XInterface.GUILabel Name=NetCodeModeLabel
+        TextAlign=TXTA_Center
+        TextColor=(R=255,G=255,B=255,A=255)
+        WinTop=0.61
+        WinHeight=24.0
+    End Object
+    Begin Object Class=XInterface.GUILabel Name=ServerSetLabel
+        Caption="------Server Settings------"
+        TextAlign=TXTA_Center
+        TextColor=(R=230,G=200,B=0,A=255)
+        WinTop=0.454433
+        WinHeight=0.049485
+    End Object
+    Begin Object Class=XInterface.GUIImage Name=UTCompLogo
+        Image=Texture'UTCompvBoM.UTCompLogo'
+        ImageStyle=ISTY_Scaled
+        WinTop=0.307113
+        WinLeft=0.3125
+        WinWidth=0.375
+        WinHeight=0.125
+    End Object
+    Begin Object Class=XInterface.GUILabel Name=NewVersions
+        Caption="Visit https://GitHub.com/Deaod/UTComp for new versions."
+        TextAlign=TXTA_Center
+        TextColor=(R=255,G=255,B=255,A=255)
+        WinTop=0.727502
+        WinHeight=0.05
+    End Object
+    l_Mode(0)=BrightSkinsModeLabel
+    l_Mode(1)=HitSoundsModeLabel
+    l_Mode(2)=VersionLabel
+    l_Mode(3)=AmpModeLabel
+    l_Mode(4)=NewVersions
+    l_Mode(5)=NetCodeModeLabel
+    l_Mode(6)=ServerSetLabel
+    i_UTCompLogo=UTCompLogo
+    bu_Ready=ReadyButton
+    bu_NotReady=NotReadyButton
+    GoldColor=(R=230,G=200,B=0,A=0)
 }

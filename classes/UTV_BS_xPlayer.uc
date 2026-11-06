@@ -80,7 +80,7 @@ state Spectating
 
 defaultproperties
 {
-     utvOverideUpdate="false"
-     utvFreeFlight="false"
-     bAllActorsRelevant=True
+    utvOverideUpdate="false"
+    utvFreeFlight="false"
+    bAllActorsRelevant=True
 }

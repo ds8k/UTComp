@@ -214,5 +214,4 @@ function byte FindVehicleID(Vehicle aVehicle)
 
 defaultproperties
 {
-     bHidden=True
 }

@@ -34,8 +34,6 @@ var bool bEnableTimedOvertime;
 var PlayerReplicationInfo LinePRI[10];
 var bool bEnableEnhancedNetCode;
 var bool bEnableEnhancedNetCodeVoting;
-var bool bForward;
-var bool bEnableForwardVoting;
 
 var bool bShieldFix;
 var bool bAllowRestartVoteEvenIfMapVotingIsTurnedOff;
@@ -43,6 +41,8 @@ var bool bAllowRestartVoteEvenIfMapVotingIsTurnedOff;
 var int MaxMultiDodges;
 var int MinNetSpeed;
 var int MaxNetSpeed;
+
+// var float InstaFireRate;
 
 
 replication
@@ -55,30 +55,26 @@ replication
         bEnableMapVoting, bEnableGametypeVoting, VotingNames,
         benableDoubleDamage, ServerMaxPlayers, bEnableTimedOvertime,
         MaxPlayersClone, bEnableAdvancedVotingOptions, VotingOptions, LinePRI, bEnableTimedOvertimeVoting,
-        bEnableEnhancedNetCodeVoting,bEnableEnhancedNetCode, bEnableWarmupVoting, bForward, bEnableForwardVoting,
-        bAllowRestartVoteEvenIfMapVotingIsTurnedOff, MaxMultiDodges, MinNetSpeed, MaxNetSpeed;
+        bEnableEnhancedNetCodeVoting,bEnableEnhancedNetCode, bEnableWarmupVoting,
+        bAllowRestartVoteEvenIfMapVotingIsTurnedOff, MaxMultiDodges, MinNetSpeed, MaxNetSpeed; //, InstaFireRate;
 }
 
 defaultproperties
 {
-     bEnableVoting=True
-     EnableBrightSkinsMode=3
-     bEnableClanSkins=True
-     bEnableTeamOverlay=True
-     EnableHitSoundsMode=1
-     bEnableScoreboard=True
-     bEnableWarmup=True
-     bEnableWeaponStats=True
-     bEnablePowerupStats=True
-     bEnableBrightskinsVoting=True
-     bEnableHitsoundsVoting=True
-     bEnableWarmupVoting=True
-     bEnableTeamOverlayVoting=True
-     bEnableMapVoting=True
-     bEnableGametypeVoting=True
-     bEnableDoubleDamageVoting=True
-     ServerMaxPlayers=10
-     bEnableTimedOvertimeVoting=True
-     bEnableTimedOvertime=False
+    EnableBrightSkinsMode=3
+    bEnableClanSkins=True
+    EnableHitSoundsMode=1
+    bEnableScoreboard=True
+    bEnableWarmup=True
+    bEnableWeaponStats=True
+    bEnablePowerupStats=True
+    bEnableTimedOvertimeVoting=True
+    bEnableBrightskinsVoting=True
+    bEnableHitsoundsVoting=True
+    bEnableWarmupVoting=True
+    bEnableTeamOverlayVoting=True
+    bEnableMapVoting=True
+    bEnableGametypeVoting=True
+    bEnableDoubleDamageVoting=True
+    ServerMaxPlayers=10
 }
-

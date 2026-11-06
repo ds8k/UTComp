@@ -17,5 +17,5 @@ simulated function PostNetBeginPlay()
 
 defaultproperties
 {
-     bSkipActorPropertyReplication=False
+    bSkipActorPropertyReplication=False
 }

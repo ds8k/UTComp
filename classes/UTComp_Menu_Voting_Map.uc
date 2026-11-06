@@ -117,69 +117,62 @@ event Opened(GUIComponent Sender)
 
 defaultproperties
 {
-     Begin Object Class=GUIEditBox Name=MapInputEditBox
-		WinWidth=0.250000
-		WinHeight=0.030000
-		WinLeft=0.550312
-		WinTop=0.493750
-         OnActivate=MapInputEditBox.InternalActivate
-         OnDeActivate=MapInputEditBox.InternalDeactivate
-         OnKeyType=MapInputEditBox.InternalOnKeyType
-         OnKeyEvent=MapInputEditBox.InternalOnKeyEvent
-     End Object
-     eb_MapInput=GUIEditBox'UTCompv18bK.UTComp_Menu_Voting_Map.MapInputEditBox'
-
-     Begin Object Class=GUIButton Name=quickrestartButton
+    Begin Object Class=XInterface.GUIEditBox Name=MapInputEditBox
+        WinTop=0.49375
+        WinLeft=0.550312
+        WinWidth=0.25
+        WinHeight=0.03
+        OnActivate=InternalActivate
+        OnDeActivate=InternalDeactivate
+        OnKeyType=InternalOnKeyType
+        OnKeyEvent=InternalOnKeyEvent
+    End Object
+    Begin Object Class=XInterface.GUIButton Name=quickrestartButton
         Caption="Restart Current Map"
-		WinWidth=0.255000
-		WinHeight=0.047500
-		WinLeft=0.545314
-		WinTop=0.607500
-         OnClick=UTComp_Menu_Voting_Map.InternalOnClick
-         OnKeyEvent=quickrestartButton.InternalOnKeyEvent
-     End Object
-     bu_QuickRestart=GUIButton'UTCompv18bK.UTComp_Menu_Voting_Map.quickrestartButton'
-
-     Begin Object Class=GUIButton Name=ChangeMapButton
-         Caption="Change Map"
-		WinWidth=0.256563
-		WinHeight=0.047500
-		WinLeft=0.546874
-		WinTop=0.542915
-         OnClick=UTComp_Menu_Voting_Map.InternalOnClick
-         OnKeyEvent=ChangeMapButton.InternalOnKeyEvent
-     End Object
-     bu_ChangeMap=GUIButton'UTCompv18bK.UTComp_Menu_Voting_Map.ChangeMapButton'
-
-     Begin Object Class=GUILabel Name=MapNameLabel
-         Caption="Map Name"
-         TextColor=(B=255,G=255,R=255)
-		WinWidth=1.000000
-		WinHeight=0.060000
-		WinLeft=0.380438
-		WinTop=0.480417
-     End Object
-     l_MapName=GUILabel'UTCompv18bK.UTComp_Menu_Voting_Map.MapNameLabel'
-
-     Begin Object class=GUIListBox name=MapListBox
-		WinWidth=0.214061
-		WinHeight=0.385937
-		WinLeft=0.118750
-		WinTop=0.350000
+        WinTop=0.6075
+        WinLeft=0.545314
+        WinWidth=0.255
+        WinHeight=0.0475
+        OnClick=InternalOnClick
+        OnKeyEvent=InternalOnKeyEvent
+    End Object
+    Begin Object Class=XInterface.GUIButton Name=ChangeMapButton
+        Caption="Change Map"
+        WinTop=0.542915
+        WinLeft=0.546874
+        WinWidth=0.256563
+        WinHeight=0.0475
+        OnClick=InternalOnClick
+        OnKeyEvent=InternalOnKeyEvent
+    End Object
+    Begin Object Class=XInterface.GUIListBox Name=MapListBox
         bVisibleWhenEmpty=True
+        OnCreateComponent=InternalOnCreateComponent
+        WinTop=0.35
+        WinLeft=0.11875
+        WinWidth=0.214061
+        WinHeight=0.385937
         OnChange=InternalOnChange
-     End Object
-     lb_MapList=GUIListBox'MapListBox'
-
-     Begin Object Class=GUIButton Name=RefreshButton
+    End Object
+    Begin Object Class=XInterface.GUIButton Name=RefreshButton
         Caption="Refresh Maps"
-		WinWidth=0.217500
-		WinHeight=0.047500
-		WinLeft=0.110936
-		WinTop=0.738752
-		OnClick=InternalOnClick
-     End Object
-     bu_Refresh=GUIButton'RefreshButton'
-
+        WinTop=0.738752
+        WinLeft=0.110936
+        WinWidth=0.2175
+        WinHeight=0.0475
+        OnClick=InternalOnClick
+        OnKeyEvent=InternalOnKeyEvent
+    End Object
+    Begin Object Class=XInterface.GUILabel Name=MapNameLabel
+        Caption="Map Name"
+        TextColor=(R=255,G=255,B=255,A=255)
+        WinTop=0.480417
+        WinLeft=0.380438
+    End Object
+    lb_MapList=MapListBox
+    eb_MapInput=MapInputEditBox
+    bu_QuickRestart=quickrestartButton
+    bu_ChangeMap=ChangeMapButton
+    l_MapName=MapNameLabel
+    bu_Refresh=RefreshButton
 }
-

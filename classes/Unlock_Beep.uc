@@ -15,8 +15,9 @@ static function ClientReceive(
 
     P.PlayAnnouncement(Default.Beep,1,True);
 }
-DefaultProperties
+
+defaultproperties
 {
+    beep=Sound'MenuSounds.select3'
     bIsConsoleMessage=False
-    beep = sound'menusounds.select3'
 }

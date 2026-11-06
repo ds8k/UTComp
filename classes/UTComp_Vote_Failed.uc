@@ -25,8 +25,6 @@ static function string GetString (optional int Switch, optional PlayerReplicatio
     return "Voting Has Failed.";
 }
 
-
 defaultproperties
 {
-
 }

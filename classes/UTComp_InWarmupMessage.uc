@@ -14,12 +14,11 @@ static function string GetString(
           return class'GameInfo'.static.MakeColorCode(class'Hud'.default.WhiteColor)$"You are in warmup, type "$class'GameInfo'.static.MakeColorCode(class'Hud'.default.GoldColor)$"'ready'"$class'GameInfo'.static.MakeColorCode(class'Hud'.default.WhiteColor)$" in the console to ready up";
 }
 
-DefaultProperties
+defaultproperties
 {
-      bIsConsoleMessage=False
-      bFadeMessage=True
-      LifeTime=4
-      StackMode=2
-      PosY=0.93
-      FontSize=-2
+    bIsConsoleMessage=False
+    bFadeMessage=True
+    Lifetime=4
+    PosY=0.93
+    FontSize=-2
 }

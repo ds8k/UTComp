@@ -915,210 +915,185 @@ simulated function material MakeBrightPurpleSkin(material SkinToChange)
 
 defaultproperties
 {
-     Begin Object Class=moCheckBox Name=EnemyBasedSkinCheck
-         Caption="Enemy Based Skins"
-         OnCreateComponent=EnemyBasedSkinCheck.InternalOnCreateComponent
-		WinWidth=0.257812
-		WinHeight=0.030000
-		WinLeft=0.096875
-		WinTop=0.330583
-         OnChange=UTComp_Menu_BrightSkins.InternalOnChange
-     End Object
-     ch_EnemySkins=moCheckBox'UTCompv18bK.UTComp_Menu_BrightSkins.EnemyBasedSkinCheck'
-
-    Begin Object Class=moCheckBox Name=EnemyBasedModelCheck
+    Begin Object Class=XInterface.GUISlider Name=BlueSkinSlider
+        MaxValue=128.0
+        bIntSlider=True
+        WinTop=0.665
+        WinLeft=0.18
+        WinWidth=0.335
+        OnClick=InternalOnClick
+        OnMousePressed=InternalOnMousePressed
+        OnMouseRelease=InternalOnMouseRelease
+        OnChange=InternalOnChange
+        OnKeyEvent=InternalOnKeyEvent
+        OnCapturedMouseMove=InternalCapturedMouseMove
+    End Object
+    Begin Object Class=XInterface.GUISlider Name=GreenSkinSlider
+        MaxValue=128.0
+        bIntSlider=True
+        WinTop=0.625
+        WinLeft=0.18
+        WinWidth=0.335
+        OnClick=InternalOnClick
+        OnMousePressed=InternalOnMousePressed
+        OnMouseRelease=InternalOnMouseRelease
+        OnChange=InternalOnChange
+        OnKeyEvent=InternalOnKeyEvent
+        OnCapturedMouseMove=InternalCapturedMouseMove
+    End Object
+    Begin Object Class=XInterface.GUISlider Name=RedSkinSlider
+        MaxValue=128.0
+        bIntSlider=True
+        WinTop=0.585
+        WinLeft=0.18
+        WinWidth=0.335
+        OnClick=InternalOnClick
+        OnMousePressed=InternalOnMousePressed
+        OnMouseRelease=InternalOnMouseRelease
+        OnChange=InternalOnChange
+        OnKeyEvent=InternalOnKeyEvent
+        OnCapturedMouseMove=InternalCapturedMouseMove
+    End Object
+    Begin Object Class=XInterface.GUIEditBox Name=ClanSkinEditBox
+        WinTop=0.429162
+        WinLeft=0.329062
+        WinWidth=0.1875
+        WinHeight=0.035
+        OnActivate=InternalActivate
+        OnDeActivate=InternalDeactivate
+        OnKeyType=InternalOnKeyType
+        OnKeyEvent=InternalOnKeyEvent
+    End Object
+    Begin Object Class=XInterface.moCheckBox Name=EnemyBasedSkinCheck
+        Caption="Enemy Based Skins"
+        OnCreateComponent=InternalOnCreateComponent
+        WinTop=0.330583
+        WinLeft=0.096875
+        WinWidth=0.257812
+        OnChange=InternalOnChange
+    End Object
+    Begin Object Class=XInterface.GUIComboBox Name=TeamSelectCombo
+        WinTop=0.375
+        WinLeft=0.096249
+        WinWidth=0.421875
+        WinHeight=0.035
+        OnChange=InternalOnChange
+        OnKeyEvent=InternalOnKeyEvent
+    End Object
+    Begin Object Class=XInterface.GUIComboBox Name=TypeSkinSelectCombo
+        WinTop=0.491263
+        WinLeft=0.096249
+        WinWidth=0.423438
+        WinHeight=0.035
+        OnChange=InternalOnChange
+        OnKeyEvent=InternalOnKeyEvent
+    End Object
+    Begin Object Class=XInterface.GUIComboBox Name=EpicSkinSelectCombo
+        WinTop=0.537526
+        WinLeft=0.097812
+        WinWidth=0.420313
+        WinHeight=0.035
+        OnChange=InternalOnChange
+        OnKeyEvent=InternalOnKeyEvent
+    End Object
+    Begin Object Class=XInterface.moCheckBox Name=ForceThisModelCheck
+        Caption="Force This Model"
+        OnCreateComponent=InternalOnCreateComponent
+        WinTop=0.702431
+        WinLeft=0.098749
+        WinWidth=0.309375
+        OnChange=InternalOnChange
+    End Object
+    Begin Object Class=XInterface.moCheckBox Name=DarkSkinCheck
+        Caption="Darken Dead Bodies"
+        OnCreateComponent=InternalOnCreateComponent
+        WinTop=0.330916
+        WinLeft=0.648436
+        WinWidth=0.264062
+        OnChange=InternalOnChange
+    End Object
+    Begin Object Class=XInterface.GUIButton Name=DeleteClanSkinButton
+        Caption="Delete ClanSkin"
+        WinTop=0.445833
+        WinLeft=0.095938
+        WinWidth=0.208125
+        OnClick=InternalOnClick
+        OnKeyEvent=InternalOnKeyEvent
+    End Object
+    Begin Object Class=XInterface.GUIButton Name=AddClanSkinButton
+        Caption="Add Clanskin"
+        WinTop=0.410417
+        WinLeft=0.095938
+        WinWidth=0.208125
+        OnClick=InternalOnClick
+        OnKeyEvent=InternalOnKeyEvent
+    End Object
+    Begin Object Class=XInterface.moCheckBox Name=EnemyBasedModelCheck
         Caption="Enemy Based models"
-        OnCreateComponent=EnemyBasedSkinCheck.InternalOnCreateComponent
-		WinWidth=0.273437
-		WinHeight=0.030000
-		WinLeft=0.367188
-		WinTop=0.330583
-         OnChange=UTComp_Menu_BrightSkins.InternalOnChange
-     End Object
-     ch_Enemymodels=moCheckBox'UTCompv18bK.UTComp_Menu_BrightSkins.EnemyBasedModelCheck'
-
-     Begin Object Class=GUIComboBox Name=TeamSelectCombo
-		WinWidth=0.421875
-		WinHeight=0.035000
-		WinLeft=0.096249
-		WinTop=0.375000
-         OnChange=UTComp_Menu_BrightSkins.InternalOnChange
-         OnKeyEvent=TeamSelectCombo.InternalOnKeyEvent
-     End Object
-     co_TeamSelect=GUIComboBox'UTCompv18bK.UTComp_Menu_BrightSkins.TeamSelectCombo'
-
-     Begin Object Class=GUIComboBox Name=TypeSkinSelectCombo
-		WinWidth=0.423438
-		WinHeight=0.035000
-		WinLeft=0.096249
-		WinTop=0.491263
-         OnChange=UTComp_Menu_BrightSkins.InternalOnChange
-         OnKeyEvent=TypeSkinSelectCombo.InternalOnKeyEvent
-     End Object
-     co_TypeSkinSelect=GUIComboBox'UTCompv18bK.UTComp_Menu_BrightSkins.TypeSkinSelectCombo'
-
-     Begin Object Class=GUIComboBox Name=ModelSelectCombo
-		 WinWidth=0.417188
-		 WinHeight=0.035000
-		 WinLeft=0.100625
-	 	 WinTop=0.737925
-         OnChange=UTComp_Menu_BrightSkins.InternalOnChange
-         OnKeyEvent=UTComp_Menu_BrightSkins.InternalOnKeyEvent
-     End Object
-     co_ModelSelect=GUIComboBox'UTCompv18bK.UTComp_Menu_BrightSkins.ModelSelectCombo'
-
-     Begin Object Class=GUIComboBox Name=EpicSkinSelectCombo
-		WinWidth=0.420313
-		WinHeight=0.035000
-		WinLeft=0.097812
-		WinTop=0.537526
-         OnChange=UTComp_Menu_BrightSkins.InternalOnChange
-         OnKeyEvent=EpicSkinSelectCombo.InternalOnKeyEvent
-     End Object
-     co_EpicSkinSelect=GUIComboBox'UTCompv18bK.UTComp_Menu_BrightSkins.EpicSkinSelectCombo'
-
-     Begin Object Class=GUIEditBox Name=ClanSkinEditBox
-		WinWidth=0.187500
-		WinHeight=0.035000
-		WinLeft=0.329062
-		WinTop=0.429162
-         OnActivate=ClanSkinEditBox.InternalActivate
-         OnDeActivate=ClanSkinEditBox.InternalDeactivate
-         OnKeyType=ClanSkinEditBox.InternalOnKeyType
-         OnKeyEvent=UTComp_Menu_BrightSkins.InternalOnKeyEvent
-     End Object
-     eb_ClanSkin=GUIEditBox'UTCompv18bK.UTComp_Menu_BrightSkins.ClanSkinEditBox'
-
-     Begin Object Class=GUISlider Name=RedSkinSlider
-         MaxValue=128.000000
-         bIntSlider=True
-         WinTop=0.585000
-         WinLeft=0.180000
-         WinWidth=0.335000
-         OnClick=RedSkinSlider.InternalOnClick
-         OnMousePressed=RedSkinSlider.InternalOnMousePressed
-         OnMouseRelease=RedSkinSlider.InternalOnMouseRelease
-         OnChange=UTComp_Menu_BrightSkins.InternalOnChange
-         OnKeyEvent=RedSkinSlider.InternalOnKeyEvent
-         OnCapturedMouseMove=RedSkinSlider.InternalCapturedMouseMove
-     End Object
-     sl_RedSkin=GUISlider'UTCompv18bK.UTComp_Menu_BrightSkins.RedSkinSlider'
-
-     Begin Object Class=GUISlider Name=GreenSkinSlider
-         MaxValue=128.000000
-         bIntSlider=True
-         WinTop=0.625000
-         WinLeft=0.180000
-         WinWidth=0.335000
-         OnClick=GreenSkinSlider.InternalOnClick
-         OnMousePressed=GreenSkinSlider.InternalOnMousePressed
-         OnMouseRelease=GreenSkinSlider.InternalOnMouseRelease
-         OnChange=UTComp_Menu_BrightSkins.InternalOnChange
-         OnKeyEvent=GreenSkinSlider.InternalOnKeyEvent
-         OnCapturedMouseMove=GreenSkinSlider.InternalCapturedMouseMove
-     End Object
-     sl_GreenSkin=GUISlider'UTCompv18bK.UTComp_Menu_BrightSkins.GreenSkinSlider'
-
-     Begin Object Class=GUISlider Name=BlueSkinSlider
-         MaxValue=128.000000
-         bIntSlider=True
-         WinTop=0.665000
-         WinLeft=0.180000
-         WinWidth=0.335000
-         OnClick=BlueSkinSlider.InternalOnClick
-         OnMousePressed=BlueSkinSlider.InternalOnMousePressed
-         OnMouseRelease=BlueSkinSlider.InternalOnMouseRelease
-         OnChange=UTComp_Menu_BrightSkins.InternalOnChange
-         OnKeyEvent=BlueSkinSlider.InternalOnKeyEvent
-         OnCapturedMouseMove=BlueSkinSlider.InternalCapturedMouseMove
-     End Object
-     sl_BlueSkin=GUISlider'UTCompv18bK.UTComp_Menu_BrightSkins.BlueSkinSlider'
-
-     Begin Object Class=moCheckBox Name=ForceThisModelCheck
-         Caption="Force This Model"
-         OnCreateComponent=ForceThisModelCheck.InternalOnCreateComponent
-		WinWidth=0.309375
-		WinHeight=0.030000
-		WinLeft=0.098749
-		WinTop=0.702431
-         OnChange=UTComp_Menu_BrightSkins.InternalOnChange
-     End Object
-     ch_ForceThisModel=moCheckBox'UTCompv18bK.UTComp_Menu_BrightSkins.ForceThisModelCheck'
-
-     Begin Object Class=moCheckBox Name=DarkSkinCheck
-         Caption="Darken Dead Bodies"
-         OnCreateComponent=DarkSkinCheck.InternalOnCreateComponent
-		WinWidth=0.264062
-		WinHeight=0.030000
-		WinLeft=0.648436
-		WinTop=0.330916
-         OnChange=UTComp_Menu_BrightSkins.InternalOnChange
-     End Object
-     ch_DarkSkins=moCheckBox'UTCompv18bK.UTComp_Menu_BrightSkins.DarkSkinCheck'
-
-     Begin Object Class=GUIButton Name=DeleteClanSkinButton
-         Caption="Delete ClanSkin"
-		WinWidth=0.208125
-		WinHeight=0.040000
-		WinLeft=0.095938
-		WinTop=0.445833
-         OnClick=UTComp_Menu_BrightSkins.InternalOnClick
-         OnKeyEvent=DeleteClanSkinButton.InternalOnKeyEvent
-     End Object
-     bu_DeleteClanSkin=GUIButton'UTCompv18bK.UTComp_Menu_BrightSkins.DeleteClanSkinButton'
-
-     Begin Object Class=GUIButton Name=AddClanSkinButton
-         Caption="Add Clanskin"
-		WinWidth=0.208125
-		WinHeight=0.040000
-		WinLeft=0.095938
-		WinTop=0.410417
-         OnClick=UTComp_Menu_BrightSkins.InternalOnClick
-         OnKeyEvent=AddClanSkinButton.InternalOnKeyEvent
-     End Object
-     bu_AddClanSkin=GUIButton'UTCompv18bK.UTComp_Menu_BrightSkins.AddClanSkinButton'
-
-     Begin Object Class=GUILabel Name=RedSkinLabel
-         Caption="Red"
-         TextColor=(R=255)
-         WinTop=0.570000
-         WinLeft=0.100000
-     End Object
-     l_RedSkin=GUILabel'UTCompv18bK.UTComp_Menu_BrightSkins.RedSkinLabel'
-
-     Begin Object Class=GUILabel Name=BlueSkinLabel
-         Caption="Blue"
-         TextColor=(B=255)
-         WinTop=0.650000
-         WinLeft=0.100000
-     End Object
-     l_BlueSkin=GUILabel'UTCompv18bK.UTComp_Menu_BrightSkins.BlueSkinLabel'
-
-     Begin Object Class=GUILabel Name=GreenSkinLabel
-         Caption="Green"
-         TextColor=(G=255)
-         WinTop=0.610000
-         WinLeft=0.100000
-     End Object
-     l_GreenSkin=GUILabel'UTCompv18bK.UTComp_Menu_BrightSkins.GreenSkinLabel'
-
-     	Begin Object class=GUIImage Name=spinnydudeboundsimage
-		bScaleToParent=true
-		bBoundToParent=true
-		WinWidth=0.220507
-		WinHeight=0.746876
-		WinLeft=0.620830
-		WinTop=0.095717
-		Image=Material'2K4Menus.Controls.buttonSquare_b'
-		ImageColor=(R=255,G=255,B=255,A=128)
-		ImageRenderStyle=MSTY_Alpha
-		ImageStyle=ISTY_Stretched
-		RenderWeight=0.52
-		DropShadow=Material'2K4Menus.Controls.shadow'
-		DropShadowX=4
-		DropShadowY=4
-		OnDraw=InternalOnDraw
-	End Object
-	SpinnyDudeBounds=spinnydudeboundsimage
-
+        OnCreateComponent=InternalOnCreateComponent
+        WinTop=0.330583
+        WinLeft=0.367188
+        WinWidth=0.273437
+        OnChange=InternalOnChange
+    End Object
+    Begin Object Class=XInterface.GUIComboBox Name=ModelSelectCombo
+        WinTop=0.737925
+        WinLeft=0.100625
+        WinWidth=0.417188
+        WinHeight=0.035
+        OnChange=InternalOnChange
+        OnKeyEvent=InternalOnKeyEvent
+    End Object
+    Begin Object Class=XInterface.GUILabel Name=RedSkinLabel
+        Caption="Red"
+        TextColor=(R=255,G=0,B=64,A=255)
+        WinTop=0.57
+        WinLeft=0.1
+    End Object
+    Begin Object Class=XInterface.GUILabel Name=BlueSkinLabel
+        Caption="Blue"
+        TextColor=(R=0,G=0,B=255,A=255)
+        WinTop=0.65
+        WinLeft=0.1
+    End Object
+    Begin Object Class=XInterface.GUILabel Name=GreenSkinLabel
+        Caption="Green"
+        TextColor=(R=0,G=255,B=64,A=255)
+        WinTop=0.61
+        WinLeft=0.1
+    End Object
+    Begin Object Class=XInterface.GUIImage Name=spinnydudeboundsimage
+        Image=Texture'2K4Menus.Controls.buttonSquare_b'
+        DropShadow=Texture'2K4Menus.Controls.Shadow'
+        ImageColor=(R=255,G=255,B=255,A=128)
+        ImageStyle=ISTY_Stretched
+        DropShadowX=4
+        DropShadowY=4
+        WinTop=0.095717
+        WinLeft=0.62083
+        WinWidth=0.220507
+        WinHeight=0.746876
+        RenderWeight=0.52
+        bBoundToParent=True
+        bScaleToParent=True
+        OnDraw=InternalOnDraw
+    End Object
+    ch_EnemySkins=EnemyBasedSkinCheck
+    co_TeamSelect=TeamSelectCombo
+    co_TypeSkinSelect=TypeSkinSelectCombo
+    co_ModelSelect=ModelSelectCombo
+    co_EpicSkinSelect=EpicSkinSelectCombo
+    SpinnyDudeBounds=spinnydudeboundsimage
+    eb_ClanSkin=ClanSkinEditBox
+    sl_RedSkin=RedSkinSlider
+    sl_GreenSkin=GreenSkinSlider
+    sl_BlueSkin=BlueSkinSlider
+    ch_ForceThisModel=ForceThisModelCheck
+    ch_DarkSkins=DarkSkinCheck
+    ch_EnemyModels=EnemyBasedModelCheck
+    bu_DeleteClanSkin=DeleteClanSkinButton
+    bu_AddClanSkin=AddClanSkinButton
+    l_RedSkin=RedSkinLabel
+    l_BlueSkin=BlueSkinLabel
+    l_GreenSkin=GreenSkinLabel
 }

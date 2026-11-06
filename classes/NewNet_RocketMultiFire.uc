@@ -495,8 +495,7 @@ function SuperServerDoFireEffect()
     }
 }
 
-
-DefaultProperties
+defaultproperties
 {
-    FakeProjectileClass = class'NewNet_Fake_RocketProj'
+    FakeProjectileClass=Class'UTCompvBoM.NewNet_Fake_RocketProj'
 }

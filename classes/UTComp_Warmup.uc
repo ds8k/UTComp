@@ -59,7 +59,7 @@ function InitializeWarmup()
 function SoftRestart()
 {
     bSoftRestart=true;
-    if(class'UTCompv18bK.MutUTComp'.default.bEnableWarmup || Level.Game.IsA('UTComp_ClanArena'))
+    if(class'UTCompvBoM.MutUTComp'.default.bEnableWarmup)
     {
         bGivePlayerWeaponHack=True;
         KillAllPlayers();
@@ -74,8 +74,6 @@ function SoftRestart()
             bAutoDemoStarted=false;
         }
         bWaitingOnRestart=false;
-        if(Level.Game.IsA('UTComp_ClanArena'))
-           UTComp_ClanArena(Level.Game).UnlockWeapons();
     }
     bSoftRestart=false;
 }
@@ -283,8 +281,7 @@ function KillAllPlayers()
            C.GoToState('None');
     }
     SavedBots=Level.Game.NumBots;
-    if(!Level.Game.IsA('UTComp_ClanArena'))
-        Level.Game.KillBots(Level.Game.NumBots+1);
+    Level.Game.KillBots(Level.Game.NumBots+1);
 }
 
 function EndWarmup(bool bIsRestart)
@@ -311,7 +308,7 @@ function EndArenaWarmup(bool bIsRestart)
 
 function AutoDemoRecord()
 {
-    if(class'UTCompv18bK.MutUTComp'.default.bEnableAutoDemorec)
+    if(class'UTCompvBoM.MutUTComp'.default.bEnableAutoDemorec)
     {
         ConsoleCommand("Demorec"@CreateAutoDemoRecName());
         bAutoDemoStarted=True;
@@ -321,7 +318,7 @@ function AutoDemoRecord()
 function string CreateAutoDemoRecName()
 {
     local string S;
-    S=class'UTCompv18bK.MutUTComp'.default.AutoDemoRecMask;
+    S=class'UTCompvBoM.MutUTComp'.default.AutoDemoRecMask;
     S=Repl(S, "%p", CreatePlayerString());
     S=Repl(S, "%t", CreateTimeString());
     S=StripIllegalWindowsCharacters(S);
@@ -516,7 +513,7 @@ function ResetTheLevel()
            PlayerController(C).ClientSetBehindView(false);
     }
     i=0;
-    if(Level.NetMode==NM_DedicatedServer && !Level.Game.IsA('UTComp_ClanArena'))
+    if(Level.NetMode==NM_DedicatedServer)
         DeathMatch(Level.Game).AddBots(SavedBots);
     SavedBots=0;
 }
@@ -728,6 +725,6 @@ replication
 
 defaultproperties
 {
-     iWarmupTimeRemaining=30
-     fReadyPercent=100.000000
+    iWarmupTimeRemaining=30
+    fReadyPercent=100.0
 }

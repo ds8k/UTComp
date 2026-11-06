@@ -67,7 +67,7 @@ function bool InternalOnClick(GUIComponent C)
 {
     switch(C)
     {
-        case bu_Adren:  PlayerOwner().ClientReplaceMenu("UTCompv18bK.UTComp_Menu_AdrenMenu"); break;
+        case bu_Adren:  PlayerOwner().ClientReplaceMenu("UTCompvBoM.UTComp_Menu_AdrenMenu"); break;
     }
     return super.InternalOnClick(C);
 }
@@ -81,129 +81,98 @@ function bool InternalOnKeyEvent(out byte Key, out byte State, float delta)
 
 defaultproperties
 {
-
-     Begin Object Class=GUILabel Name=ScoreboardLabel
-         Caption="----------Scoreboard----------"
-         TextColor=(B=0,G=200,R=230)
-		WinWidth=1.000000
-		WinHeight=0.060000
-		WinLeft=0.250000
-		WinTop=0.290000
-     End Object
-     l_ScoreboardTitle=GUILabel'ScoreboardLabel'
-
-     Begin Object Class=moCheckBox Name=ScoreboardCheck
-         Caption="Use UTComp enhanced scoreboard."
-         OnCreateComponent=ScoreboardCheck.InternalOnCreateComponent
-		WinWidth=0.500000
-		WinHeight=0.030000
-		WinLeft=0.250000
-		WinTop=0.330000
-         OnChange=UTComp_Menu_Miscellaneous.InternalOnChange
-     End Object
-     ch_UseScoreBoard=moCheckBox'UTCompv18bK.UTComp_Menu_Miscellaneous.ScoreboardCheck'
-
-     Begin Object Class=moCheckBox Name=StatsCheck
-         Caption="Show weapon stats on scoreboard."
-         OnCreateComponent=StatsCheck.InternalOnCreateComponent
-         WinLeft=0.250000
-         WinTop=0.370000
-         OnChange=UTComp_Menu_Miscellaneous.InternalOnChange
-     End Object
-     ch_WepStats=moCheckBox'UTCompv18bK.UTComp_Menu_Miscellaneous.StatsCheck'
-
-     Begin Object Class=moCheckBox Name=PickupCheck
-         Caption="Show pickup stats on scoreboard."
-         OnCreateComponent=PickupCheck.InternalOnCreateComponent
-         WinLeft=0.250000
-         WinTop=0.410000
-         OnChange=UTComp_Menu_Miscellaneous.InternalOnChange
-     End Object
-     ch_PickupStats=moCheckBox'UTCompv18bK.UTComp_Menu_Miscellaneous.PickupCheck'
-
-     Begin Object Class=GUILabel Name=InfoLabel
-         Caption="--------Adrenaline Combos--------"
-         TextColor=(B=0,G=200,R=230)
-        WinWidth=1.000000
-        WinHeight=0.060000
-        WinLeft=0.250000
-        WinTop=0.450000
-     End Object
-     l_InfoTitle=GUILabel'UTCompv18bK.UTComp_Menu_Miscellaneous.InfoLabel'
-
-     Begin Object Class=GUIButton Name=AdrenButton
-         Caption="Disable Adrenaline Combos"
-        WinWidth=0.400000
-        WinHeight=0.050000
-        WinLeft=0.2500000
-        WinTop=0.49000
-        OnClick=UTComp_Menu_Miscellaneous.InternalOnClick
-        OnKeyEvent=AdrenButton.InternalOnKeyEvent
-     End Object
-     bu_adren=GUIButton'UTCompv18bK.UTComp_Menu_Miscellaneous.AdrenButton'
-
-     Begin Object Class=GUILabel Name=GenericLabel
-         Caption="----Generic UT2004 Settings----"
-         TextColor=(B=0,G=200,R=230)
-		WinWidth=1.000000
-		WinHeight=0.060000
-		WinLeft=0.250000
-		WinTop=0.530000
-     End Object
-     l_GenericTitle=GUILabel'UTCompv18bK.UTComp_Menu_Miscellaneous.GenericLabel'
-
-     Begin Object Class=moCheckBox Name=FootCheck
-         Caption="Play own footstep sounds."
-         OnCreateComponent=FootCheck.InternalOnCreateComponent
-		WinWidth=0.500000
-		WinHeight=0.030000
-		WinLeft=0.250000
-		WinTop=0.570000
-         OnChange=UTComp_Menu_Miscellaneous.InternalOnChange
-     End Object
-     ch_FootSteps=moCheckBox'UTCompv18bK.UTComp_Menu_Miscellaneous.FootCheck'
-
-     Begin Object Class=moCheckBox Name=HudColorCheck
-         Caption="Match Hud Color To Skins"
-         OnCreateComponent=HudColorCheck.InternalOnCreateComponent
-		WinWidth=0.500000
-		WinHeight=0.030000
-		WinLeft=0.250000
-		WinTop=0.610000
-         OnChange=UTComp_Menu_Miscellaneous.InternalOnChange
-     End Object
-     ch_MatchHudColor=moCheckBox'UTCompv18bK.UTComp_Menu_Miscellaneous.HudColorCheck'
-
-     Begin Object Class=moCheckBox Name=UseEyeHeightAlgoCheck
-         Caption="Use New EyeHeight Algorithm"
-         OnCreateComponent=HudColorCheck.InternalOnCreateComponent
-         WinWidth=0.500000
-         WinHeight=0.030000
-         WinLeft=0.250000
-         WinTop=0.650000
-         OnChange=UTComp_Menu_Miscellaneous.InternalOnChange
-     End Object
-     ch_UseEyeHeightAlgo=moCheckBox'UTCompv18bK.UTComp_Menu_Miscellaneous.UseEyeHeightAlgoCheck'
-
-     Begin Object Class=GUILabel Name=NewNetLabel
-     Caption="-----------Net Code-----------"
-         TextColor=(B=0,G=200,R=230)
-		WinWidth=1.000000
-		WinHeight=0.060000
-		WinLeft=0.250000
-		WinTop=0.690000
-     End Object
-     l_NewNet=GUILabel'NewNetLabel'
-
-     Begin Object Class=moCheckBox Name=NewNetCheck
-         Caption="Enable Enhanced Netcode"
-         OnCreateComponent=NewNetCheck.InternalOnCreateComponent
-		WinWidth=0.500000
-		WinHeight=0.030000
-		WinLeft=0.250000
-		WinTop=0.730000
-         OnChange=UTComp_Menu_Miscellaneous.InternalOnChange
-     End Object
-     ch_UseNewNet=moCheckBox'UTCompv18bK.UTComp_Menu_Miscellaneous.NewNetCheck'
-
+    Begin Object Class=XInterface.moCheckBox Name=HudColorCheck
+        Caption="Match Hud Color To Skins"
+        OnCreateComponent=InternalOnCreateComponent
+        WinTop=0.61
+        WinLeft=0.25
+        OnChange=InternalOnChange
+    End Object
+    Begin Object Class=XInterface.moCheckBox Name=ScoreboardCheck
+        Caption="Use UTComp enhanced scoreboard."
+        OnCreateComponent=InternalOnCreateComponent
+        WinTop=0.33
+        WinLeft=0.25
+        OnChange=InternalOnChange
+    End Object
+    Begin Object Class=XInterface.moCheckBox Name=StatsCheck
+        Caption="Show weapon stats on scoreboard."
+        OnCreateComponent=InternalOnCreateComponent
+        WinTop=0.37
+        WinLeft=0.25
+        OnChange=InternalOnChange
+    End Object
+    Begin Object Class=XInterface.moCheckBox Name=PickupCheck
+        Caption="Show pickup stats on scoreboard."
+        OnCreateComponent=InternalOnCreateComponent
+        WinTop=0.41
+        WinLeft=0.25
+        OnChange=InternalOnChange
+    End Object
+    Begin Object Class=XInterface.GUIButton Name=AdrenButton
+        Caption="Disable Adrenaline Combos"
+        WinTop=0.49
+        WinLeft=0.25
+        WinWidth=0.4
+        WinHeight=0.05
+        OnClick=InternalOnClick
+        OnKeyEvent=InternalOnKeyEvent
+    End Object
+    Begin Object Class=XInterface.moCheckBox Name=FootCheck
+        Caption="Play own footstep sounds."
+        OnCreateComponent=InternalOnCreateComponent
+        WinTop=0.57
+        WinLeft=0.25
+        OnChange=InternalOnChange
+    End Object
+    Begin Object Class=XInterface.moCheckBox Name=NewNetCheck
+        Caption="Enable Enhanced Netcode"
+        OnCreateComponent=InternalOnCreateComponent
+        WinTop=0.73
+        WinLeft=0.25
+        OnChange=InternalOnChange
+    End Object
+    Begin Object Class=XInterface.GUILabel Name=ScoreboardLabel
+        Caption="----------Scoreboard----------"
+        TextColor=(R=230,G=200,B=0,A=255)
+        WinTop=0.29
+        WinLeft=0.25
+    End Object
+    Begin Object Class=XInterface.GUILabel Name=InfoLabel
+        Caption="--------Adrenaline Combos--------"
+        TextColor=(R=230,G=200,B=0,A=255)
+        WinTop=0.45
+        WinLeft=0.25
+    End Object
+    Begin Object Class=XInterface.GUILabel Name=GenericLabel
+        Caption="----Generic UT2004 Settings----"
+        TextColor=(R=230,G=200,B=0,A=255)
+        WinTop=0.53
+        WinLeft=0.25
+    End Object
+    Begin Object Class=XInterface.moCheckBox Name=UseEyeHeightAlgoCheck
+        Caption="Use New EyeHeight Algorithm"
+        OnCreateComponent=InternalOnCreateComponent
+        WinTop=0.65
+        WinLeft=0.25
+        OnChange=InternalOnChange
+    End Object
+    Begin Object Class=XInterface.GUILabel Name=NewNetLabel
+        Caption="-----------Net Code-----------"
+        TextColor=(R=230,G=200,B=0,A=255)
+        WinTop=0.69
+        WinLeft=0.25
+    End Object
+    l_ScoreboardTitle=ScoreboardLabel
+    l_InfoTitle=InfoLabel
+    l_GenericTitle=GenericLabel
+    l_NewNet=NewNetLabel
+    ch_UseScoreBoard=ScoreboardCheck
+    ch_WepStats=StatsCheck
+    ch_PickupStats=PickupCheck
+    ch_FootSteps=FootCheck
+    ch_MatchHudColor=HudColorCheck
+    ch_UseEyeHeightAlgo=UseEyeHeightAlgoCheck
+    ch_UseNewNet=NewNetCheck
+    bu_adren=AdrenButton
 }

@@ -17,9 +17,9 @@ function PlayFiring()
 {
    super.PlayFiring();
 
-   if(Level.NetMode != NM_Client || !class'BS_xPlayer'.static.UseNewNet())
+   if (Level.NetMode != NM_Client || !class'BS_xPlayer'.static.UseNewNet())
        return;
-   if(!bSkipNextEffect)
+   if (!bSkipNextEffect)
        CheckFireEffect();
    else
    {
@@ -44,9 +44,11 @@ function DoTrace(Vector Start, Rotator Dir)
     local bool bDoReflect;
     local int ReflectNum;
     local vector PawnHitLocation;
+    local Pawn HeadShotPawn;
     local actor AltOther;
 	local vector AltHitlocation,altHitNormal,altPawnHitLocation;
 	local float f;
+    local float dist;
 
 //	local vector ShockLoc;
 
@@ -182,7 +184,16 @@ function DoTrace(Vector Start, Rotator Dir)
                	if ( Other.IsA('Vehicle') || (!Other.IsA('Pawn') && !Other.IsA('HitScanBlockingVolume')) )
 					WeaponAttachment(Weapon.ThirdPersonActor).UpdateHit(Other, PawnHitLocation, HitNormal);
 
-               	Other.TakeDamage(Damage, Instigator, PawnHitLocation, Momentum*X, DamageType);
+                if (HeadShotPawn != None)
+                    HeadShotPawn.TakeDamage(Damage, Instigator, PawnHitLocation, Momentum*X, DamageTypeHeadShot);
+                else if ((Pawn(Other) != None) && (Pawn(Other).IsHeadShot(HitLocation, X, 1.0) || Other.GetClosestBone( HitLocation, X, dist, 'head', HeadShotRadius ) == 'head'))
+                    Other.TakeDamage(Damage, Instigator, PawnHitLocation, Momentum*X, DamageTypeHeadShot);
+                else
+                    Other.TakeDamage(Damage, Instigator, PawnHitLocation, Momentum*X, DamageType);
+
+                if ( (Pawn(Other) != None) && (HitLocation != Start) && AllowMultiHit() )
+				    TracePart(HitLocation,End,X,Dir,Pawn(Other));
+
                 HitNormal = Vect(0,0,0);
             }
             else if ( WeaponAttachment(Weapon.ThirdPersonActor) != None )
@@ -213,7 +224,7 @@ function DoTrace(Vector Start, Rotator Dir)
 
 function DoInstantFireEffect()
 {
-   if(Level.NetMode == NM_Client && Instigator.IsLocallyControlled())
+   if (Level.NetMode == NM_Client && Instigator.IsLocallyControlled())
    {
        DoFireEffect();
        bSkipNextEffect=true;
@@ -246,7 +257,7 @@ function DoFireEffect()
         Aim = AdjustAim(StartTrace, AimError);
 	    R = rotator(vector(Aim) + VRand()*FRand()*Spread);
     }
-    if(Level.NetMode == NM_Client)
+    if (Level.NetMode == NM_Client)
         DoClientTrace(StartTrace, R);
     else
         DoTrace(StartTrace, R);
@@ -347,7 +358,7 @@ simulated function DoClientTrace(Vector Start, Rotator Dir)
 
         Other = Weapon.Trace(HitLocation, HitNormal, End, Start, true);
 
-        if ( Other != None && (Other != Instigator || ReflectNum > 0) )
+        if ( Other != None && (Other != Instigator || ReflectNum > 0) && AllowMultiHit())
         {
             if (bReflective && Other.IsA('xPawn') && xPawn(Other).CheckReflect(HitLocation, RefNormal, DamageMin*0.25))
             {
@@ -389,7 +400,7 @@ simulated function DoClientTrace(Vector Start, Rotator Dir)
 
 simulated function SpawnClientBeamEffect(Vector Start, Rotator Dir, Vector HitLocation, Vector HitNormal, int ReflectNum)
 {
-    NewNet_SuperShockRifle(Weapon).SpawnBeamEffect(Hitlocation, hitnormal, start, dir, reflectnum);
+    NewNet_SuperShockRifle(Weapon).SpawnBeamEffect(HitLocation, HitNormal, Start, Dir, ReflectNum);
 }
 
 function SpawnBeamEffect(Vector Start, Rotator Dir, Vector HitLocation, Vector HitNormal, int ReflectNum)
@@ -402,8 +413,12 @@ function SpawnBeamEffect(Vector Start, Rotator Dir, Vector HitLocation, Vector H
         {
             if ( (Instigator.PlayerReplicationInfo.Team != None) && (Instigator.PlayerReplicationInfo.Team.TeamIndex == 1) ) {
                 Beam = Weapon.Spawn(class'NewNet_BlueSuperShockBeam', Weapon.Owner,, Start, Dir);
+                if (Beam == none) return;
+                Beam.CoilClass = class'NewNet_ShockBeamCoilBlue';
             } else {
                 Beam = Weapon.Spawn(class'NewNet_SuperShockBeamEffect', Weapon.Owner,, Start, Dir);
+                if (Beam == none) return;
+                Beam.CoilClass = class'NewNet_ShockBeamCoilB';
             }
         }
         else
@@ -424,8 +439,7 @@ function SpawnBeamEffect(Vector Start, Rotator Dir, Vector HitLocation, Vector H
     Beam.AimAt(HitLocation, HitNormal);
 }
 
-
-DefaultProperties
+defaultproperties
 {
     BeamEffectClass=None
 }

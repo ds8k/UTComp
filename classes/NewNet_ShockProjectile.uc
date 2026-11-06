@@ -124,8 +124,6 @@ simulated function FakeInterp(float dt)
     }
 }
 
-
-
 defaultproperties
 {
 }

@@ -8,5 +8,5 @@ simulated function Explode(vector HitLocation, vector HitNormal)
 
 defaultproperties
 {
-     bNetTemporary=False
+    bNetTemporary=False
 }

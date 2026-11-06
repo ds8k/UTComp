@@ -19,5 +19,5 @@ simulated function ProcessTouch (Actor Other, vector HitLocation)
 
 defaultproperties
 {
-     bCollideActors=False
+    bCollideActors=False
 }

@@ -70,86 +70,68 @@ function bool InternalOnKeyEvent(out byte Key, out byte State, float delta)
 
 defaultproperties
 {
-     Begin Object Class=moCheckBox Name=AutoDemoCheck
-         Caption="Automatically record a demo of each match."
-         OnCreateComponent=AutoDemoCheck.InternalOnCreateComponent
-		WinWidth=0.740000
-		WinHeight=0.030000
-		WinLeft=0.140000
-		WinTop=0.412083
-         OnChange=UTComp_Menu_AutoDemoSS.InternalOnChange
-     End Object
-     ch_AutoDemo=moCheckBox'UTCompv18bK.UTComp_Menu_AutoDemoSS.AutoDemoCheck'
-
-     Begin Object Class=moCheckBox Name=AutoSSCheck
-         Caption="Automatically take a screenshot at the end of each match."
-         OnCreateComponent=AutoSSCheck.InternalOnCreateComponent
-		WinWidth=0.740000
-		WinHeight=0.030000
-		WinLeft=0.140000
-		WinTop=0.589168
-         OnChange=UTComp_Menu_AutoDemoSS.InternalOnChange
-     End Object
-     ch_AutoSS=moCheckBox'UTCompv18bK.UTComp_Menu_AutoDemoSS.AutoSSCheck'
-
-     Begin Object Class=GUIComboBox Name=AutoDemoInput
-		WinWidth=0.320000
-		WinHeight=0.035000
-		WinLeft=0.437500
-		WinTop=0.460000
-         OnChange=UTComp_Menu_AutoDemoSS.InternalOnChange
-         OnKeyEvent=UTComp_Menu_AutoDemoSS.InternalOnKeyEvent
-     End Object
-     co_DemoMask=GUIComboBox'UTCompv18bK.UTComp_Menu_AutoDemoSS.AutoDemoInput'
-
-     Begin Object Class=GUIComboBox Name=AutoSSInput
-		WinWidth=0.320000
-		WinHeight=0.035000
-		WinLeft=0.437500
-		WinTop=0.645418
-         OnChange=UTComp_Menu_AutoDemoSS.InternalOnChange
-         OnKeyEvent=UTComp_Menu_AutoDemoSS.InternalOnKeyEvent
-     End Object
-     co_SSMask=GUIComboBox'UTCompv18bK.UTComp_Menu_AutoDemoSS.AutoSSInput'
-
-     Begin Object Class=GUILabel Name=DemoMaskLabel
-         Caption="Demo Mask:"
-         TextColor=(B=255,G=255,R=255)
-		WinWidth=1.000000
-		WinHeight=0.060000
-		WinLeft=0.225000
-		WinTop=0.450000
-     End Object
-     l_AutoDemoMask=GUILabel'UTCompv18bK.UTComp_Menu_AutoDemoSS.DemoMaskLabel'
-
-     Begin Object Class=GUILabel Name=SSMaskLabel
-         Caption="Screenshot Mask:"
-         TextColor=(B=255,G=255,R=255)
-		WinWidth=1.000000
-		WinHeight=0.060000
-		WinLeft=0.225000
-		WinTop=0.632918
-     End Object
-     l_AutoSSMask=GUILabel'UTCompv18bK.UTComp_Menu_AutoDemoSS.SSMaskLabel'
-
-     Begin Object Class=GUILabel Name=SSHeadingLabel
+    Begin Object Class=XInterface.moCheckBox Name=AutoDemoCheck
+        Caption="Automatically record a demo of each match."
+        OnCreateComponent=InternalOnCreateComponent
+        WinTop=0.412083
+        WinLeft=0.14
+        WinWidth=0.74
+        OnChange=InternalOnChange
+    End Object
+    Begin Object Class=XInterface.moCheckBox Name=AutoSSCheck
+        Caption="Automatically take a screenshot at the end of each match."
+        OnCreateComponent=InternalOnCreateComponent
+        WinTop=0.589168
+        WinLeft=0.14
+        WinWidth=0.74
+        OnChange=InternalOnChange
+    End Object
+    Begin Object Class=XInterface.GUIComboBox Name=AutoDemoInput
+        WinTop=0.46
+        WinLeft=0.4375
+        WinWidth=0.32
+        WinHeight=0.035
+        OnChange=InternalOnChange
+        OnKeyEvent=InternalOnKeyEvent
+    End Object
+    Begin Object Class=XInterface.GUIComboBox Name=AutoSSInput
+        WinTop=0.645418
+        WinLeft=0.4375
+        WinWidth=0.32
+        WinHeight=0.035
+        OnChange=InternalOnChange
+        OnKeyEvent=InternalOnKeyEvent
+    End Object
+    Begin Object Class=XInterface.GUILabel Name=DemoMaskLabel
+        Caption="Demo Mask:"
+        TextColor=(R=255,G=255,B=255,A=255)
+        WinTop=0.45
+        WinLeft=0.225
+    End Object
+    Begin Object Class=XInterface.GUILabel Name=SSMaskLabel
+        Caption="Screenshot Mask:"
+        TextColor=(R=255,G=255,B=255,A=255)
+        WinTop=0.632918
+        WinLeft=0.225
+    End Object
+    Begin Object Class=XInterface.GUILabel Name=SSHeadingLabel
         Caption="--- Auto Screenshot ---"
-        TextColor=(B=0,G=200,R=230)
-		WinWidth=1.000000
-		WinHeight=0.060000
-		WinLeft=0.342188
-		WinTop=0.514167
-     End Object
-     l_SSHeading=GUILabel'UTCompv18bK.UTComp_Menu_AutoDemoSS.SSHeadingLabel'
-
-     Begin Object class=GUILabel Name=DemnoHeadingLabel
+        TextColor=(R=230,G=200,B=0,A=255)
+        WinTop=0.514167
+        WinLeft=0.342188
+    End Object
+    Begin Object Class=XInterface.GUILabel Name=DemnoHeadingLabel
         Caption="--- Auto Demo Recording---"
-        TextColor=(B=0,G=200,R=230)
-		WinWidth=1.000000
-		WinHeight=0.060000
-		WinLeft=0.326563
-		WinTop=0.347500
-     End Object
-     l_DemoHeading=GUILabel'DemnoHeadingLabel'
-
+        TextColor=(R=230,G=200,B=0,A=255)
+        WinTop=0.3475
+        WinLeft=0.326563
+    End Object
+    ch_AutoDemo=AutoDemoCheck
+    ch_AutoSS=AutoSSCheck
+    co_DemoMask=AutoDemoInput
+    co_SSMask=AutoSSInput
+    l_AutoDemoMask=DemoMaskLabel
+    l_AutoSSMask=SSMaskLabel
+    l_SSHeading=SSHeadingLabel
+    l_DemoHeading=DemnoHeadingLabel
 }

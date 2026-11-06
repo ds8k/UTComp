@@ -8,7 +8,6 @@ function PostBeginPlay()
        Warn("Server should never spawn the client lightningbolt");
 }
 
-DefaultProperties
+defaultproperties
 {
-
 }

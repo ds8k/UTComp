@@ -35,19 +35,17 @@ simulated event tick(float deltatime)
    }
 }
 
-DefaultProperties
+defaultproperties
 {
-    ControllerClass = class'TimeStamp_Controller'
-    bAlwaysRelevant=true
-    NetPriority=50
-    bCollideActors=false
-    bCollideWorld=false
-    bBlockActors=false
-    bProjTarget=false
-    bCanBeDamaged=false
-    bAcceptsProjectors=false
-    bCanTeleport=false
-    bBlockPlayers=false
-    bDisturbFluidSurface=false
-    Physics=Phys_None
+    ControllerClass=None
+    bAcceptsProjectors=False
+    bAlwaysRelevant=True
+    NetPriority=50.0
+    bCanBeDamaged=False
+    bCanTeleport=False
+    bDisturbFluidSurface=False
+    bCollideActors=False
+    bCollideWorld=False
+    bBlockActors=False
+    bProjTarget=False
 }

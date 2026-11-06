@@ -339,11 +339,6 @@ function TakeActionOnVote(byte VoteType, byte VoteSwitch, string Options)
         UTCompMutator.default.bEnableEnhancedNetCode=(VoteSwitch==1);
         UTCompMutator.RepInfo.bEnableEnhancedNetCode=(VoteSwitch==1);
     }
-    else if(VoteType==10 && UTCompMutator.bEnableForwardVoting)
-    {
-        UTCompMutator.bForward=(VoteSwitch==1);
-        UTCompMutator.default.bForward=(VoteSwitch==1);
-    }
     UTCompMutator.static.StaticSaveConfig();
 }
 
@@ -527,10 +522,9 @@ function UpdatePlayersOfTotal(float VotedYes, float VotedNo)
 
 defaultproperties
 {
-     fVotingTime=30.000000
-     fVotingPercent=51.000000
-     CurrentVoteID=255
-     iOldVoteID=255
-     VoteSwitch=255
-     bHidden=True
+    fVotingTime=30.0
+    fVotingPercent=51.0
+    CurrentVoteID=255
+    iOldVoteID=255
+    VoteSwitch=255
 }

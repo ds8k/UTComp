@@ -3,7 +3,7 @@ class NewNet_ONSMineLayer extends ONSMineLayer
     HideDropDown
 	CacheExempt;
 
-DefaultProperties
+defaultproperties
 {
-    PickupClass=Class'UTCompv18bK.NewNet_ONSMineLayerPickup'
+    PickupClass=Class'UTCompvBoM.NewNet_ONSMineLayerPickup'
 }

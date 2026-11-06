@@ -3,7 +3,7 @@ class NewNet_ONSAvril extends ONSAvril
     HideDropDown
 	CacheExempt;
 
-DefaultProperties
+defaultproperties
 {
-    PickupClass=Class'UTCompv18bK.NewNet_ONSAvrilPickup'
+    PickupClass=Class'UTCompvBoM.NewNet_ONSAVRiLPickup'
 }

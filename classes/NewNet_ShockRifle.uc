@@ -265,13 +265,12 @@ simulated function SpawnBeamEffect(vector HitLocation, vector HitNormal, vector 
     }
     Beam = Spawn(class'NewNet_Client_ShockBeamEffect',,, Start, Dir);
     if (ReflectNum != 0) Beam.Instigator = None; // prevents client side repositioning of beam start
-       Beam.AimAt(HitLocation, HitNormal);
+    Beam.AimAt(HitLocation, HitNormal);
 }
 
-
-DefaultProperties
+defaultproperties
 {
-    FireModeClass(0)=class'UTCompv18bK.NewNet_ShockBeamFire'
-    FireModeClass(1)=class'UTCompv18bK.NewNet_ShockProjFire'
-    PickupClass=Class'UTCompv18bK.NewNet_ShockRiflePickup'
+    FireModeClass(0)=Class'UTCompvBoM.NewNet_ShockBeamFire'
+    FireModeClass(1)=Class'UTCompvBoM.NewNet_ShockProjFire'
+    PickupClass=Class'UTCompvBoM.NewNet_ShockRiflePickup'
 }

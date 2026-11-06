@@ -26,7 +26,6 @@ event Opened(GUIComponent Sender)
          case 7:  l_Vote[2].Caption="Change Map"; break;
          case 8:  l_Vote[2].Caption="Change DoubleDamage Mode"; break;
          case 9:  l_Vote[2].Caption="Change Enhanced Netcode Mode"; break;
-         case 10:  l_Vote[2].Caption="Change Forward Mode"; break;
          default:  l_Vote[2].Caption=""; break;
      }
      if(BS_xPlayer(PlayerOwner()).UTCompPRI.CurrentVoteID!=6 && BS_xPlayer(PlayerOwner()).UTCompPRI.CurrentVoteID!=7)
@@ -120,62 +119,55 @@ function bool InternalOnClick( GUIComponent Sender )
 
 defaultproperties
 {
-     Begin Object Class=GUIButton Name=VoteYesButton
-         Caption="Vote Yes"
-         WinTop=0.639583
-         WinLeft=0.301562
-         WinWidth=0.160938
-         WinHeight=0.080000
-         OnClick=UTComp_Menu_VoteInProgress.InternalOnClick
-         OnKeyEvent=VoteYesButton.InternalOnKeyEvent
-     End Object
-     bu_VoteYes=GUIButton'UTCompv18bK.UTComp_Menu_VoteInProgress.VoteYesButton'
-
-     Begin Object Class=GUIButton Name=votenoButton
-         Caption="Vote No"
-         WinTop=0.639583
-         WinLeft=0.529689
-         WinWidth=0.160938
-         WinHeight=0.080000
-         OnClick=UTComp_Menu_VoteInProgress.InternalOnClick
-         OnKeyEvent=votenoButton.InternalOnKeyEvent
-     End Object
-     bu_VoteNo=GUIButton'UTCompv18bK.UTComp_Menu_VoteInProgress.votenoButton'
-
-     Begin Object Class=GUILabel Name=VoteLabel0
-         TextAlign=TXTA_Center
-         TextColor=(B=0,G=200,R=230)
-         WinTop=0.350000
-         Caption="--- Vote in progress ---"
-     End Object
-     l_Vote(0)=GUILabel'UTCompv18bK.UTComp_Menu_VoteInProgress.VoteLabel0'
-
-     Begin Object Class=GUILabel Name=VoteLabel1
-         TextAlign=TXTA_Center
-         TextColor=(B=255,G=255,R=255)
-         WinTop=0.400000
-     End Object
-     l_Vote(1)=GUILabel'UTCompv18bK.UTComp_Menu_VoteInProgress.VoteLabel1'
-
-     Begin Object Class=GUILabel Name=VoteLabel2
-         TextAlign=TXTA_Center
-         TextColor=(B=255,G=255,R=255)
-         WinTop=0.450000
-     End Object
-     l_Vote(2)=GUILabel'UTCompv18bK.UTComp_Menu_VoteInProgress.VoteLabel2'
-
-     Begin Object Class=GUILabel Name=VoteLabel3
-         TextAlign=TXTA_Center
-         TextColor=(B=255,G=255,R=255)
-         WinTop=0.500000
-     End Object
-     l_Vote(3)=GUILabel'UTCompv18bK.UTComp_Menu_VoteInProgress.VoteLabel3'
-
-      Begin Object Class=GUILabel Name=VoteLabel4
-         TextAlign=TXTA_Center
-         TextColor=(B=255,G=255,R=255)
-         WinTop=0.550000
-     End Object
-     l_Vote(4)=GUILabel'UTCompv18bK.UTComp_Menu_VoteInProgress.VoteLabel4'
-
+    Begin Object Class=XInterface.GUIButton Name=VoteYesButton
+        Caption="Vote Yes"
+        WinTop=0.639583
+        WinLeft=0.301562
+        WinWidth=0.160938
+        WinHeight=0.08
+        OnClick=InternalOnClick
+        OnKeyEvent=InternalOnKeyEvent
+    End Object
+    Begin Object Class=XInterface.GUIButton Name=votenoButton
+        Caption="Vote No"
+        WinTop=0.639583
+        WinLeft=0.529689
+        WinWidth=0.160938
+        WinHeight=0.08
+        OnClick=InternalOnClick
+        OnKeyEvent=InternalOnKeyEvent
+    End Object
+    Begin Object Class=XInterface.GUILabel Name=VoteLabel0
+        Caption="--- Vote in progress ---"
+        TextAlign=TXTA_Center
+        TextColor=(R=230,G=200,B=0,A=255)
+        WinTop=0.35
+    End Object
+    Begin Object Class=XInterface.GUILabel Name=VoteLabel1
+        TextAlign=TXTA_Center
+        TextColor=(R=255,G=255,B=255,A=255)
+        WinTop=0.4
+    End Object
+    Begin Object Class=XInterface.GUILabel Name=VoteLabel2
+        TextAlign=TXTA_Center
+        TextColor=(R=255,G=255,B=255,A=255)
+        WinTop=0.45
+    End Object
+    Begin Object Class=XInterface.GUILabel Name=VoteLabel3
+        TextAlign=TXTA_Center
+        TextColor=(R=255,G=255,B=255,A=255)
+        WinTop=0.5
+    End Object
+    Begin Object Class=XInterface.GUILabel Name=VoteLabel4
+        TextAlign=TXTA_Center
+        TextColor=(R=255,G=255,B=255,A=255)
+        WinTop=0.55
+    End Object
+    bu_VoteYes=VoteYesButton
+    bu_VoteNo=votenoButton
+    l_Vote(0)=VoteLabel0
+    l_Vote(1)=VoteLabel1
+    l_Vote(2)=VoteLabel2
+    l_Vote(3)=VoteLabel3
+    l_Vote(4)=VoteLabel4
 }

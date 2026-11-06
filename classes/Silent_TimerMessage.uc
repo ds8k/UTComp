@@ -16,8 +16,7 @@ static function ClientReceive(
 
 }
 
-
-DefaultProperties
+defaultproperties
 {
-    PosY=0.9000000
+    PosY=0.9
 }

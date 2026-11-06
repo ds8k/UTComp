@@ -96,5 +96,5 @@ static function string MakeColorCode(color NewColor)
 
 defaultproperties
 {
-     bEnableTeamColoredDeaths=True
+    bEnableTeamColoredDeaths=True
 }

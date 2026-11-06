@@ -69,11 +69,11 @@ simulated function SpawnEffects()
 
     if ( EffectIsRelevant(mSpawnVecA + HitNormal*2,false) && (HitNormal != Vect(0,0,0)) )
 		SpawnImpactEffects(Rotator(HitNormal),mSpawnVecA + HitNormal*2);
-
+    
     if ( (!Level.bDropDetail && (Level.DetailMode != DM_Low) && (VSize(Location - mSpawnVecA) > 40) && !Level.GetLocalPlayerController().BeyondViewDistance(Location,0))
 		|| ((Instigator != None) && Instigator.IsFirstPerson()) )
     {
-	    Coil = Spawn(CoilClass,Owner,, Location, Rotation);
+	    Coil = Spawn(CoilClass, Owner,, Location, Rotation);
 	    if (Coil != None)
 		    Coil.mSpawnVecA = mSpawnVecA;
     }
@@ -83,10 +83,9 @@ simulated function SpawnEffects()
         E.AimAt(mSpawnVecA, HitNormal);
 }
 
-
 defaultproperties
 {
-     CoilClass=Class'NewNet_ShockBeamCoilB'
-     ExtraBeamClass=class'NewNet_ExtraRedBeam'
-     Skins(0)=ColorModifier'InstagibEffects.Effects.RedSuperShockBeam'
+    ExtraBeamClass=Class'UTCompvBoM.NewNet_ExtraRedBeam'
+    CoilClass=Class'UTCompvBoM.NewNet_ShockBeamCoilB'
+    Skins(0)=ColorModifier'InstagibEffects.Effects.RedSuperShockBeam'
 }

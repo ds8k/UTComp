@@ -31,7 +31,6 @@ simulated function bool ReadyToFire(int Mode)
 	return super.ReadyToFire(mode);
 }
 
-DefaultProperties
+defaultproperties
 {
-
 }

@@ -32,61 +32,45 @@ function InternalOnChange( GUIComponent C )
     class'UTComp_Settings'.static.staticSaveConfig();
 }
 
-
-DefaultProperties
+defaultproperties
 {
-    Begin Object Class=GUILabel Name=AdrenLabel
-        Caption="----Adrenaline Combo Settings----"
-        TextColor=(B=0,G=200,R=230)
-		WinWidth=1.000000
-		WinHeight=0.060000
-		WinLeft=0.250000
-		WinTop=0.36
-     End Object
-     l_Adren=GUILabel'UTCompv18bK.UTComp_Menu_AdrenMenu.AdrenLabel'
-
-
-     Begin Object Class=moCheckBox Name=BoosterCheck
+    Begin Object Class=XInterface.moCheckBox Name=BoosterCheck
         Caption="Enable Booster Combo"
-        OnCreateComponent=BoosterCheck.InternalOnCreateComponent
-		WinWidth=0.500000
-		WinHeight=0.030000
-		WinLeft=0.250000
-		WinTop=0.430000
-         OnChange=UTComp_Menu_AdrenMenu.InternalOnChange
-     End Object
-     ch_Booster=moCheckBox'UTCompv18bK.UTComp_Menu_AdrenMenu.BoosterCheck'
-
-      Begin Object Class=moCheckBox Name=InvisCheck
+        OnCreateComponent=InternalOnCreateComponent
+        WinTop=0.43
+        WinLeft=0.25
+        OnChange=InternalOnChange
+    End Object
+    Begin Object Class=XInterface.moCheckBox Name=InvisCheck
         Caption="Enable Invisibility Combo"
-        OnCreateComponent=InvisCheck.InternalOnCreateComponent
-		WinWidth=0.500000
-		WinHeight=0.030000
-		WinLeft=0.250000
-		WinTop=0.480000
-         OnChange=UTComp_Menu_AdrenMenu.InternalOnChange
-     End Object
-     ch_Invis=moCheckBox'UTCompv18bK.UTComp_Menu_AdrenMenu.InvisCheck'
-
-          Begin Object Class=moCheckBox Name=SpeedCheck
+        OnCreateComponent=InternalOnCreateComponent
+        WinTop=0.48
+        WinLeft=0.25
+        OnChange=InternalOnChange
+    End Object
+    Begin Object Class=XInterface.moCheckBox Name=SpeedCheck
         Caption="Enable Speed Combo"
-        OnCreateComponent=SpeedCheck.InternalOnCreateComponent
-		WinWidth=0.500000
-		WinHeight=0.030000
-		WinLeft=0.250000
-		WinTop=0.530000
-         OnChange=UTComp_Menu_AdrenMenu.InternalOnChange
-     End Object
-     ch_Speed=moCheckBox'UTCompv18bK.UTComp_Menu_AdrenMenu.SpeedCheck'
-
-     Begin Object Class=moCheckBox Name=BerserkCheck
+        OnCreateComponent=InternalOnCreateComponent
+        WinTop=0.53
+        WinLeft=0.25
+        OnChange=InternalOnChange
+    End Object
+    Begin Object Class=XInterface.moCheckBox Name=BerserkCheck
         Caption="Enable Berserk Combo"
-        OnCreateComponent=BerserkCheck.InternalOnCreateComponent
-		WinWidth=0.500000
-		WinHeight=0.030000
-		WinLeft=0.250000
-		WinTop=0.580000
-         OnChange=UTComp_Menu_AdrenMenu.InternalOnChange
-     End Object
-     ch_Berserk=moCheckBox'UTCompv18bK.UTComp_Menu_AdrenMenu.BerserkCheck'
+        OnCreateComponent=InternalOnCreateComponent
+        WinTop=0.58
+        WinLeft=0.25
+        OnChange=InternalOnChange
+    End Object
+    Begin Object Class=XInterface.GUILabel Name=AdrenLabel
+        Caption="----Adrenaline Combo Settings----"
+        TextColor=(R=230,G=200,B=0,A=255)
+        WinTop=0.36
+        WinLeft=0.25
+    End Object
+    ch_booster=BoosterCheck
+    ch_invis=InvisCheck
+    ch_speed=SpeedCheck
+    ch_berserk=BerserkCheck
+    l_adren=AdrenLabel
 }

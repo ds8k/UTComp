@@ -37,7 +37,6 @@ function Tick(float Delta)
 	}
 }
 
-DefaultProperties
+defaultproperties
 {
-
 }
