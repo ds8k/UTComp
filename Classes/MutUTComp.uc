@@ -1163,7 +1163,7 @@ defaultproperties
 	VotingGametype(7)=(GametypeOptions="?game=XGame.xDoubleDom?timelimit=20?goalscore=0?FriendlyFireScale=0,WeaponStay=true?mutator=XWeapons.MutNoSuperWeapon?DoubleDamage=true?GrenadesOnSpawn=4?TimedOverTimeLength=0",GametypeName="Double Domination")
 	VotingGametype(8)=(GametypeOptions="?game=XGame.xBombingRun?timelimit=20?goalscore=0?FriendlyFireScale=0,WeaponStay=True?mutator=XWeapons.MutNoSuperWeapon?DoubleDamage=True?GrenadesOnSpawn=4?TimedOverTimeLength=0",GametypeName="Bombing Run")
 	FriendlyVersionPrefix="UTComp Version"
-	FriendlyVersionNumber="BoM3374"
+	FriendlyVersionNumber="BoM"
 	bEnableEnhancedNetCodeVoting=True
 	WeaponClasses(0)=Class'UTCompvBoM.NewNet_ShockRifle'
 	WeaponClasses(1)=Class'UTCompvBoM.NewNet_LinkGun'
@@ -1241,7 +1241,7 @@ defaultproperties
 	WeaponPickupClassNames(10)="UTCompvBoM.NewNet_ONSMineLayerPickup"
 	WeaponPickupClassNames(11)="UTCompvBoM.NewNet_ONSGrenadePickup"
 	bAddToServerPackages=True
-	FriendlyName="UTComp Version BoM3374"
+	FriendlyName="UTComp Version BoM"
 	Description="A mutator for warmup, brightskins, hitsounds, and various other features."
 	bNetTemporary=True
 	bAlwaysRelevant=True
