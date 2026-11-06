@@ -1,4 +1,3 @@
-
 class NewNet_RocketMultiFire extends UTComp_RocketMultiFire;
 
 var vector OldInstigatorLocation;
@@ -497,5 +496,5 @@ function SuperServerDoFireEffect()
 
 defaultproperties
 {
-    FakeProjectileClass=Class'UTCompvBoM.NewNet_Fake_RocketProj'
+	FakeProjectileClass=Class'UTCompvBoM.NewNet_Fake_RocketProj'
 }

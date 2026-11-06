@@ -1,4 +1,3 @@
-
 //-----------------------------------------------------------
 //
 //-----------------------------------------------------------
@@ -258,7 +257,7 @@ function NewNet_OldServerStartFire(byte Mode, byte ClientTimeStamp, float dt)
 
 defaultproperties
 {
-    FireModeClass(0)=Class'UTCompvBoM.NewNet_FlakFire'
-    FireModeClass(1)=Class'UTCompvBoM.NewNet_FlakAltFire'
-    PickupClass=Class'UTCompvBoM.NewNet_FlakCannonPickup'
+	FireModeClass(0)=Class'UTCompvBoM.NewNet_FlakFire'
+	FireModeClass(1)=Class'UTCompvBoM.NewNet_FlakAltFire'
+	PickupClass=Class'UTCompvBoM.NewNet_FlakCannonPickup'
 }

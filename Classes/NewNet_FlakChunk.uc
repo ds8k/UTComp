@@ -1,4 +1,3 @@
-
 class NewNet_FlakChunk extends FlakChunk;
 
 var int ChunkNum;

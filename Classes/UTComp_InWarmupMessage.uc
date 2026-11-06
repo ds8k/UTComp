@@ -1,5 +1,3 @@
-
-
 class UTComp_InWarmupMessage extends LocalMessage;
 static function string GetString(
     optional int Switch,
@@ -16,9 +14,9 @@ static function string GetString(
 
 defaultproperties
 {
-    bIsConsoleMessage=False
-    bFadeMessage=True
-    Lifetime=4
-    PosY=0.93
-    FontSize=-2
+	bIsConsoleMessage=False
+	bFadeMessage=True
+	Lifetime=4
+	PosY=0.930000
+	FontSize=-2
 }

@@ -1,4 +1,3 @@
-
 class NewNet_ClassicSniperRifle extends ClassicSniperRifle
     HideDropDown
 	CacheExempt;
@@ -78,6 +77,6 @@ function NewNet_ServerStartFire(byte Mode, byte ClientTimeStamp, float dt)
 
 defaultproperties
 {
-    FireModeClass=Class'UTCompvBoM.NewNet_ClassicSniperFire'
-    PickupClass=Class'UTCompvBoM.NewNet_ClassicSniperRiflePickup'
+	FireModeClass(0)=Class'UTCompvBoM.NewNet_ClassicSniperFire'
+	PickupClass=Class'UTCompvBoM.NewNet_ClassicSniperRiflePickup'
 }

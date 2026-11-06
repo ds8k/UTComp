@@ -1,7 +1,6 @@
-
 class UTComp_xPawn extends ModernPawn;
 
-#exec texture import File=textures\purpmark.dds Name=PurpleMarker
+//#exec texture import File=textures\purpmark.dds Name=PurpleMarker
 
 
 var array<Material> SavedSkins;
@@ -1024,18 +1023,18 @@ event UpdateEyeHeight( float DeltaTime )
 
 defaultproperties
 {
-    ShieldColor=(R=105,G=65,B=0,A=0)
-    LinkColor=(R=0,G=100,B=0,A=0)
-    shockcolor=(R=80,G=0,B=80,A=0)
-    lgcolor=(R=40,G=40,B=80,A=0)
-    beffectscleared=True
-    BrightSkinColors(0)=(R=0,G=0,B=0,A=255)
-    BrightSkinColors(1)=(R=200,G=0,B=0,A=255)
-    BrightSkinColors(2)=(R=50,G=64,B=200,A=255)
-    BrightSkinColors(3)=(R=200,G=64,B=200,A=255)
-    BrightSkinColors(4)=(R=0,G=0,B=0,A=255)
-    BrightSkinColors(5)=(R=200,G=0,B=0,A=255)
-    BrightSkinColors(6)=(R=50,G=64,B=200,A=255)
-    BrightSkinColors(7)=(R=200,G=64,B=200,A=255)
-    bAlwaysRelevant=True
+	ShieldColor=(G=65,R=105)
+	LinkColor=(G=100)
+	shockcolor=(B=80,R=80)
+	lgcolor=(B=80,G=40,R=40)
+	beffectscleared=True
+	BrightSkinColors(0)=(A=255)
+	BrightSkinColors(1)=(R=200,A=255)
+	BrightSkinColors(2)=(B=200,G=64,R=50,A=255)
+	BrightSkinColors(3)=(B=200,G=64,R=200,A=255)
+	BrightSkinColors(4)=(A=255)
+	BrightSkinColors(5)=(R=200,A=255)
+	BrightSkinColors(6)=(B=200,G=64,R=50,A=255)
+	BrightSkinColors(7)=(B=200,G=64,R=200,A=255)
+	bAlwaysRelevant=True
 }

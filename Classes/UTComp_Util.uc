@@ -1,5 +1,3 @@
-
-
 class UTComp_Util extends xUtil;
 
 simulated static function UTComp_PRI GetUTCompPRI(PlayerReplicationInfo PRI)

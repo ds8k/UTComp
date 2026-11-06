@@ -1,4 +1,3 @@
-
 class utcomp_ScoreBoardTDM extends ScoreBoardTeamDeathMatch;
 
 var font Smallerfont;

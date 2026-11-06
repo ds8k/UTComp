@@ -1,4 +1,3 @@
-
 class UTComp_Menu_MainMenu extends PopupPageBase;
 
 var automated array<GUIButton> UTCompMenuButtons;
@@ -52,131 +51,134 @@ function OnClose(optional bool bCancelled)
 
 defaultproperties
 {
-    Begin Object Class=XInterface.GUIButton Name=SkinModelButton
-        Caption="Skins/Models"
-        WinTop=0.15
-        WinLeft=0.1125
-        WinWidth=0.18
-        WinHeight=0.06
-        OnClick=InternalOnClick
-        OnKeyEvent=InternalOnKeyEvent
-    End Object
-    Begin Object Class=XInterface.GUIButton Name=ColoredNameButton
-        Caption="Colored Names"
-        WinTop=0.15
-        WinLeft=0.3125
-        WinWidth=0.18
-        WinHeight=0.06
-        OnClick=InternalOnClick
-        OnKeyEvent=InternalOnKeyEvent
-    End Object
-    Begin Object Class=XInterface.GUIButton Name=OverlayButton
-        Caption="Team Overlay"
-        WinTop=0.15
-        WinLeft=0.5125
-        WinWidth=0.18
-        WinHeight=0.06
-        OnClick=InternalOnClick
-        OnKeyEvent=InternalOnKeyEvent
-    End Object
-    Begin Object Class=XInterface.GUIButton Name=CrosshairButton
-        Caption="Crosshairs"
-        WinTop=0.15
-        WinLeft=0.7125
-        WinWidth=0.18
-        WinHeight=0.06
-        OnClick=InternalOnClick
-        OnKeyEvent=InternalOnKeyEvent
-    End Object
-    Begin Object Class=XInterface.GUIButton Name=HitsoundButton
-        Caption="Hitsounds"
-        WinTop=0.22
-        WinLeft=0.1125
-        WinWidth=0.18
-        WinHeight=0.06
-        OnClick=InternalOnClick
-        OnKeyEvent=InternalOnKeyEvent
-    End Object
-    Begin Object Class=XInterface.GUIButton Name=VotingButton
-        Caption="Voting"
-        WinTop=0.22
-        WinLeft=0.3125
-        WinWidth=0.18
-        WinHeight=0.06
-        OnClick=InternalOnClick
-        OnKeyEvent=InternalOnKeyEvent
-    End Object
-    Begin Object Class=XInterface.GUIButton Name=AutoDemoButton
-        Caption="Auto Demo/SS"
-        WinTop=0.22
-        WinLeft=0.5125
-        WinWidth=0.18
-        WinHeight=0.06
-        OnClick=InternalOnClick
-        OnKeyEvent=InternalOnKeyEvent
-    End Object
-    Begin Object Class=XInterface.GUIButton Name=MiscButton
-        Caption="Misc"
-        WinTop=0.22
-        WinLeft=0.7125
-        WinWidth=0.18
-        WinHeight=0.06
-        OnClick=InternalOnClick
-        OnKeyEvent=InternalOnKeyEvent
-    End Object
-    Begin Object Class=XInterface.GUITabControl Name=LoginMenuTC
-        bFillSpace=True
-        bDockPanels=True
-        WinTop=0.072718
-        WinLeft=0.134782
-        WinWidth=0.725325
-        WinHeight=0.208177
-        bScaleToParent=True
-        bAcceptsInput=True
-        OnActivate=InternalOnActivate
-    End Object
-    Begin Object Class=XInterface.FloatingImage Name=FloatingFrameBackground
-        Image=Texture'2K4Menus.NewControls.Display99'
-        ImageStyle=ISTY_Stretched
-        ImageRenderStyle=MSTY_Normal
-        DropShadowX=0
-        DropShadowY=0
-        WinTop=0.1
-        WinLeft=0.075
-        WinWidth=0.85
-        WinHeight=0.75
-        RenderWeight=0.01
-        bBoundToParent=False
-        bScaleToParent=False
-    End Object
-    Begin Object Class=XInterface.FloatingImage Name=FloatingFrameBackground2
-        Image=Texture'2K4Menus.NewControls.Display95'
-        ImageStyle=ISTY_Stretched
-        ImageRenderStyle=MSTY_Normal
-        DropShadowX=0
-        DropShadowY=0
-        WinTop=0.27
-        WinLeft=0.075
-        WinWidth=0.85
-        WinHeight=0.58
-        RenderWeight=0.02
-        bBoundToParent=False
-        bScaleToParent=False
-    End Object
-    UTCompMenuButtons(0)=SkinModelButton
-    UTCompMenuButtons(1)=ColoredNameButton
-    UTCompMenuButtons(2)=OverlayButton
-    UTCompMenuButtons(3)=CrosshairButton
-    UTCompMenuButtons(4)=HitsoundButton
-    UTCompMenuButtons(5)=VotingButton
-    UTCompMenuButtons(6)=AutoDemoButton
-    UTCompMenuButtons(7)=MiscButton
-    c_Main=LoginMenuTC
-    i_FrameBG2=FloatingFrameBackground2
-    i_FrameBG=FloatingFrameBackground
-    bRequire640x480=True
-    bPersistent=True
-    bAllowedAsLast=True
-    WinTop=0.11499
-    WinHeight=0.80469
+     Begin Object class=GUIButton name=SkinModelButton
+         Caption="Skins/Models"
+         WinTop=0.150000
+         WinLeft=0.11250000
+         WinWidth=0.180000
+         WinHeight=0.060000
+         OnClick=InternalOnClick
+     End Object
+     UTCompMenuButtons(0)=GUIButton'SkinModelButton'
+
+     Begin Object class=GUIButton name=ColoredNameButton
+         Caption="Colored Names"
+         WinTop=0.150000
+         WinLeft=0.31250000
+         WinWidth=0.180000
+         WinHeight=0.060000
+         OnClick=InternalOnClick
+     End Object
+     UTCompMenuButtons(1)=GUIButton'ColoredNameButton'
+
+     Begin Object class=GUIButton name=OverlayButton
+         Caption="Team Overlay"
+         WinTop=0.150000
+         WinLeft=0.51250000
+         WinWidth=0.180000
+         WinHeight=0.060000
+         OnClick=InternalOnClick
+     End Object
+     UTCompMenuButtons(2)=GUIButton'OverlayButton'
+
+     Begin Object class=GUIButton name=CrosshairButton
+         Caption="Crosshairs"
+         WinTop=0.150000
+         WinLeft=0.71250000
+         WinWidth=0.180000
+         WinHeight=0.060000
+         OnClick=InternalOnClick
+     End Object
+     UTCompMenuButtons(3)=GUIButton'CrosshairButton'
+
+     Begin Object class=GUIButton name=HitsoundButton
+         Caption="Hitsounds"
+         WinTop=0.220000
+         WinLeft=0.11250000
+         WinWidth=0.180000
+         WinHeight=0.060000
+         OnClick=InternalOnClick
+     End Object
+     UTCompMenuButtons(4)=GUIButton'HitsoundButton'
+
+     Begin Object class=GUIButton name=VotingButton
+         Caption="Voting"
+         WinTop=0.220000
+         WinLeft=0.31250000
+         WinWidth=0.180000
+         WinHeight=0.060000
+         OnClick=InternalOnClick
+     End Object
+     UTCompMenuButtons(5)=GUIButton'VotingButton'
+
+     Begin Object class=GUIButton name=AutoDemoButton
+         Caption="Auto Demo/SS"
+         WinTop=0.220000
+         WinLeft=0.51250000
+         WinWidth=0.180000
+         WinHeight=0.060000
+         OnClick=InternalOnClick
+     End Object
+     UTCompMenuButtons(6)=GUIButton'AutoDemoButton'
+
+     Begin Object class=GUIButton name=MiscButton
+         Caption="Misc"
+         WinTop=0.220000
+         WinLeft=0.71250000
+         WinWidth=0.180000
+         WinHeight=0.060000
+         OnClick=InternalOnClick
+     End Object
+    UTCompMenuButtons(7)=GUIButton'MiscButton'
+
+	Begin Object Class=GUITabControl Name=LoginMenuTC
+		bFillSpace=True
+		bDockPanels=True
+		WinTop=0.072718
+		WinLeft=0.134782
+		WinWidth=0.725325
+		WinHeight=0.208177
+		bScaleToParent=True
+		bAcceptsInput=True
+		OnActivate=LoginMenuTC.InternalOnActivate
+	End Object
+	c_Main=GUITabControl'LoginMenuTC'
+
+	Begin Object Class=FloatingImage Name=FloatingFrameBackground2
+		Image=Texture'2K4Menus.NewControls.Display95'
+		ImageStyle=ISTY_Stretched
+		ImageRenderStyle=MSTY_Normal
+		DropShadowX=0
+		DropShadowY=0
+		WinTop=0.270000
+		WinLeft=0.075000
+		WinWidth=0.850000
+		WinHeight=0.580000
+		RenderWeight=0.020000
+		bBoundToParent=False
+		bScaleToParent=False
+	End Object
+	i_FrameBG2=FloatingImage'UTCompvBoM.UTComp_Menu_MainMenu.FloatingFrameBackground2'
+
+	Begin Object Class=FloatingImage Name=FloatingFrameBackground
+		Image=Texture'2K4Menus.NewControls.Display99'
+		ImageStyle=ISTY_Stretched
+		ImageRenderStyle=MSTY_Normal
+		DropShadowX=0
+		DropShadowY=0
+		WinTop=0.100000
+		WinLeft=0.075000
+		WinWidth=0.850000
+		WinHeight=0.750000
+		RenderWeight=0.010000
+		bBoundToParent=False
+		bScaleToParent=False
+	End Object
+	i_FrameBG=FloatingImage'UTCompvBoM.UTComp_Menu_MainMenu.FloatingFrameBackground'
+
+	bRequire640x480=True
+	bPersistent=True
+	bAllowedAsLast=True
+	WinTop=0.114990
+	WinHeight=0.804690
 }

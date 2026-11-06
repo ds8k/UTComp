@@ -1,5 +1,3 @@
-
-
 class UTComp_FlakFire extends FlakFire;
 
 event ModeDoFire()

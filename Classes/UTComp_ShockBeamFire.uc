@@ -1,5 +1,3 @@
-
-
 class UTComp_ShockBeamFire extends ShockBeamFire;
 
 event ModeDoFire()

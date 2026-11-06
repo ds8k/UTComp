@@ -1,4 +1,3 @@
-
 class NewNet_BioGlob extends BioGlob
 	HideDropDown
 	CacheExempt;

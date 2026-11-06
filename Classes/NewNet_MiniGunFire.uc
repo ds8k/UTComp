@@ -1,4 +1,3 @@
-
 class NewNet_MiniGunFire extends UTComp_MiniGunFire;
 
 var float PingDT;
