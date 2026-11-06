@@ -1,9 +1,11 @@
 //-----------------------------------------------------------
 //
 //-----------------------------------------------------------
-class Forward_UTComp_FlakAltFire extends UTComp_FlakAltFire;
+class Forward_UTComp_RocketFire extends UTComp_RocketFire
+HideDropDown
+CacheExempt;
 
 DefaultProperties
 {
-    ProjectileClass=Class'UTCompv18bK.Forward_FlakShell'
+    ProjectileClass=Class'UTCompvBoM.Forward_RocketProj'
 }

@@ -1,9 +1,9 @@
 //-----------------------------------------------------------
 //
 //-----------------------------------------------------------
-class Forward_UTComp_RocketMultiFire extends UTComp_RocketMultiFire;
+class Forward_UTComp_FlakAltFire extends UTComp_FlakAltFire;
 
 DefaultProperties
 {
-    ProjectileClass=Class'UTCompv18bK.Forward_RocketProj'
+    ProjectileClass=Class'UTCompvBoM.Forward_FlakShell'
 }
