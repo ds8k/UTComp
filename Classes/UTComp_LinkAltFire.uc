@@ -1,3 +1,5 @@
+
+
 class UTComp_LinkAltFire extends LinkAltFire;
 
 function Projectile SpawnProjectile(Vector Start, Rotator Dir)

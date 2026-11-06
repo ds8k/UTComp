@@ -1,3 +1,5 @@
+
+
 class UTComp_ShockProjectile extends ShockProjectile;
 
 event TakeDamage( int Damage, Pawn EventInstigator, vector HitLocation, vector Momentum, class<DamageType> DamageType)

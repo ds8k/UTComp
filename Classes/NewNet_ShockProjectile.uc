@@ -1,3 +1,4 @@
+
 class NewNet_ShockProjectile extends UTComp_ShockProjectile;
 
 var PlayerController PC;

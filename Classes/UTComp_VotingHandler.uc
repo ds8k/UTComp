@@ -1,3 +1,5 @@
+
+
 class UTComp_VotingHandler extends Info;
 
 CONST fVOTINGTIMER = 1.0;
@@ -520,9 +522,9 @@ function UpdatePlayersOfTotal(float VotedYes, float VotedNo)
 
 defaultproperties
 {
-	fVotingTime=30.000000
-	fVotingPercent=51.000000
-	CurrentVoteID=255
-	iOldVoteID=255
-	VoteSwitch=255
+    fVotingTime=30.0
+    fVotingPercent=51.0
+    CurrentVoteID=255
+    iOldVoteID=255
+    VoteSwitch=255
 }

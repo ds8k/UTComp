@@ -58,5 +58,5 @@ simulated function Projectile GetFP(class<Projectile> CP, optional int index)
 
 defaultproperties
 {
-	bHidden=True
+    bHidden=True
 }

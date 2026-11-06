@@ -1,3 +1,5 @@
+
+
 class UTComp_Menu_Voting_GameType extends UTComp_Menu_MainMenu;
 
 var automated GUIListBox lb_MapList;
@@ -303,225 +305,202 @@ event Opened(GUIComponent Sender)
 
 defaultproperties
 {
-	Begin Object Class=GUIListBox Name=MapListBox
-		bVisibleWhenEmpty=True
-		OnCreateComponent=MapListBox.InternalOnCreateComponent
-		WinTop=0.350000
-		WinLeft=0.118750
-		WinWidth=0.214061
-		WinHeight=0.385937
-		OnChange=UTComp_Menu_Voting_GameType.InternalOnChange
-	End Object
-	lb_MapList=GUIListBox'UTCompvBoM.UTComp_Menu_Voting_GameType.MapListBox'
-
-	Begin Object Class=GUIEditBox Name=MapInputEditBox
-		WinTop=0.462500
-		WinLeft=0.559687
-		WinWidth=0.250000
-		WinHeight=0.030000
-		OnActivate=MapInputEditBox.InternalActivate
-		OnDeActivate=MapInputEditBox.InternalDeactivate
-		OnKeyType=MapInputEditBox.InternalOnKeyType
-		OnKeyEvent=MapInputEditBox.InternalOnKeyEvent
-	End Object
-	eb_MapInput=GUIEditBox'UTCompvBoM.UTComp_Menu_Voting_GameType.MapInputEditBox'
-
-	Begin Object Class=GUINumericEdit Name=MaxPlayersNE
-		MinValue=2
-		WinTop=0.414046
-		WinLeft=0.604999
-		WinWidth=0.206250
-		WinHeight=0.030000
-		OnDeActivate=MaxPlayersNE.ValidateValue
-	End Object
-	ne_NumPlayers=GUINumericEdit'UTCompvBoM.UTComp_Menu_Voting_GameType.MaxPlayersNE'
-
-	Begin Object Class=GUIComboBox Name=MapInputComboBox
-		WinTop=0.362994
-		WinLeft=0.560311
-		WinWidth=0.250000
-		WinHeight=0.035000
-		OnChange=UTComp_Menu_Voting_GameType.InternalOnChange
-		OnKeyEvent=MapInputComboBox.InternalOnKeyEvent
-	End Object
-	co_GameTypeList=GUIComboBox'UTCompvBoM.UTComp_Menu_Voting_GameType.MapInputComboBox'
-
-	Begin Object Class=GUIButton Name=quickrestartButton
-		Caption="Just Restart Map"
-		WinTop=0.705418
-		WinLeft=0.379687
-		WinWidth=0.217500
-		WinHeight=0.047500
-		bVisible=False
-		OnClick=UTComp_Menu_Voting_GameType.InternalOnClick
-		OnKeyEvent=quickrestartButton.InternalOnKeyEvent
-	End Object
-	bu_QuickRestart=GUIButton'UTCompvBoM.UTComp_Menu_Voting_GameType.quickrestartButton'
-
-	Begin Object Class=GUIButton Name=ChangeMapButton
-		Caption="Call Vote"
-		WinTop=0.740469
-		WinLeft=0.456252
-		WinWidth=0.262813
-		WinHeight=0.047500
-		OnClick=UTComp_Menu_Voting_GameType.InternalOnClick
-		OnKeyEvent=ChangeMapButton.InternalOnKeyEvent
-	End Object
-	bu_ChangeMap=GUIButton'UTCompvBoM.UTComp_Menu_Voting_GameType.ChangeMapButton'
-
-	Begin Object Class=GUILabel Name=MapNameLabel
-		Caption="Map Name"
-		TextColor=(B=255,G=255,R=255)
-		WinTop=0.451250
-		WinLeft=0.352313
-	End Object
-	l_MapName=GUILabel'UTCompvBoM.UTComp_Menu_Voting_GameType.MapNameLabel'
-
-	Begin Object Class=GUILabel Name=gametypeLabel
-		Caption="Gametype"
-		TextColor=(B=255,G=255,R=255)
-		WinTop=0.349704
-		WinLeft=0.353875
-	End Object
-	l_GameType=GUILabel'UTCompvBoM.UTComp_Menu_Voting_GameType.gametypeLabel'
-
-	Begin Object Class=GUILabel Name=MaxPlayersLabe
-		Caption="Max Players"
-		TextColor=(B=255,G=255,R=255)
-		WinTop=0.400713
-		WinLeft=0.353438
-	End Object
-	l_MaxPlayers=GUILabel'UTCompvBoM.UTComp_Menu_Voting_GameType.MaxPlayersLabe'
-
-	Begin Object Class=moCheckBox Name=AdvancedOptionsCheck
-		Caption="Advanced Options"
-		OnCreateComponent=AdvancedOptionsCheck.InternalOnCreateComponent
-		WinTop=0.500000
-		WinLeft=0.350000
-		WinWidth=0.240000
-		OnChange=UTComp_Menu_Voting_GameType.InternalOnChange
-	End Object
-	cb_UseAdvancedOptions=moCheckBox'UTCompvBoM.UTComp_Menu_Voting_GameType.AdvancedOptionsCheck'
-
-	Begin Object Class=moCheckBox Name=AdrenCheck
-		Caption="Adren"
-		OnCreateComponent=AdrenCheck.InternalOnCreateComponent
-		WinTop=0.549998
-		WinLeft=0.598437
-		WinWidth=0.239062
-	End Object
-	cb_Adren=moCheckBox'UTCompvBoM.UTComp_Menu_Voting_GameType.AdrenCheck'
-
-	Begin Object Class=moCheckBox Name=DDCheck
-		Caption="DD"
-		OnCreateComponent=DDCheck.InternalOnCreateComponent
-		WinTop=0.600000
-		WinLeft=0.350000
-		WinWidth=0.240000
-	End Object
-	cb_DD=moCheckBox'UTCompvBoM.UTComp_Menu_Voting_GameType.DDCheck'
-
-	Begin Object Class=moCheckBox Name=SuperWeaponsCheck
-		Caption="SuperWeapons"
-		OnCreateComponent=SuperWeaponsCheck.InternalOnCreateComponent
-		WinTop=0.550000
-		WinLeft=0.350000
-		WinWidth=0.240000
-	End Object
-	cb_SuperWeapons=moCheckBox'UTCompvBoM.UTComp_Menu_Voting_GameType.SuperWeaponsCheck'
-
-	Begin Object Class=moCheckBox Name=WeaponStayCheck
-		Caption="WeaponStay"
-		OnCreateComponent=WeaponStayCheck.InternalOnCreateComponent
-		WinTop=0.650000
-		WinLeft=0.350000
-		WinWidth=0.240000
-	End Object
-	cb_WeaponStay=moCheckBox'UTCompvBoM.UTComp_Menu_Voting_GameType.WeaponStayCheck'
-
-	Begin Object Class=GUINumericEdit Name=GoalScoreNE
-		MinValue=0
-		WinTop=0.598331
-		WinLeft=0.736247
-		WinWidth=0.103125
-		WinHeight=0.030000
-		OnDeActivate=GoalScoreNE.ValidateValue
-	End Object
-	ne_GoalScore=GUINumericEdit'UTCompvBoM.UTComp_Menu_Voting_GameType.GoalScoreNE'
-
-	Begin Object Class=GUINumericEdit Name=timelimitNE
-		MinValue=1
-		WinTop=0.648331
-		WinLeft=0.736247
-		WinWidth=0.103125
-		WinHeight=0.030000
-		OnDeActivate=timelimitNE.ValidateValue
-	End Object
-	ne_TimeLimit=GUINumericEdit'UTCompvBoM.UTComp_Menu_Voting_GameType.timelimitNE'
-
-	Begin Object Class=GUINumericEdit Name=GrenadeNE
-		MinValue=0
-		MaxValue=8
-		WinTop=0.698331
-		WinLeft=0.736247
-		WinWidth=0.103125
-		WinHeight=0.030000
-		OnDeActivate=GrenadeNE.ValidateValue
-	End Object
-	ne_Grenades=GUINumericEdit'UTCompvBoM.UTComp_Menu_Voting_GameType.GrenadeNE'
-
-	Begin Object Class=GUINumericEdit Name=OvertimeNE
-		MinValue=0
-		MaxValue=10
-		WinTop=0.696269
-		WinLeft=0.487810
-		WinWidth=0.103125
-		WinHeight=0.030000
-		OnDeActivate=OvertimeNE.ValidateValue
-	End Object
-	ne_OverTime=GUINumericEdit'UTCompvBoM.UTComp_Menu_Voting_GameType.OvertimeNE'
-
-	Begin Object Class=GUILabel Name=GoalScoreLabel
-		Caption="GoalScore"
-		TextColor=(B=255,G=255,R=255)
-		WinTop=0.584500
-		WinLeft=0.598313
-	End Object
-	l_GoalScore=GUILabel'UTCompvBoM.UTComp_Menu_Voting_GameType.GoalScoreLabel'
-
-	Begin Object Class=GUILabel Name=timelimitLabel
-		Caption="Time Limit"
-		TextColor=(B=255,G=255,R=255)
-		WinTop=0.636583
-		WinLeft=0.598313
-	End Object
-	l_TimeLimit=GUILabel'UTCompvBoM.UTComp_Menu_Voting_GameType.timelimitLabel'
-
-	Begin Object Class=GUILabel Name=grenadeLabel
-		Caption="Grenades"
-		TextColor=(B=255,G=255,R=255)
-		WinTop=0.685449
-		WinLeft=0.598313
-	End Object
-	l_grenades=GUILabel'UTCompvBoM.UTComp_Menu_Voting_GameType.grenadeLabel'
-
-	Begin Object Class=GUILabel Name=OvertimeLabel
-		Caption="OT Length"
-		TextColor=(B=255,G=255,R=255)
-		WinTop=0.683387
-		WinLeft=0.346750
-	End Object
-	l_OverTime=GUILabel'UTCompvBoM.UTComp_Menu_Voting_GameType.OvertimeLabel'
-
-	Begin Object Class=GUIButton Name=RefreshButton
-		Caption="Refresh Maps"
-		WinTop=0.738752
-		WinLeft=0.110936
-		WinWidth=0.217500
-		WinHeight=0.047500
-		OnClick=UTComp_Menu_Voting_GameType.InternalOnClick
-		OnKeyEvent=RefreshButton.InternalOnKeyEvent
-	End Object
-	bu_Refresh=GUIButton'UTCompvBoM.UTComp_Menu_Voting_GameType.RefreshButton'
-
+    Begin Object Class=XInterface.GUIEditBox Name=MapInputEditBox
+        WinTop=0.4625
+        WinLeft=0.559687
+        WinWidth=0.25
+        WinHeight=0.03
+        OnActivate=InternalActivate
+        OnDeActivate=InternalDeactivate
+        OnKeyType=InternalOnKeyType
+        OnKeyEvent=InternalOnKeyEvent
+    End Object
+    Begin Object Class=XInterface.GUINumericEdit Name=MaxPlayersNE
+        MinValue=2
+        WinTop=0.414046
+        WinLeft=0.604999
+        WinWidth=0.20625
+        WinHeight=0.03
+        OnDeActivate=ValidateValue
+    End Object
+    Begin Object Class=XInterface.GUIComboBox Name=MapInputComboBox
+        WinTop=0.362994
+        WinLeft=0.560311
+        WinWidth=0.25
+        WinHeight=0.035
+        OnChange=InternalOnChange
+        OnKeyEvent=InternalOnKeyEvent
+    End Object
+    Begin Object Class=XInterface.GUIButton Name=quickrestartButton
+        Caption="Just Restart Map"
+        WinTop=0.705418
+        WinLeft=0.379687
+        WinWidth=0.2175
+        WinHeight=0.0475
+        bVisible=False
+        OnClick=InternalOnClick
+        OnKeyEvent=InternalOnKeyEvent
+    End Object
+    Begin Object Class=XInterface.GUIButton Name=ChangeMapButton
+        Caption="Call Vote"
+        WinTop=0.740469
+        WinLeft=0.456252
+        WinWidth=0.262813
+        WinHeight=0.0475
+        OnClick=InternalOnClick
+        OnKeyEvent=InternalOnKeyEvent
+    End Object
+    Begin Object Class=XInterface.GUIListBox Name=MapListBox
+        bVisibleWhenEmpty=True
+        OnCreateComponent=InternalOnCreateComponent
+        WinTop=0.35
+        WinLeft=0.11875
+        WinWidth=0.214061
+        WinHeight=0.385937
+        OnChange=InternalOnChange
+    End Object
+    Begin Object Class=XInterface.moCheckBox Name=AdrenCheck
+        Caption="Adren"
+        OnCreateComponent=InternalOnCreateComponent
+        WinTop=0.549998
+        WinLeft=0.598437
+        WinWidth=0.239062
+    End Object
+    Begin Object Class=XInterface.moCheckBox Name=WeaponStayCheck
+        Caption="WeaponStay"
+        OnCreateComponent=InternalOnCreateComponent
+        WinTop=0.65
+        WinLeft=0.35
+        WinWidth=0.24
+    End Object
+    Begin Object Class=XInterface.moCheckBox Name=DDCheck
+        Caption="DD"
+        OnCreateComponent=InternalOnCreateComponent
+        WinTop=0.6
+        WinLeft=0.35
+        WinWidth=0.24
+    End Object
+    Begin Object Class=XInterface.moCheckBox Name=SuperWeaponsCheck
+        Caption="SuperWeapons"
+        OnCreateComponent=InternalOnCreateComponent
+        WinTop=0.55
+        WinLeft=0.35
+        WinWidth=0.24
+    End Object
+    Begin Object Class=XInterface.moCheckBox Name=AdvancedOptionsCheck
+        Caption="Advanced Options"
+        OnCreateComponent=InternalOnCreateComponent
+        WinTop=0.5
+        WinLeft=0.35
+        WinWidth=0.24
+        OnChange=InternalOnChange
+    End Object
+    Begin Object Class=XInterface.GUINumericEdit Name=GoalScoreNE
+        MinValue=0
+        WinTop=0.598331
+        WinLeft=0.736247
+        WinWidth=0.103125
+        WinHeight=0.03
+        OnDeActivate=ValidateValue
+    End Object
+    Begin Object Class=XInterface.GUINumericEdit Name=timelimitNE
+        MinValue=1
+        WinTop=0.648331
+        WinLeft=0.736247
+        WinWidth=0.103125
+        WinHeight=0.03
+        OnDeActivate=ValidateValue
+    End Object
+    Begin Object Class=XInterface.GUINumericEdit Name=GrenadeNE
+        MinValue=0
+        MaxValue=8
+        WinTop=0.698331
+        WinLeft=0.736247
+        WinWidth=0.103125
+        WinHeight=0.03
+        OnDeActivate=ValidateValue
+    End Object
+    Begin Object Class=XInterface.GUINumericEdit Name=OvertimeNE
+        MinValue=0
+        MaxValue=10
+        WinTop=0.696269
+        WinLeft=0.48781
+        WinWidth=0.103125
+        WinHeight=0.03
+        OnDeActivate=ValidateValue
+    End Object
+    Begin Object Class=XInterface.GUIButton Name=RefreshButton
+        Caption="Refresh Maps"
+        WinTop=0.738752
+        WinLeft=0.110936
+        WinWidth=0.2175
+        WinHeight=0.0475
+        OnClick=InternalOnClick
+        OnKeyEvent=InternalOnKeyEvent
+    End Object
+    Begin Object Class=XInterface.GUILabel Name=MapNameLabel
+        Caption="Map Name"
+        TextColor=(R=255,G=255,B=255,A=255)
+        WinTop=0.45125
+        WinLeft=0.352313
+    End Object
+    Begin Object Class=XInterface.GUILabel Name=gametypeLabel
+        Caption="Gametype"
+        TextColor=(R=255,G=255,B=255,A=255)
+        WinTop=0.349704
+        WinLeft=0.353875
+    End Object
+    Begin Object Class=XInterface.GUILabel Name=MaxPlayersLabe
+        Caption="Max Players"
+        TextColor=(R=255,G=255,B=255,A=255)
+        WinTop=0.400713
+        WinLeft=0.353438
+    End Object
+    Begin Object Class=XInterface.GUILabel Name=timelimitLabel
+        Caption="Time Limit"
+        TextColor=(R=255,G=255,B=255,A=255)
+        WinTop=0.636583
+        WinLeft=0.598313
+    End Object
+    Begin Object Class=XInterface.GUILabel Name=grenadeLabel
+        Caption="Grenades"
+        TextColor=(R=255,G=255,B=255,A=255)
+        WinTop=0.685449
+        WinLeft=0.598313
+    End Object
+    Begin Object Class=XInterface.GUILabel Name=OvertimeLabel
+        Caption="OT Length"
+        TextColor=(R=255,G=255,B=255,A=255)
+        WinTop=0.683387
+        WinLeft=0.34675
+    End Object
+    Begin Object Class=XInterface.GUILabel Name=GoalScoreLabel
+        Caption="GoalScore"
+        TextColor=(R=255,G=255,B=255,A=255)
+        WinTop=0.5845
+        WinLeft=0.598313
+    End Object
+    lb_MapList=MapListBox
+    eb_MapInput=MapInputEditBox
+    ne_NumPlayers=MaxPlayersNE
+    co_GameTypeList=MapInputComboBox
+    bu_QuickRestart=quickrestartButton
+    bu_ChangeMap=ChangeMapButton
+    l_MapName=MapNameLabel
+    l_GameType=gametypeLabel
+    l_MaxPlayers=MaxPlayersLabe
+    cb_UseAdvancedOptions=AdvancedOptionsCheck
+    cb_Adren=AdrenCheck
+    cb_DD=DDCheck
+    cb_SuperWeapons=SuperWeaponsCheck
+    cb_WeaponStay=WeaponStayCheck
+    ne_GoalScore=GoalScoreNE
+    ne_TimeLimit=timelimitNE
+    ne_Grenades=GrenadeNE
+    ne_OverTime=OvertimeNE
+    l_GoalScore=GoalScoreLabel
+    l_TimeLimit=timelimitLabel
+    l_grenades=grenadeLabel
+    l_OverTime=OvertimeLabel
+    bu_Refresh=RefreshButton
 }

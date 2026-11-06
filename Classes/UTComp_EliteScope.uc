@@ -1,6 +1,6 @@
 class UTComp_EliteScope extends UTComp_Scope;
 
-//#exec texture Import File=Textures\EliteScope.tga Name=EliteScope Mips=Off Alpha=1 Masked=1
+#exec texture Import File=Textures\EliteScope.tga Name=EliteScope Mips=Off Alpha=1 Masked=1
 
 var bool bCrossHairShow;
 
@@ -95,5 +95,5 @@ simulated function Destroyed()
 
 defaultproperties
 {
-	ScopeName="Elite Scope"
+    ScopeName="Elite Scope"
 }

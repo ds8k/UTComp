@@ -1,3 +1,4 @@
+
 class NewNet_Client_LightningBolt extends NewLightningBolt;
 
 function PostBeginPlay()

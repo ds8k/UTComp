@@ -26,7 +26,7 @@ event ModeDoFire()
 
 defaultproperties
 {
-	DamageTypeHeadShot=Class'UTCompvBoM.UTComp_SSRHeadshot'
-	HeadShotRadius=7.000000
-	FireRate=0.700000
+    DamageTypeHeadShot=Class'UTCompvBoM.UTComp_SSRHeadshot'
+    HeadShotRadius=7.0
+    FireRate=0.7
 }

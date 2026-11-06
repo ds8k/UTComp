@@ -21,17 +21,17 @@ static function IncrementKills(Controller Killer)
 
 defaultproperties
 {
-	KillerMessage=Class'XGame.SpecialKillMessage'
-	WeaponClass=Class'UTCompvBoM.UTComp_SuperShockRifle'
-	DeathString="%o's head was displaced by %k's SSR"
-	FemaleSuicide="%o violated the laws of space-time and sniped herself."
-	MaleSuicide="%o violated the laws of space-time and sniped himself."
-	bAlwaysSevers=True
-	bSpecial=True
-	bDetonatesGoop=True
-	bSkeletize=True
-	bCauseConvulsions=True
-	GibPerterbation=0.750000
-	VehicleDamageScaling=0.050000
-	VehicleMomentumScaling=0.300000
+    KillerMessage=Class'XGame.SpecialKillMessage'
+    WeaponClass=Class'UTCompvBoM.UTComp_SuperShockRifle'
+    DeathString="%o's head was displaced by %k's SSR"
+    FemaleSuicide="%o violated the laws of space-time and sniped herself."
+    MaleSuicide="%o violated the laws of space-time and sniped himself."
+    bAlwaysSevers=True
+    bSpecial=True
+    bDetonatesGoop=True
+    bSkeletize=True
+    bCauseConvulsions=True
+    GibPerterbation=0.75
+    VehicleDamageScaling=0.05
+    VehicleMomentumScaling=0.3
 }

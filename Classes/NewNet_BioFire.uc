@@ -1,3 +1,4 @@
+
 class NewNet_BioFire extends UTComp_BioFire;
 
 var float PingDT;
@@ -328,6 +329,6 @@ simulated function FindFPM()
 
 defaultproperties
 {
-	FakeProjectileClass=Class'UTCompvBoM.NewNet_Fake_BioGlob'
-	ProjectileClass=Class'UTCompvBoM.NewNet_BioGlob'
+    FakeProjectileClass=Class'UTCompvBoM.NewNet_Fake_BioGlob'
+    ProjectileClass=Class'UTCompvBoM.NewNet_BioGlob'
 }

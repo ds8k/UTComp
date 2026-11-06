@@ -1,3 +1,4 @@
+
 class NewNet_AssaultRifle extends UTComp_AssaultRifle
 	HideDropDown
 	CacheExempt;
@@ -83,7 +84,7 @@ simulated function DispatchClientEffect(Vector V, rotator R)
 
 defaultproperties
 {
-	FireModeClass(0)=Class'UTCompvBoM.NewNet_AssaultFire'
-	FireModeClass(1)=Class'UTCompvBoM.NewNet_AssaultGrenade'
-	PickupClass=Class'UTCompvBoM.NewNet_AssaultRiflePickup'
+    FireModeClass(0)=Class'UTCompvBoM.NewNet_AssaultFire'
+    FireModeClass(1)=Class'UTCompvBoM.NewNet_AssaultGrenade'
+    PickupClass=Class'UTCompvBoM.NewNet_AssaultRiflePickup'
 }

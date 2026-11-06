@@ -1,3 +1,5 @@
+
+
 class UTComp_Scoreboard_AS extends Scoreboard_Assault;
 
 var font Smallerfont;

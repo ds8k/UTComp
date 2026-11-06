@@ -1,3 +1,4 @@
+
 class NewNet_ShockProjFire extends UTComp_ShockProjFire;
 
 var class<Projectile> FakeProjectileClass;
@@ -97,6 +98,6 @@ simulated function FindFPM()
 
 defaultproperties
 {
-	FakeProjectileClass=Class'UTCompvBoM.NewNet_Fake_ShockProjectile'
-	ProjectileClass=Class'UTCompvBoM.NewNet_ShockProjectile'
+    FakeProjectileClass=Class'UTCompvBoM.NewNet_Fake_ShockProjectile'
+    ProjectileClass=Class'UTCompvBoM.NewNet_ShockProjectile'
 }

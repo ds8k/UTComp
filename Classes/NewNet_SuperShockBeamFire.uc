@@ -441,5 +441,5 @@ function SpawnBeamEffect(Vector Start, Rotator Dir, Vector HitLocation, Vector H
 
 defaultproperties
 {
-	BeamEffectClass=None
+    BeamEffectClass=None
 }

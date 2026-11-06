@@ -1,6 +1,7 @@
+
 class NewNet_BioRiflePickup extends BioRiflePickup;
 
 defaultproperties
 {
-	InventoryType=Class'UTCompvBoM.NewNet_BioRifle'
+    InventoryType=Class'UTCompvBoM.NewNet_BioRifle'
 }

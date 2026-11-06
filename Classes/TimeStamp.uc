@@ -1,3 +1,4 @@
+
 //-----------------------------------------------------------
 //
 //-----------------------------------------------------------
@@ -37,6 +38,6 @@ function REplicatedAverDT(float f)
 
 defaultproperties
 {
-	NetUpdateFrequency=100.000000
-	NetPriority=5.000000
+    NetUpdateFrequency=100.0
+    NetPriority=5.0
 }

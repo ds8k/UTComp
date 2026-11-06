@@ -1,3 +1,5 @@
+
+
 class UTComp_WarmupEndMessage extends CriticalEventPlus;
 
 var sound prepare;
@@ -26,5 +28,5 @@ static simulated function ClientReceive(
 
 defaultproperties
 {
-	prepare=Sound'AnnouncerClassic.(All).prepare'
+    prepare=Sound'AnnouncerClassic.(All).prepare'
 }

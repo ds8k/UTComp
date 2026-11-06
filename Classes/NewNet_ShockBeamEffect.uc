@@ -1,3 +1,4 @@
+
 class NewNet_ShockBeamEffect extends ShockBeamEffect;
 
 function AimAt(Vector hl, Vector hn)
@@ -77,5 +78,5 @@ simulated function SpawnEffects()
 
 defaultproperties
 {
-	CoilClass=Class'UTCompvBoM.NewNet_ShockBeamCoilB'
+    CoilClass=Class'UTCompvBoM.NewNet_ShockBeamCoilB'
 }

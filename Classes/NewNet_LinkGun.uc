@@ -1,3 +1,4 @@
+
 class NewNet_LinkGun extends UTComp_LinkGun
 	HideDropDown
 	CacheExempt;
@@ -87,7 +88,7 @@ simulated function DispatchClientEffect(Vector V, rotator R)
 
 defaultproperties
 {
-	FireModeClass(0)=Class'UTCompvBoM.NewNet_LinkAltFire'
-	FireModeClass(1)=Class'UTCompvBoM.NewNet_LinkFire'
-	PickupClass=Class'UTCompvBoM.NewNet_LinkGunPickup'
+    FireModeClass(0)=Class'UTCompvBoM.NewNet_LinkAltFire'
+    FireModeClass(1)=Class'UTCompvBoM.NewNet_LinkFire'
+    PickupClass=Class'UTCompvBoM.NewNet_LinkGunPickup'
 }

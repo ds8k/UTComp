@@ -2,5 +2,5 @@ class NewNet_Fake_LinkProjectile extends LinkProjectile;
 
 defaultproperties
 {
-	bNetTemporary=False
+    bNetTemporary=False
 }

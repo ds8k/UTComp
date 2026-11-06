@@ -1,3 +1,5 @@
+
+
 class UTComp_SniperFire extends SniperFire;
 
 event ModeDoFire()

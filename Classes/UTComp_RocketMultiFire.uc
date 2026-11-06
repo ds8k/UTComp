@@ -1,3 +1,5 @@
+
+
 class UTComp_RocketMultiFire extends RocketMultiFire;
 
 event ModeDoFire()

@@ -1,3 +1,4 @@
+
 class UTComp_FlakAltFire extends FlakAltFire;
 
 event ModeDoFire()

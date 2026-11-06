@@ -1,3 +1,5 @@
+
+
 class UTComp_ONSMineThrowFire extends ONSMineThrowFire;
 
 event ModeDoFire()

@@ -2,5 +2,5 @@ class CoachTeamSayMessagePlus extends TeamSayMessagePlus;
 
 defaultproperties
 {
-	DrawColor=(G=128)
+    DrawColor=(R=128,G=128,B=128,A=255)
 }

@@ -1,3 +1,4 @@
+
 class NewNet_RocketLauncher extends UTComp_RocketLauncher
     HideDropDown
 	CacheExempt;
@@ -468,7 +469,7 @@ function UnTimeTravel()
 
 defaultproperties
 {
-	FireModeClass(0)=Class'UTCompvBoM.NewNet_RocketFire'
-	FireModeClass(1)=Class'UTCompvBoM.NewNet_RocketMultiFire'
-	PickupClass=Class'UTCompvBoM.NewNet_RocketLauncherPickup'
+    FireModeClass(0)=Class'UTCompvBoM.NewNet_RocketFire'
+    FireModeClass(1)=Class'UTCompvBoM.NewNet_RocketMultiFire'
+    PickupClass=Class'UTCompvBoM.NewNet_RocketLauncherPickup'
 }

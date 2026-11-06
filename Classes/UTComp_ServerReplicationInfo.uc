@@ -1,3 +1,5 @@
+
+
 class UTComp_ServerReplicationInfo extends ReplicationInfo;
 
 var bool bEnableVoting;
@@ -59,20 +61,20 @@ replication
 
 defaultproperties
 {
-	EnableBrightSkinsMode=3
-	bEnableClanSkins=True
-	EnableHitSoundsMode=1
-	bEnableScoreboard=True
-	bEnableWarmup=True
-	bEnableWeaponStats=True
-	bEnablePowerupStats=True
-	bEnableTimedOvertimeVoting=True
-	bEnableBrightskinsVoting=True
-	bEnableHitsoundsVoting=True
-	bEnableWarmupVoting=True
-	bEnableTeamOverlayVoting=True
-	bEnableMapVoting=True
-	bEnableGametypeVoting=True
-	bEnableDoubleDamageVoting=True
-	ServerMaxPlayers=10
+    EnableBrightSkinsMode=3
+    bEnableClanSkins=True
+    EnableHitSoundsMode=1
+    bEnableScoreboard=True
+    bEnableWarmup=True
+    bEnableWeaponStats=True
+    bEnablePowerupStats=True
+    bEnableTimedOvertimeVoting=True
+    bEnableBrightskinsVoting=True
+    bEnableHitsoundsVoting=True
+    bEnableWarmupVoting=True
+    bEnableTeamOverlayVoting=True
+    bEnableMapVoting=True
+    bEnableGametypeVoting=True
+    bEnableDoubleDamageVoting=True
+    ServerMaxPlayers=10
 }

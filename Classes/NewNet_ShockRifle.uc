@@ -1,3 +1,4 @@
+
 class NewNet_ShockRifle extends UTComp_ShockRifle
 	HideDropDown
 	CacheExempt;
@@ -269,7 +270,7 @@ simulated function SpawnBeamEffect(vector HitLocation, vector HitNormal, vector 
 
 defaultproperties
 {
-	FireModeClass(0)=Class'UTCompvBoM.NewNet_ShockBeamFire'
-	FireModeClass(1)=Class'UTCompvBoM.NewNet_ShockProjFire'
-	PickupClass=Class'UTCompvBoM.NewNet_ShockRiflePickup'
+    FireModeClass(0)=Class'UTCompvBoM.NewNet_ShockBeamFire'
+    FireModeClass(1)=Class'UTCompvBoM.NewNet_ShockProjFire'
+    PickupClass=Class'UTCompvBoM.NewNet_ShockRiflePickup'
 }

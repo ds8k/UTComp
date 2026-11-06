@@ -1,3 +1,4 @@
+
 class UTComp_Warmup extends ReplicationInfo;
 
 //General Warmup Settings
@@ -724,6 +725,6 @@ replication
 
 defaultproperties
 {
-	iWarmupTimeRemaining=30
-	fReadyPercent=100.000000
+    iWarmupTimeRemaining=30
+    fReadyPercent=100.0
 }

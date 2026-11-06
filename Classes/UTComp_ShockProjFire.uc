@@ -1,3 +1,4 @@
+
 class UTComp_ShockProjFire extends ShockProjFire;
 
 event ModeDoFire()
@@ -14,5 +15,5 @@ event ModeDoFire()
 
 defaultproperties
 {
-	ProjectileClass=Class'UTCompvBoM.UTComp_ShockProjectile'
+    ProjectileClass=Class'UTCompvBoM.UTComp_ShockProjectile'
 }

@@ -1,3 +1,4 @@
+
 class UTComp_AssaultFire extends AssaultFire;
 
 event ModeDoFire()

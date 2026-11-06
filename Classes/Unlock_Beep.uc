@@ -1,3 +1,4 @@
+
 class Unlock_Beep extends CriticalEventPlus;
 
 var sound beep;
@@ -17,6 +18,6 @@ static function ClientReceive(
 
 defaultproperties
 {
-	beep=Sound'MenuSounds.select3'
-	bIsConsoleMessage=False
+    beep=Sound'MenuSounds.select3'
+    bIsConsoleMessage=False
 }

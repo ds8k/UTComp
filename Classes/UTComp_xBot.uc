@@ -1,3 +1,5 @@
+
+
 class UTComp_xBot extends xBot;
 
 function SetPawnClass(string inClass, string inCharacter)

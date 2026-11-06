@@ -1,3 +1,5 @@
+
+
 class UTComp_LinkFire extends LinkFire;
 
 event ModeDoFire()

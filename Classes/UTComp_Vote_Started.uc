@@ -1,6 +1,8 @@
+
+
 class UTComp_Vote_Started extends CriticalEventPlus;
 
-//#exec AUDIO IMPORT FILE=Sounds\error2.wav	GROUP=Sounds
+#exec AUDIO IMPORT FILE=Sounds\error2.wav	GROUP=Sounds
 
 var Sound error2;
 
@@ -12,5 +14,5 @@ static simulated function ClientReceive (PlayerController P, optional int Switch
 
 defaultproperties
 {
-	error2=Sound'UTCompvBoM.Sounds.error2'
+    error2=Sound'UTCompvBoM.Sounds.error2'
 }
