@@ -64,6 +64,6 @@ class UTCompvBoMAssets extends Object
 #exec TEXTURE IMPORT NAME=UTCompLogo FILE=Textures\UTCompLogo.tga MIPS=OFF ALPHA=1
 
 // Sounds
-#exec AUDIO IMPORT FILE=Sounds\Sounds\error2.wav NAME=error2 GROUP=Sounds
-#exec AUDIO IMPORT FILE=Sounds\Sounds\HitSound.wav NAME=HitSound GROUP=Sounds
-#exec AUDIO IMPORT FILE=Sounds\Sounds\HitSoundFriendly.wav NAME=HitSoundFriendly GROUP=Sounds
+#exec AUDIO IMPORT FILE=Sounds\error2.wav NAME=error2 GROUP=Sounds
+#exec AUDIO IMPORT FILE=Sounds\HitSound.wav NAME=HitSound GROUP=Sounds
+#exec AUDIO IMPORT FILE=Sounds\HitSoundFriendly.wav NAME=HitSoundFriendly GROUP=Sounds
