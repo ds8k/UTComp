@@ -5,6 +5,27 @@ class UTComp_HudMutant extends HudMutant;
 var const float XShifts[9];
 var const float YShifts[9];
 
+var bool bWSD;		// Is widescreen support default in the game code?
+function PostBeginPlay()
+{
+	SetTimer(0.1, true);
+	Super.PostBeginPlay();
+}
+
+function Timer()	// Allows LevelInfo enough time to set up. In practice it shouldn't actually loop
+{
+    if (PlayerOwner != None && PlayerOwner.Level != None && PlayerOwner.Level.EngineVersion != "")
+    {
+		if (int(PlayerOwner.Level.EngineVersion) >= 3374)
+		{
+			bWSD = True;
+		}
+	
+        SetTimer(0.0, false);
+        return;
+    }
+}
+
 /*
 	COPYRIGHT NOTICE
 	Below code is copyright Azarael - used with permission:
@@ -1101,7 +1122,7 @@ simulated function DrawWeaponBar(Canvas C)
 {
 	local color RealRedColor, RealBlueColor;
 
-	if (int(PlayerOwner.Level.EngineVersion) >= 3374)
+	if (bWSD)
 	{
 		Super.DrawWeaponBar( C );
 		return;
