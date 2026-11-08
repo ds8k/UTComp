@@ -13,25 +13,7 @@ var const float YShifts[9];
 	https://steamcommunity.com/app/13230/discussions/0/611702631218438023/#c611702631227999537
 */
 var bool bWSD;		// Is widescreen support default in the game code?
-function PostBeginPlay()
-{
-	SetTimer(0.1, true);
-	Super.PostBeginPlay();
-}
-
-function Timer()	// Allows LevelInfo enough time to set up. In practice it shouldn't actually loop
-{
-    if (PlayerOwner != None && PlayerOwner.Level != None && PlayerOwner.Level.EngineVersion != "")
-    {
-		if (int(PlayerOwner.Level.EngineVersion) >= 3374)
-		{
-			bWSD = True;
-		}
-	
-        SetTimer(0.0, false);
-        return;
-    }
-}
+var bool bWSDChecked;	// Has bWSD been set? Done on the first DrawWeaponBar, once Level.EngineVersion is known.
 
 //Common rendering code used in all widescreen HUDs
 //Courtesy of HUD Scaling Fix by Azarael, modified a bit for portability
@@ -995,6 +977,12 @@ simulated function WideDrawWeaponBar(Canvas C)
 
 simulated function DrawWeaponBar(Canvas C)
 {
+	if (!bWSDChecked && Level.EngineVersion != "")
+	{
+		bWSD = int(Level.EngineVersion) >= 3374;
+		bWSDChecked = True;
+	}
+
 	if (bWSD)
 	{
 		Super.DrawWeaponBar( C );

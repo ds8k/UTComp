@@ -6,25 +6,7 @@ var const float XShifts[9];
 var const float YShifts[9];
 
 var bool bWSD;		// Is widescreen support default in the game code?
-function PostBeginPlay()
-{
-	SetTimer(0.1, true);
-	Super.PostBeginPlay();
-}
-
-function Timer()	// Allows LevelInfo enough time to set up. In practice it shouldn't actually loop
-{
-    if (PlayerOwner != None && PlayerOwner.Level != None && PlayerOwner.Level.EngineVersion != "")
-    {
-		if (int(PlayerOwner.Level.EngineVersion) >= 3374)
-		{
-			bWSD = True;
-		}
-	
-        SetTimer(0.0, false);
-        return;
-    }
-}
+var bool bWSDChecked;	// Has bWSD been set? Done on the first DrawWeaponBar, once Level.EngineVersion is known.
 
 /*
 	COPYRIGHT NOTICE
@@ -1121,6 +1103,12 @@ simulated function WideDrawWeaponBar(Canvas C)
 simulated function DrawWeaponBar(Canvas C)
 {
 	local color RealRedColor, RealBlueColor;
+
+	if (!bWSDChecked && Level.EngineVersion != "")
+	{
+		bWSD = int(Level.EngineVersion) >= 3374;
+		bWSDChecked = True;
+	}
 
 	if (bWSD)
 	{
