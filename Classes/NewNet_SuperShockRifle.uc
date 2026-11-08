@@ -42,22 +42,28 @@ simulated function BringUp(optional Weapon PrevWeapon)
         LastFOV = PlayerController(Instigator.Controller).DesiredFOV;
     }
 
-    CurrentScope.BringUp(PrevWeapon);
+    if (CurrentScope != None) {
+        CurrentScope.BringUp(PrevWeapon);
+    }
+
     Super.BringUp();
 }
 
 simulated function bool PutDown()
 {
-  if (Instigator.Controller.IsA( 'PlayerController' )) {
-    PlayerController(Instigator.Controller).EndZoom();
-  }
+    if (Instigator.Controller.IsA( 'PlayerController' )) {
+        PlayerController(Instigator.Controller).EndZoom();
+    }
 
-  if (Super.PutDown() ) {
-    CurrentScope.PutDown();
-    return true;
-  }
+    if (Super.PutDown()) {
+        if (CurrentScope != None) {
+            CurrentScope.PutDown();
+        }
 
-  return false;
+        return true;
+    }
+
+    return false;
 }
 
 simulated function SetScope()
