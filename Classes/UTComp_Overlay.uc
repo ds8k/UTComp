@@ -40,18 +40,19 @@ var float healthOffset, armorOffset, wepiconoffset;
 var int oldscreenwidth, oldfontsize;
 var float tmpX, tmpY, strlenX, strlenY, strlenX2, strlenY2, strlenX3, strlenY3,iconscale;
 var float OnJoinMessageDrawTime;
-var config float DesiredOnJoinMessageTime;
+// Saved by UTComp_ClientSettings (UTCompSHO.ini), which sets these default values.
+var float DesiredOnJoinMessageTime;
 
-var config bool OverlayEnabled, bDrawIcons;
+var bool OverlayEnabled, bDrawIcons;
 var bool BiggerFont;
 
 var vector savedLocation[8];
 var string printLocation[8];
 
-var config float VertPosition, HorizPosition;
+var float VertPosition, HorizPosition;
 
-var config Color BGColor, InfoTextColor, LocTextColor;
-var config int theFontSize;
+var Color BGColor, InfoTextColor, LocTextColor;
+var int theFontSize;
 
 event NotifyLevelChange()
 {

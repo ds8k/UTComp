@@ -1,8 +1,10 @@
 // Patches to PlayerController to bring UT2004 to the modern world.
 class ModernPlayer extends xPlayer;
 
-var config int MaxSavedMoves;
-var config float SavedMovesWarningInterval;
+// Saved by UTComp_ClientSettings (UTCompSHO.ini), which sets these default values.
+// BS_xPlayer.PostBeginPlay copies them into the player.
+var int MaxSavedMoves;
+var float SavedMovesWarningInterval;
 var float LastSavedMovesWarning;
 
 // See PlayerController.uc on how this function works.

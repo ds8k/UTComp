@@ -19,14 +19,14 @@ function InitComponent(GUIController MyController, GUIComponent MyOwner)
 {
     super.InitComponent(MyController,MyOwner);
 
-    sl_Volume.Value=class'UTComp_Settings'.default.HitSoundVolume;
-    sl_Pitch.Value=class'UTComp_Settings'.default.CPMAPitchModifier;
+    sl_Volume.Value=class'UTComp_ClientSettings'.static.Get().HitSoundVolume;
+    sl_Pitch.Value=class'UTComp_ClientSettings'.static.Get().CPMAPitchModifier;
 
-    ch_CPMAStyle.Checked(class'UTComp_Settings'.default.bCPMAStyleHitsounds);
-    ch_EnableHitSounds.Checked(class'UTComp_Settings'.default.bEnableHitSounds);
+    ch_CPMAStyle.Checked(class'UTComp_ClientSettings'.static.Get().bCPMAStyleHitsounds);
+    ch_EnableHitSounds.Checked(class'UTComp_ClientSettings'.static.Get().bEnableHitSounds);
 
-    co_EnemySound.AddItem((class'UTComp_Settings'.default.EnemySound));
-    co_FriendlySound.AddItem((class'UTComp_Settings'.default.FriendlySound));
+    co_EnemySound.AddItem((class'UTComp_ClientSettings'.static.Get().EnemySound));
+    co_FriendlySound.AddItem((class'UTComp_ClientSettings'.static.Get().FriendlySound));
 
     DisableStuff();
 }
@@ -67,18 +67,18 @@ function InternalOnChange( GUIComponent C )
 {
     switch(C)
     {
-        case ch_EnableHitSounds: class'UTComp_Settings'.default.bEnableHitSounds=ch_enableHitSounds.IsChecked(); break;
-        case sl_Volume:  class'UTComp_Settings'.default.HitSoundVolume=sl_Volume.Value; break;
-        case sl_Pitch:  class'UTComp_Settings'.default.CPMAPitchModifier=sl_Pitch.Value; break;
-    //    case co_EnemySound:  class'UTComp_Settings'.default.EnemySound=Sound(DynamicLoadObject(co_EnemySound.GetText(), class'Sound', True)); break;
-   //    case co_FriendlySound:  class'UTComp_Settings'.default.FriendlySound=Sound(DynamicLoadObject(co_FriendlySound.GetText(), class'Sound', True)); break;
-        case co_EnemySound:  class'UTComp_Settings'.default.EnemySound=co_EnemySound.GetText(); break;
-        case co_FriendlySound:  class'UTComp_Settings'.default.FriendlySound=co_FriendlySound.GetText(); break;
-        case ch_CPMAStyle:   class'UTComp_Settings'.default.bCPMAStyleHitSounds=ch_CPMAStyle.IsChecked(); break;
+        case ch_EnableHitSounds: class'UTComp_ClientSettings'.static.Get().bEnableHitSounds=ch_enableHitSounds.IsChecked(); break;
+        case sl_Volume:  class'UTComp_ClientSettings'.static.Get().HitSoundVolume=sl_Volume.Value; break;
+        case sl_Pitch:  class'UTComp_ClientSettings'.static.Get().CPMAPitchModifier=sl_Pitch.Value; break;
+    //    case co_EnemySound:  class'UTComp_ClientSettings'.static.Get().EnemySound=Sound(DynamicLoadObject(co_EnemySound.GetText(), class'Sound', True)); break;
+   //    case co_FriendlySound:  class'UTComp_ClientSettings'.static.Get().FriendlySound=Sound(DynamicLoadObject(co_FriendlySound.GetText(), class'Sound', True)); break;
+        case co_EnemySound:  class'UTComp_ClientSettings'.static.Get().EnemySound=co_EnemySound.GetText(); break;
+        case co_FriendlySound:  class'UTComp_ClientSettings'.static.Get().FriendlySound=co_FriendlySound.GetText(); break;
+        case ch_CPMAStyle:   class'UTComp_ClientSettings'.static.Get().bCPMAStyleHitSounds=ch_CPMAStyle.IsChecked(); break;
     }
     BS_xPlayer(PlayerOwner()).MakeSureSaveConfig();
     class'BS_xPlayer'.Static.StaticSaveConfig();
-    class'UTComp_Settings'.static.staticSaveConfig();
+    class'UTComp_ClientSettings'.static.Get().Save();
     DisableStuff();
 }
 
@@ -86,14 +86,14 @@ function bool InternalOnKeyEvent(out byte Key, out byte State, float delta)
 {
     if (Key == 0x1B)
         return false;
-  //  class'UTComp_Settings'.default.EnemySound=Sound(DynamicLoadObject(co_EnemySound.GetText(), class'Sound', True));
- //   class'UTComp_Settings'.default.FriendlySound=Sound(DynamicLoadObject(co_FriendlySound.GetText(), class'Sound', True));
-    class'UTComp_Settings'.default.EnemySound=co_EnemySound.GetText();
-    class'UTComp_Settings'.default.FriendlySound=co_FriendlySound.GetText();
+  //  class'UTComp_ClientSettings'.static.Get().EnemySound=Sound(DynamicLoadObject(co_EnemySound.GetText(), class'Sound', True));
+ //   class'UTComp_ClientSettings'.static.Get().FriendlySound=Sound(DynamicLoadObject(co_FriendlySound.GetText(), class'Sound', True));
+    class'UTComp_ClientSettings'.static.Get().EnemySound=co_EnemySound.GetText();
+    class'UTComp_ClientSettings'.static.Get().FriendlySound=co_FriendlySound.GetText();
     BS_xPlayer(PlayerOwner()).MakeSureSaveConfig();
     BS_xPlayer(PlayerOwner()).LoadedFriendlySound = None;
     BS_xPlayer(PlayerOwner()).LoadedEnemySound = none;
-    class'UTComp_Settings'.static.staticSaveConfig();
+    class'UTComp_ClientSettings'.static.Get().Save();
     class'BS_xPlayer'.Static.StaticSaveConfig();
 
     return true;

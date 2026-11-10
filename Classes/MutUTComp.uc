@@ -52,6 +52,10 @@ var config int MaxMultiDodges;
 var config int MinNetSpeed;
 var config int MaxNetSpeed;
 
+// False in a new version's (new package's) section, which makes
+// ImportServerSettings() copy the settings saved by the previous version.
+var config bool bSettingsImported;
+
 /* ----Known issues ----
    Mutant:  No Bskins/Forcemodel
    Invasion:  No Bskins/forcemodel on bots (but will on players), no warmup, no custom scoreboard
@@ -153,6 +157,11 @@ var bool bDefaultWeaponsChanged;
 
 function PreBeginPlay()
 {
+    // Before anything reads the player settings (see UTComp_ClientSettings.Init).
+    if (Level.NetMode == NM_DedicatedServer)
+        class'UTComp_ClientSettings'.default.bDedicatedServer = true;
+
+    ImportServerSettings();
 
     SetupDD();
     ReplacePawnAndPC();
@@ -163,6 +172,28 @@ function PreBeginPlay()
     bEnhancedNetCodeEnabledAtStartOfMap = bEnableEnhancedNetCode;
 
     super.PreBeginPlay();
+}
+
+// The settings are saved per package ([<Package>.MutUTComp]), so a new
+// version would start from the defaults. The first time this package runs,
+// copy the settings that the last version saved in this server's ini (see
+// UTComp_ServerSettings). Delete both sections to go back to the defaults.
+function ImportServerSettings()
+{
+    local UTComp_ServerSettings S;
+
+    if (bSettingsImported)
+        return;
+
+    S = class'UTComp_ServerSettings'.static.Get();
+    if (S.bSaved)
+    {
+        S.ApplyTo(self);
+        Log("Copied the server settings saved by"@S.SavedByPackage@"from [ServerSettings UTComp_ServerSettings].", 'UTComp');
+    }
+    bSettingsImported = true;
+    default.bSettingsImported = true;
+    // PreBeginPlay saves them in this package's section.
 }
 
 function SetupDD()
@@ -419,6 +450,7 @@ simulated function Tick(float DeltaTime)
 
     if(PC!=None)
     {
+        class'UTComp_ClientSettings'.static.Get(); // sets the overlay's default values
         PC.Player.InteractionMaster.AddInteraction("UTCompvBoM.UTComp_Overlay", PC.Player);
         bHasInteraction=True;
         class'DamTypeLinkShaft'.default.bSkeletize=false;
@@ -890,6 +922,9 @@ function ParseURL(string Url)
        bEnableEnhancedNetcode = default.bEnableEnhancedNetCode;
    }
    StaticSaveConfig();
+   // Keeps the copy up to date at the start of every map (PostBeginPlay calls
+   // this), including changes made in WebAdmin during the last map.
+   class'UTComp_ServerSettings'.static.Get().SaveFrom(self);
 }
 
 function AutoDemoRecord()

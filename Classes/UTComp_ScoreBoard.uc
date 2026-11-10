@@ -8,10 +8,11 @@ var localized string  fraglimitteam ;
 var int TmpFontSize ;
 var float tmp1,tmp2,tmp3;
 var UTComp_Warmup uWarmup;
-var config bool bEnableColoredNamesOnScoreboard;
-var config bool bDrawStats;
-var config bool bDrawPickups;
-var config bool bOverrideDisplayStats;
+// Saved by UTComp_ClientSettings (UTCompSHO.ini), which sets these default values.
+var bool bEnableColoredNamesOnScoreboard;
+var bool bDrawStats;
+var bool bDrawPickups;
+var bool bOverrideDisplayStats;
 
 function DrawTitle2(Canvas Canvas)
 {
