@@ -338,6 +338,7 @@ function TakeActionOnVote(byte VoteType, byte VoteSwitch, string Options)
         UTCompMutator.RepInfo.bEnableEnhancedNetCode=(VoteSwitch==1);
     }
     UTCompMutator.static.StaticSaveConfig();
+    class'UTComp_ServerSettings'.static.Get().SaveFrom(UTCompMutator);
 }
 
 function bool MatchesGametypePrefix(string MapName, string S)

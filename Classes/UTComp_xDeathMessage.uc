@@ -1,7 +1,8 @@
 class UTComp_xDeathMessage extends xDeathMessage;
 
-var config bool drawcolorednamesindeathmessages;
-var config bool bEnableTeamColoredDeaths;
+// Saved by UTComp_ClientSettings (UTCompSHO.ini), which sets these default values.
+var bool drawcolorednamesindeathmessages;
+var bool bEnableTeamColoredDeaths;
 
 static function string GetString(
 	optional int Switch,

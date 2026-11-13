@@ -17,12 +17,12 @@ function InitComponent(GUIController MyController, GUIComponent MyOwner)
 {
     Super.InitComponent(myController,MyOwner);
 
-    ch_AutoDemo.Checked(class'UTComp_Settings'.default.bEnableUTCompAutoDemorec);
-    ch_AutoSS.Checked(class'UTComp_Settings'.default.bEnableAutoScreenshot);
+    ch_AutoDemo.Checked(class'UTComp_ClientSettings'.static.Get().bEnableUTCompAutoDemorec);
+    ch_AutoSS.Checked(class'UTComp_ClientSettings'.static.Get().bEnableAutoScreenshot);
 
-    co_DemoMask.AddItem(class'UTComp_Settings'.default.DemoRecordingMask);
+    co_DemoMask.AddItem(class'UTComp_ClientSettings'.static.Get().DemoRecordingMask);
 
-    co_SSMask.AddItem(class'UTComp_Settings'.default.ScreenShotMask);
+    co_SSMask.AddItem(class'UTComp_ClientSettings'.static.Get().ScreenShotMask);
 
     DisableStuff();
 }
@@ -44,14 +44,14 @@ function InternalOnChange( GUIComponent C )
 {
     switch(C)
     {
-        case co_SSMask:   class'UTComp_Settings'.default.ScreenShotMask=co_SSMask.GetText(); break;
-        case co_DemoMask:   class'UTComp_Settings'.default.DemoRecordingMask=co_DemoMask.GetText(); break;
-        case ch_AutoDemo:   class'UTComp_Settings'.default.bEnableUTCompAutoDemorec=ch_AutoDemo.IsChecked(); break;
-        case ch_AutoSS:   class'UTComp_Settings'.default.bEnableAutoScreenshot=ch_AutoSS.IsChecked(); break;
+        case co_SSMask:   class'UTComp_ClientSettings'.static.Get().ScreenShotMask=co_SSMask.GetText(); break;
+        case co_DemoMask:   class'UTComp_ClientSettings'.static.Get().DemoRecordingMask=co_DemoMask.GetText(); break;
+        case ch_AutoDemo:   class'UTComp_ClientSettings'.static.Get().bEnableUTCompAutoDemorec=ch_AutoDemo.IsChecked(); break;
+        case ch_AutoSS:   class'UTComp_ClientSettings'.static.Get().bEnableAutoScreenshot=ch_AutoSS.IsChecked(); break;
     }
     BS_xPlayer(PlayerOwner()).MakeSureSaveConfig();
     class'BS_xPlayer'.Static.StaticSaveConfig();
-    class'UTComp_Settings'.static.staticSaveConfig();
+    class'UTComp_ClientSettings'.static.Get().Save();
     DisableStuff();
 }
 
@@ -59,11 +59,11 @@ function bool InternalOnKeyEvent(out byte Key, out byte State, float delta)
 {
     if (Key == 0x1B)
         return false;
-    class'UTComp_Settings'.default.ScreenShotMask=co_SSMask.GetText();
-    class'UTComp_Settings'.default.DemoRecordingMask=co_DemoMask.GetText();
+    class'UTComp_ClientSettings'.static.Get().ScreenShotMask=co_SSMask.GetText();
+    class'UTComp_ClientSettings'.static.Get().DemoRecordingMask=co_DemoMask.GetText();
     BS_xPlayer(PlayerOwner()).MakeSureSaveConfig();
     class'BS_xPlayer'.Static.StaticSaveConfig();
-    class'UTComp_Settings'.static.staticSaveConfig();
+    class'UTComp_ClientSettings'.static.Get().Save();
 }
 
 defaultproperties

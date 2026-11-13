@@ -22,7 +22,7 @@ function InitComponent(GUIController MyController, GUIComponent MyOwner)
     super.InitComponent(MyController,MyOwner);
 
     ch_Enable.Checked(class'UTComp_Overlay'.default.OverlayEnabled);
-    ch_ShowSelf.Checked(class'UTComp_Settings'.default.bShowSelfInTeamOverlay);
+    ch_ShowSelf.Checked(class'UTComp_ClientSettings'.static.Get().bShowSelfInTeamOverlay);
     ch_Icons.Checked(class'UTComp_Overlay'.default.bDrawIcons);
 
     sl_redBG.SetValue(class'UTComp_Overlay'.default.BGColor.R);
@@ -165,8 +165,7 @@ function InternalOnChange( GUIComponent C )
     case sl_Vert: class'UTComp_Overlay'.default.VertPosition=sl_Vert.Value;break;
     case sl_Size: class'UTComp_Overlay'.default.theFontSize=sl_Size.Value;break;
     }
-    class'UTComp_Overlay'.Static.StaticSaveConfig();
-    class'UTComp_Settings'.static.staticSaveConfig();
+    class'UTComp_ClientSettings'.static.Get().Save();
     class'BS_xPlayer'.Static.StaticSaveConfig();
     BS_xPlayer(PlayerOwner()).MakeSureSaveConfig();
     UpdateOverlay();

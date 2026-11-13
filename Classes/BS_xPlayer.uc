@@ -130,10 +130,10 @@ exec function SetEnemySkinColor(string S)
 
     if(Parts.length >=3)
     {
-        class'UTComp_Settings'.default.BlueEnemyUTCompSkinColor.R=byte(Parts[0]);
-        class'UTComp_Settings'.default.BlueEnemyUTCompSkinColor.G=byte(Parts[1]);
-        class'UTComp_Settings'.default.BlueEnemyUTCompSkinColor.B=byte(Parts[2]);
-        class'utcomp_settings'.StaticSaveConfig();
+        class'UTComp_ClientSettings'.static.Get().BlueEnemyUTCompSkinColor.R=byte(Parts[0]);
+        class'UTComp_ClientSettings'.static.Get().BlueEnemyUTCompSkinColor.G=byte(Parts[1]);
+        class'UTComp_ClientSettings'.static.Get().BlueEnemyUTCompSkinColor.B=byte(Parts[2]);
+        class'UTComp_ClientSettings'.static.Get().Save();
     }
     else
     echo("Invalid command, need 3 colors");
@@ -146,10 +146,10 @@ exec function SetFriendSkinColor(string S)
     Split(S, " ", Parts);
     if(Parts.length >=3)
     {
-        class'UTComp_Settings'.default.RedTeammateUTCompSkinColor.R=byte(Parts[0]);
-        class'UTComp_Settings'.default.RedTeammateUTCompSkinColor.G=byte(Parts[1]);
-        class'UTComp_Settings'.default.RedTeammateUTCompSkinColor.B=byte(Parts[2]);
-        class'utcomp_settings'.StaticSaveConfig();
+        class'UTComp_ClientSettings'.static.Get().RedTeammateUTCompSkinColor.R=byte(Parts[0]);
+        class'UTComp_ClientSettings'.static.Get().RedTeammateUTCompSkinColor.G=byte(Parts[1]);
+        class'UTComp_ClientSettings'.static.Get().RedTeammateUTCompSkinColor.B=byte(Parts[2]);
+        class'UTComp_ClientSettings'.static.Get().Save();
     }
     else
     echo("Invalid command, need 3 colors");
@@ -181,7 +181,17 @@ simulated function MakeSureSaveConfig()
 
 simulated function PostBeginPlay()
 {
+    local UTComp_ClientSettings Settings;
+
     Super.PostBeginPlay();
+
+    // Loads UTCompSHO.ini and sets the default values of the classes whose
+    // settings it holds (the team overlay is created after this).
+    Settings = class'UTComp_ClientSettings'.static.Get();
+    class'UTComp_ClientHudSettings'.static.Get();
+    MaxSavedMoves = Settings.MaxSavedMoves;
+    SavedMovesWarningInterval = Settings.SavedMovesWarningInterval;
+
     AssignStatNames();
     ChangeDeathMessageOrder();
 }
@@ -268,28 +278,28 @@ simulated function InitializeStuff()
 {
     InitializeScoreboard();
     SetInitialColoredName();
-    SetShowSelf(class'UTComp_Settings'.default.bShowSelfInTeamOverlay);
+    SetShowSelf(class'UTComp_ClientSettings'.static.Get().bShowSelfInTeamOverlay);
     SetBStats(class'UTComp_Scoreboard'.default.bDrawStats || class'UTComp_ScoreBoard'.default.bOverrideDisplayStats);
-    SetEyeHeightAlgorithm(class'UTComp_Settings'.default.bUseNewEyeHeightAlgorithm);
+    SetEyeHeightAlgorithm(class'UTComp_ClientSettings'.static.Get().bUseNewEyeHeightAlgorithm);
 
-    if(class'UTComp_Settings'.default.bFirstRun)
+    if(class'UTComp_ClientSettings'.static.Get().bFirstRun)
     {
-        class'UTComp_Settings'.default.bFirstRun=False;
+        class'UTComp_ClientSettings'.static.Get().bFirstRun=False;
         ConsoleCommand("Set Input f5 MyMenu");
-        class'UTComp_Settings'.default.bFirstRun=False;
+        class'UTComp_ClientSettings'.static.Get().bFirstRun=False;
         if(!class'DeathMatch'.default.bForceDefaultCharacter)
         {
-           class'UTComp_Settings'.default.bRedTeammateModelsForced=False;
-           class'UTComp_Settings'.default.bBlueEnemyModelsForced=False;
+           class'UTComp_ClientSettings'.static.Get().bRedTeammateModelsForced=False;
+           class'UTComp_ClientSettings'.static.Get().bBlueEnemyModelsForced=False;
            class'UTComp_xPawn'.Static.StaticSaveConfig();
         }
         else
         {
-            class'UTComp_Settings'.default.BlueEnemyModelName=class'xGame.xPawn'.default.PlacedCharacterName;
-            class'UTComp_Settings'.default.RedTeammateModelName=class'xGame.xPawn'.default.PlacedCharacterName;
+            class'UTComp_ClientSettings'.static.Get().BlueEnemyModelName=class'xGame.xPawn'.default.PlacedCharacterName;
+            class'UTComp_ClientSettings'.static.Get().RedTeammateModelName=class'xGame.xPawn'.default.PlacedCharacterName;
             class'UTComp_xPawn'.static.staticsaveconfig();
         }
-        class'UTComp_Settings'.Static.StaticSaveConfig();
+        class'UTComp_ClientSettings'.static.Get().Save();
     }
     MatchHudColor();
     GetMapList();
@@ -301,7 +311,7 @@ simulated function InitializeScoreboard()
 
     if(myHud!=None && myHUD.ScoreBoard.IsA('UTComp_ScoreBoard') && gamereplicationinfo!=None)
     {
-        if(class'UTComp_Settings'.default.bUseDefaultScoreboard)
+        if(class'UTComp_ClientSettings'.static.Get().bUseDefaultScoreboard)
         {
             if(gamereplicationinfo.bTeamGame)
                 NewScoreboardClass=class'UTCompvBoM.UTComp_ScoreBoardTDM';
@@ -310,7 +320,7 @@ simulated function InitializeScoreboard()
             clientChangedScoreboard=True;
         }
     }
-    else if(ClientChangedScoreBoard && !class'UTComp_Settings'.default.bUseDefaultScoreboard)
+    else if(ClientChangedScoreBoard && !class'UTComp_ClientSettings'.static.Get().bUseDefaultScoreboard)
         NewScoreboardClass=class'UTCompvBoM.UTComp_ScoreBoard';
     if(myHUD!=None && NewScoreBoardClass!=None)
         myHUD.SetScoreBoardClass( NewScoreboardClass);
@@ -325,9 +335,9 @@ simulated function SetInitialColoredName()
 simulated function StartDemo()
 {
     local string S;
-    S=StripIllegalWindowsCharacters(class'UTComp_Settings'.default.DemoRecordingmask);
+    S=StripIllegalWindowsCharacters(class'UTComp_ClientSettings'.static.Get().DemoRecordingmask);
 
-    if (class'UTComp_Settings'.default.bEnableUTCompAutoDemorec && (level.NetMode!=NM_DedicatedServer))
+    if (class'UTComp_ClientSettings'.static.Get().bEnableUTCompAutoDemorec && (level.NetMode!=NM_DedicatedServer))
     {
         Player.Console.DelayedConsoleCommand("Demorec "$S);
         bAutoDemoStarted=True;
@@ -391,9 +401,9 @@ state GameEnded
     }
     function Timer()
     {
-        if (class'UTComp_Settings'.default.bEnableAutoScreenShot && screenshotstaken==0)
+        if (class'UTComp_ClientSettings'.static.Get().bEnableAutoScreenShot && screenshotstaken==0)
         {
-            ConsoleCommand("shot "$StripIllegalWindowsCharacters(class'UTComp_Settings'.default.ScreenShotMask));
+            ConsoleCommand("shot "$StripIllegalWindowsCharacters(class'UTComp_ClientSettings'.static.Get().ScreenShotMask));
             screenshotstaken++;
         }
         Super.Timer();
@@ -416,7 +426,7 @@ simulated function ReceiveHit(class<DamageType> DamageType, int Damage, pawn Inj
     else if(Injured.GetTeamNum()==255 || (Injured.GetTeamNum() != GetTeamNum()))
     {
         RegisterEnemyHit(DamageType, Damage);
-        if(class'UTComp_Settings'.default.bCPMAStyleHitsounds && (DamageType == class'DamTypeFlakChunk' || DamageType == class'DamTypeFlakShell') && (RepInfo==None || RepInfo.EnableHitSoundsMode==2 || LineOfSightTo(Injured)))
+        if(class'UTComp_ClientSettings'.static.Get().bCPMAStyleHitsounds && (DamageType == class'DamTypeFlakChunk' || DamageType == class'DamTypeFlakShell') && (RepInfo==None || RepInfo.EnableHitSoundsMode==2 || LineOfSightTo(Injured)))
         {
             GroupDamageSound(DamageType, Damage, true);
         }
@@ -426,7 +436,7 @@ simulated function ReceiveHit(class<DamageType> DamageType, int Damage, pawn Inj
     else
     {
         RegisterTeammateHit(DamageType, Damage);
-        if(class'UTComp_Settings'.default.bCPMAStyleHitsounds && (DamageType == class'DamTypeFlakChunk' || DamageType == class'DamTypeFlakShell') && (RepInfo==None || RepInfo.EnableHitSoundsMode==2 || LineOfSightTo(Injured)))
+        if(class'UTComp_ClientSettings'.static.Get().bCPMAStyleHitsounds && (DamageType == class'DamTypeFlakChunk' || DamageType == class'DamTypeFlakShell') && (RepInfo==None || RepInfo.EnableHitSoundsMode==2 || LineOfSightTo(Injured)))
         {
             GroupDamageSound(DamageType, Damage, false);
         }
@@ -961,35 +971,35 @@ simulated function ServerRegisterTeammateHit(class<DamageType> DamageType, int D
 simulated function PlayEnemyHitSound(int Damage)
 {
     local float HitSoundPitch;
-    if(!class'UTComp_Settings'.default.bEnableHitSounds || LastHitSoundTime>Level.TimeSeconds)
+    if(!class'UTComp_ClientSettings'.static.Get().bEnableHitSounds || LastHitSoundTime>Level.TimeSeconds)
         return;
     LastHitSoundTime=Level.TimeSeconds+HITSOUNDTWEENTIME;
     HitSoundPitch=1.0;
-    if(class'UTComp_Settings'.default.bCPMAStyleHitSounds)
-        HitSoundPitch=class'UTComp_Settings'.default.CPMAPitchModifier*30.0/Damage;
+    if(class'UTComp_ClientSettings'.static.Get().bCPMAStyleHitSounds)
+        HitSoundPitch=class'UTComp_ClientSettings'.static.Get().CPMAPitchModifier*30.0/Damage;
     if(LoadedEnemySound == none)
-        LoadedEnemySound = Sound(DynamicLoadObject(class'UTComp_Settings'.default.EnemySound, class'Sound', True));
+        LoadedEnemySound = Sound(DynamicLoadObject(class'UTComp_ClientSettings'.static.Get().EnemySound, class'Sound', True));
 
     if(ViewTarget!=None)
-        ViewTarget.PlaySound(LoadedEnemySound,,class'UTComp_Settings'.default.HitSoundVolume,,,HitSoundPitch);
+        ViewTarget.PlaySound(LoadedEnemySound,,class'UTComp_ClientSettings'.static.Get().HitSoundVolume,,,HitSoundPitch);
 }
 
 simulated function PlayTeammateHitSound(int Damage)
 {
     local float HitSoundPitch;
 
-    if(!class'UTComp_Settings'.default.bEnableHitSounds || LastHitSoundTime>Level.TimeSeconds)
+    if(!class'UTComp_ClientSettings'.static.Get().bEnableHitSounds || LastHitSoundTime>Level.TimeSeconds)
         return;
     LastHitSoundTime=Level.TimeSeconds+HITSOUNDTWEENTIME;
     HitSoundPitch=1.0;
-    if(class'UTComp_Settings'.default.bCPMAStyleHitSounds)
-        HitSoundPitch=class'UTComp_Settings'.default.CPMAPitchModifier*30.0/Damage;
+    if(class'UTComp_ClientSettings'.static.Get().bCPMAStyleHitSounds)
+        HitSoundPitch=class'UTComp_ClientSettings'.static.Get().CPMAPitchModifier*30.0/Damage;
 
     if(LoadedFriendlySound == none)
-        LoadedFriendlySound = Sound(DynamicLoadObject(class'UTComp_Settings'.default.FriendlySound, class'Sound', True));
+        LoadedFriendlySound = Sound(DynamicLoadObject(class'UTComp_ClientSettings'.static.Get().FriendlySound, class'Sound', True));
 
     if(ViewTarget!=None)
-        ViewTarget.PlaySound(LoadedFriendlySound,,class'UTComp_Settings'.default.HitSoundVolume,,,HitSoundPitch);
+        ViewTarget.PlaySound(LoadedFriendlySound,,class'UTComp_ClientSettings'.static.Get().HitSoundVolume,,,HitSoundPitch);
 }
 
 exec function myMenu()
@@ -1257,9 +1267,9 @@ function ServerSetViewTarget(actor A)
 
 exec function SetSavedSpectateSpeed(float F)
 {
-    class'UTComp_Settings'.default.SavedSpectateSpeed=F;
+    class'UTComp_ClientSettings'.static.Get().SavedSpectateSpeed=F;
     SetSpectateSpeed(F);
-    class'UTComp_Settings'.static.staticSaveConfig();
+    class'UTComp_ClientSettings'.static.Get().Save();
 }
 
 exec function NextSuperWeapon()
@@ -1785,8 +1795,8 @@ exec function SetName(coerce string S)
     ReplaceText(S, " ", "_");
     ReplaceText(S, "\"", "");
     SetColoredNameOldStyle(Left(S, 20));
-    class'UTComp_Settings'.default.CurrentSelectedColoredName=255;
-    class'UTComp_Settings'.static.staticSaveConfig();staticsaveconfig();
+    class'UTComp_ClientSettings'.static.Get().CurrentSelectedColoredName=255;
+    class'UTComp_ClientSettings'.static.Get().Save();staticsaveconfig();
 }
 
 exec function SetNameNoReset(coerce string S)
@@ -1815,12 +1825,12 @@ simulated function SetColoredNameOldStyle(optional string S2, optional bool bSho
     for(k=1; k<=Len(S2); k++)
     {
         numdoatonce=1;
-        for(m=k;m<Len(S2)&& class'UTComp_Settings'.default.ColorName[k-1] == class'UTComp_Settings'.default.ColorName[m] ;m++)
+        for(m=k;m<Len(S2)&& class'UTComp_ClientSettings'.static.Get().ColorName[k-1] == class'UTComp_ClientSettings'.static.Get().ColorName[m] ;m++)
         {
             numdoatonce++;
             k++;
         }
-        S=S$class'UTComp_Util'.Static.MakeColorCode(class'UTComp_Settings'.default.ColorName[k-1])$Right(Left(S2, k), numdoatonce);
+        S=S$class'UTComp_Util'.Static.MakeColorCode(class'UTComp_ClientSettings'.static.Get().ColorName[k-1])$Right(Left(S2, k), numdoatonce);
     }
     if (UTCompPRI!=None)
         UTCompPRI.SetColoredName(S);
@@ -1837,11 +1847,11 @@ simulated function string FindColoredName(int CustomColors)
 
     if(S2=="")
     {
-       S2=class'UTComp_Settings'.default.ColoredName[CustomColors].SavedName;
+       S2=class'UTComp_ClientSettings'.static.Get().ColoredName[CustomColors].SavedName;
     }
 
     for(i=0; i<Len(S2); i++)
-        S $= class'UTComp_Util'.Static.MakeColorCode(class'UTComp_Settings'.default.ColoredName[CustomColors].SavedColor[i])$Mid(class'UTComp_Settings'.default.ColoredName[CustomColors].SavedName,i,1);
+        S $= class'UTComp_Util'.Static.MakeColorCode(class'UTComp_ClientSettings'.static.Get().ColoredName[CustomColors].SavedColor[i])$Mid(class'UTComp_ClientSettings'.static.Get().ColoredName[CustomColors].SavedName,i,1);
     return S;
 }
 
@@ -1858,20 +1868,20 @@ simulated function string AddNewColoredName(int CustomColors)
 
     if(S2=="")
     {
-       S2=class'UTComp_Settings'.default.ColoredName[CustomColors].SavedName;
+       S2=class'UTComp_ClientSettings'.static.Get().ColoredName[CustomColors].SavedName;
     }
     SetNameNoReset(S2);
     for(k=0; k<20; k++)
-        class'UTComp_Settings'.default.ColorName[k]=class'UTComp_Settings'.default.ColoredName[CustomColors].SavedColor[k];
+        class'UTComp_ClientSettings'.static.Get().ColorName[k]=class'UTComp_ClientSettings'.static.Get().ColoredName[CustomColors].SavedColor[k];
     for(k=1; k<=Len(S2); k++)
     {
         numdoatonce=1;
-        for(m=k;m<Len(S2)&& class'UTComp_Settings'.default.ColoredName[CustomColors].SavedColor[k-1] == class'UTComp_Settings'.default.ColoredName[CustomColors].SavedColor[m] ;m++)
+        for(m=k;m<Len(S2)&& class'UTComp_ClientSettings'.static.Get().ColoredName[CustomColors].SavedColor[k-1] == class'UTComp_ClientSettings'.static.Get().ColoredName[CustomColors].SavedColor[m] ;m++)
         {
             numdoatonce++;
             k++;
         }
-        S=S$class'UTComp_Util'.Static.MakeColorCode(class'UTComp_Settings'.default.ColoredName[CustomColors].SavedColor[k-1])$Right(Left(S2, k), numdoatonce);
+        S=S$class'UTComp_Util'.Static.MakeColorCode(class'UTComp_ClientSettings'.static.Get().ColoredName[CustomColors].SavedColor[k-1])$Right(Left(S2, k), numdoatonce);
     }
     return S;
 }
@@ -1881,13 +1891,13 @@ simulated function SaveNewColoredName()
     local int n;
     local int l;
 
-    n=class'UTComp_Settings'.default.ColoredName.Length+1;
-    class'UTComp_Settings'.default.ColoredName.Length=n;
+    n=class'UTComp_ClientSettings'.static.Get().ColoredName.Length+1;
+    class'UTComp_ClientSettings'.static.Get().ColoredName.Length=n;
 
-    class'UTComp_Settings'.default.ColoredName[n-1].SavedName=PlayerReplicationInfo.PlayerName;
+    class'UTComp_ClientSettings'.static.Get().ColoredName[n-1].SavedName=PlayerReplicationInfo.PlayerName;
 
     for(l=0; l<20; l++)
-        class'UTComp_Settings'.default.ColoredName[n-1].SavedColor[l]=class'UTComp_Settings'.default.ColorName[l];
+        class'UTComp_ClientSettings'.static.Get().ColoredName[n-1].SavedColor[l]=class'UTComp_ClientSettings'.static.Get().ColorName[l];
 
 }
 
@@ -1895,11 +1905,11 @@ exec function ShowColoredNames()
 {
     local int i, j;
     local string S;
-    for(i=0; i<class'UTComp_Settings'.default.ColoredName.Length; i++)
+    for(i=0; i<class'UTComp_ClientSettings'.static.Get().ColoredName.Length; i++)
     {
-        Log(class'UTComp_Settings'.default.ColoredName[i].SavedName);
+        Log(class'UTComp_ClientSettings'.static.Get().ColoredName[i].SavedName);
         for(j=0; j<20; j++)
-        S=S$class'UTComp_Settings'.default.ColoredName[i].SavedColor[j].R@class'UTComp_Settings'.default.ColoredName[i].SavedColor[j].G@class'UTComp_Settings'.default.ColoredName[i].SavedColor[j].B;
+        S=S$class'UTComp_ClientSettings'.static.Get().ColoredName[i].SavedColor[j].R@class'UTComp_ClientSettings'.static.Get().ColoredName[i].SavedColor[j].G@class'UTComp_ClientSettings'.static.Get().ColoredName[i].SavedColor[j].B;
         Log(S);
     }
 }
@@ -1917,22 +1927,22 @@ simulated function SetColoredNameOldStyleCustom(optional string S2, optional int
 
     if(S2=="")
     {
-       S2=class'UTComp_Settings'.default.ColoredName[CustomColors].SavedName;
+       S2=class'UTComp_ClientSettings'.static.Get().ColoredName[CustomColors].SavedName;
     }
     SetNameNoReset(S2);
 
     for(k=0; k<20; k++)
-        class'UTComp_Settings'.default.ColorName[k]=class'UTComp_Settings'.default.ColoredName[CustomColors].SavedColor[k];
-    class'UTComp_Settings'.static.StaticSaveConfig();
+        class'UTComp_ClientSettings'.static.Get().ColorName[k]=class'UTComp_ClientSettings'.static.Get().ColoredName[CustomColors].SavedColor[k];
+    class'UTComp_ClientSettings'.static.Get().Save();
     for(k=1; k<=Len(S2); k++)
     {
         numdoatonce=1;
-        for(m=k;m<Len(S2)&& class'UTComp_Settings'.default.ColoredName[CustomColors].SavedColor[k-1] == class'UTComp_Settings'.default.ColoredName[CustomColors].SavedColor[m] ;m++)
+        for(m=k;m<Len(S2)&& class'UTComp_ClientSettings'.static.Get().ColoredName[CustomColors].SavedColor[k-1] == class'UTComp_ClientSettings'.static.Get().ColoredName[CustomColors].SavedColor[m] ;m++)
         {
             numdoatonce++;
             k++;
         }
-        S=S$class'UTComp_Util'.Static.MakeColorCode(class'UTComp_Settings'.default.ColoredName[CustomColors].SavedColor[k-1])$Right(Left(S2, k), numdoatonce);
+        S=S$class'UTComp_Util'.Static.MakeColorCode(class'UTComp_ClientSettings'.static.Get().ColoredName[CustomColors].SavedColor[k-1])$Right(Left(S2, k), numdoatonce);
     }
     if(UTCompPRI!=None)
         UTCompPRI.SetColoredName(S);
@@ -1941,14 +1951,14 @@ simulated function SetColoredNameOldStyleCustom(optional string S2, optional int
 exec function ListColoredNames()
 {
     local int i;
-    for(i=0; i<class'UTComp_Settings'.default.ColoredName.Length; i++)
-        echo(class'UTComp_Settings'.default.coloredname[i].SavedName);
+    for(i=0; i<class'UTComp_ClientSettings'.static.Get().ColoredName.Length; i++)
+        echo(class'UTComp_ClientSettings'.static.Get().coloredname[i].SavedName);
 }
 
 simulated function SetShowSelf(Bool b)
 {
-    class'UTComp_Settings'.default.bShowSelfInTeamOverlay=b;
-    class'UTComp_Settings'.static.staticSaveConfig();staticsaveconfig();
+    class'UTComp_ClientSettings'.static.Get().bShowSelfInTeamOverlay=b;
+    class'UTComp_ClientSettings'.static.Get().Save();staticsaveconfig();
     if(UTCompPRI!=None)
         UTCompPRI.SetShowSelf(b);
 }
@@ -2225,7 +2235,7 @@ event TeamMessage( PlayerReplicationInfo PRI, coerce string S, name Type  )
         Type = 'TeamSay';
 
     //replace the color codes
-    if(class'UTComp_Settings'.default.bAllowColoredMessages)
+    if(class'UTComp_ClientSettings'.static.Get().bAllowColoredMessages)
     {
         for(k=7; k>=0; k--)
         {
@@ -2241,7 +2251,7 @@ event TeamMessage( PlayerReplicationInfo PRI, coerce string S, name Type  )
     }
     if ( myHUD != None )
     {
-        if (class'UTComp_Settings'.default.bEnableColoredNamesInTalk)
+        if (class'UTComp_ClientSettings'.static.Get().bEnableColoredNamesInTalk)
             Message( PRI, c$S, Type );
         else
             myHud.Message( PRI, c$S, Type );
@@ -2434,47 +2444,47 @@ simulated function MatchHudColor()
     if(myHud==None || HudCDeathMatch(myHud)==None)
         return;
     DMHud=HudCDeathMatch(myHud);
-    if(!class'UTComp_HudSettings'.default.bMatchHudColor)
+    if(!class'UTComp_ClientHudSettings'.static.Get().bMatchHudColor)
     {
         DMHud.HudColorRed=class'HudCDeathMatch'.default.HudColorRed;
         DMHud.HudColorBlue=class'HudCDeathMatch'.default.HudColorBlue;
         return;
     }
 
-    if(!class'UTComp_Settings'.default.bEnemyBasedSkins)
+    if(!class'UTComp_ClientSettings'.static.Get().bEnemyBasedSkins)
     {
-        if(class'UTComp_Settings'.default.ClientSkinModeRedTeammate == 3)
+        if(class'UTComp_ClientSettings'.static.Get().ClientSkinModeRedTeammate == 3)
         {
-            DMHud.HudColorRed=class'UTComp_Settings'.default.RedTeammateUTCompSkinColor;
+            DMHud.HudColorRed=class'UTComp_ClientSettings'.static.Get().RedTeammateUTCompSkinColor;
         }
-        else if(class'UTComp_Settings'.default.ClientSkinModeRedTeammate == 2
-            || class'UTComp_Settings'.default.ClientSkinModeRedTeammate == 1)
+        else if(class'UTComp_ClientSettings'.static.Get().ClientSkinModeRedTeammate == 2
+            || class'UTComp_ClientSettings'.static.Get().ClientSkinModeRedTeammate == 1)
         {
-            DMHud.HudColorRed=class'UTComp_xPawn'.default.BrightSkinColors[class'UTComp_Settings'.default.PreferredSkinColorRedTeammate];
+            DMHud.HudColorRed=class'UTComp_xPawn'.default.BrightSkinColors[class'UTComp_ClientSettings'.static.Get().PreferredSkinColorRedTeammate];
         }
 
-        if(class'UTComp_Settings'.default.ClientSkinModeBlueEnemy == 3)
+        if(class'UTComp_ClientSettings'.static.Get().ClientSkinModeBlueEnemy == 3)
         {
-            DMHud.HudColorBlue=class'UTComp_Settings'.default.BlueEnemyUTCompSkinColor;
+            DMHud.HudColorBlue=class'UTComp_ClientSettings'.static.Get().BlueEnemyUTCompSkinColor;
         }
-        else if(class'UTComp_Settings'.default.ClientSkinModeBlueEnemy == 2
-            || class'UTComp_Settings'.default.ClientSkinModeBlueEnemy == 1)
+        else if(class'UTComp_ClientSettings'.static.Get().ClientSkinModeBlueEnemy == 2
+            || class'UTComp_ClientSettings'.static.Get().ClientSkinModeBlueEnemy == 1)
         {
-            DMHud.HudColorBlue=class'UTComp_xPawn'.default.BrightSkinColors[class'UTComp_Settings'.default.PreferredSkinColorBlueEnemy];
+            DMHud.HudColorBlue=class'UTComp_xPawn'.default.BrightSkinColors[class'UTComp_ClientSettings'.static.Get().PreferredSkinColorBlueEnemy];
         }
     }
     else
     {
-        if(class'UTComp_Settings'.default.ClientSkinModeRedTeammate == 3)
+        if(class'UTComp_ClientSettings'.static.Get().ClientSkinModeRedTeammate == 3)
         {
-            DMHud.HudColorBlue=class'UTComp_Settings'.default.RedTeammateUTCompSkinColor;
-            DMHud.HudColorRed=class'UTComp_Settings'.default.RedTeammateUTCompSkinColor;
+            DMHud.HudColorBlue=class'UTComp_ClientSettings'.static.Get().RedTeammateUTCompSkinColor;
+            DMHud.HudColorRed=class'UTComp_ClientSettings'.static.Get().RedTeammateUTCompSkinColor;
         }
-        else if(class'UTComp_Settings'.default.ClientSkinModeRedTeammate == 2
-            || class'UTComp_Settings'.default.ClientSkinModeRedTeammate == 1)
+        else if(class'UTComp_ClientSettings'.static.Get().ClientSkinModeRedTeammate == 2
+            || class'UTComp_ClientSettings'.static.Get().ClientSkinModeRedTeammate == 1)
         {
-            DMHud.HudColorBlue=class'UTComp_xPawn'.default.BrightSkinColors[class'UTComp_Settings'.default.PreferredSkinColorRedTeammate];
-            DMHud.HudColorRed=class'UTComp_xPawn'.default.BrightSkinColors[class'UTComp_Settings'.default.PreferredSkinColorRedTeammate];
+            DMHud.HudColorBlue=class'UTComp_xPawn'.default.BrightSkinColors[class'UTComp_ClientSettings'.static.Get().PreferredSkinColorRedTeammate];
+            DMHud.HudColorRed=class'UTComp_xPawn'.default.BrightSkinColors[class'UTComp_ClientSettings'.static.Get().PreferredSkinColorRedTeammate];
         }
     }
 }
@@ -2561,7 +2571,7 @@ exec function GetSensitivity()
 // so we shut off if its outside the max
 simulated static function bool UseNewNet()
 {
-    return class'UTComp_Settings'.default.bEnableEnhancedNetCode;
+    return class'UTComp_ClientSettings'.static.Get().bEnableEnhancedNetCode;
 }
 
 /* replace calls fro old weapons if newnet is on */
@@ -2609,13 +2619,13 @@ function DoCombo( class<Combo> ComboClass )
 
 function bool ComboDisabled(class<Combo> ComboClass)
 {
-    if(class'UTComp_Settings'.default.bDisableSpeed && ComboClass == class'xGame.ComboSpeed')
+    if(class'UTComp_ClientSettings'.static.Get().bDisableSpeed && ComboClass == class'xGame.ComboSpeed')
         return true;
-    if(class'UTComp_Settings'.default.bDisableBooster && ComboClass == class'xGame.ComboDefensive')
+    if(class'UTComp_ClientSettings'.static.Get().bDisableBooster && ComboClass == class'xGame.ComboDefensive')
         return true;
-    if(class'UTComp_Settings'.default.bDisableInvis && ComboClass == class'xGame.ComboInvis')
+    if(class'UTComp_ClientSettings'.static.Get().bDisableInvis && ComboClass == class'xGame.ComboInvis')
         return true;
-    if(class'UTComp_Settings'.default.bDisableBerserk && ComboClass == class'xGame.ComboBerserk')
+    if(class'UTComp_ClientSettings'.static.Get().bDisableBerserk && ComboClass == class'xGame.ComboBerserk')
         return true;
 
     return false;

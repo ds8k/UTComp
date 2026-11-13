@@ -11,7 +11,7 @@ static function string GetString(
     )
 {
     local utcomp_pri upri;
-    if(class'UTComp_Settings'.default.bEnableColoredNamesOnEnemies)
+    if(class'UTComp_ClientSettings'.static.Get().bEnableColoredNamesOnEnemies)
     {
         uPRI = class'UTComp_Util'.static.GetUTCompPRI(RelatedPRI_1);
         if(uPRI!=None && uPRI.ColoredName != "")
