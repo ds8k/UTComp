@@ -85,7 +85,7 @@ simulated function SpawnEffects()
 
 defaultproperties
 {
-    ExtraBeamClass=Class'UTCompvBoM.NewNet_ExtraRedBeam'
-    CoilClass=Class'UTCompvBoM.NewNet_ShockBeamCoilB'
-    Skins(0)=ColorModifier'InstagibEffects.Effects.RedSuperShockBeam'
+	ExtraBeamClass=Class'UTCompvBoM.NewNet_ExtraRedBeam'
+	CoilClass=Class'UTCompvBoM.NewNet_ShockBeamCoilB'
+	Skins(0)=ColorModifier'InstagibEffects.Effects.RedSuperShockBeam'
 }

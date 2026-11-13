@@ -1,4 +1,3 @@
-
 class UTComp_FlakCannon extends FlakCannon
     HideDropDown
 	CacheExempt;

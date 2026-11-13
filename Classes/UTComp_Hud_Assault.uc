@@ -5,6 +5,9 @@ class UTComp_Hud_Assault extends HUD_Assault;
 var const float XShifts[9];
 var const float YShifts[9];
 
+var bool bWSD;		// Is widescreen support default in the game code?
+var bool bWSDChecked;	// Has bWSD been set? Done on the first DrawWeaponBar, once Level.EngineVersion is known.
+
 /*
 	COPYRIGHT NOTICE
 	Below code is copyright Azarael - used with permission:
@@ -238,7 +241,7 @@ simulated function DrawChargeBar(Canvas C)
 
 simulated function DrawCrossHair(Canvas C)
 {
-	if(class'UTComp_HudSettings'.default.bEnableUTCompCrosshairs && class'UTComp_HudSettings'.default.UTCompCrosshairs.Length>0)
+	if(class'UTComp_ClientHudSettings'.static.Get().bEnableUTCompCrosshairs && class'UTComp_ClientHudSettings'.static.Get().UTCompCrosshairs.Length>0)
         DrawUTCompCrosshair(C);
     else
         WideDrawCrosshair(C);
@@ -341,24 +344,24 @@ simulated function DrawUTCompCrosshair (Canvas C)
 	if (!bCrosshairShow)
         return;
 
-    for(i=0; i<class'UTComp_HudSettings'.default.UTCompCrosshairs.Length; i++)
+    for(i=0; i<class'UTComp_ClientHudSettings'.static.Get().UTCompCrosshairs.Length; i++)
     {
         CHTexture.Length=i+1;
-        CHTexture[i].WidgetTexture=class'UTComp_HudSettings'.default.UTCompCrosshairs[i].CrossTex;
+        CHTexture[i].WidgetTexture=class'UTComp_ClientHudSettings'.static.Get().UTCompCrosshairs[i].CrossTex;
         CHTexture[i].RenderStyle=STY_Alpha;
         CHTexture[i].TextureCoords.X2=64;
         CHTexture[i].TextureCoords.Y2=64;
-        CHTexture[i].TextureScale=class'UTComp_HudSettings'.default.UTCompCrosshairs[i].CrossScale*0.50;
+        CHTexture[i].TextureScale=class'UTComp_ClientHudSettings'.static.Get().UTCompCrosshairs[i].CrossScale*0.50;
         CHTexture[i].DrawPivot=DP_MiddleMiddle;
-        CHTexture[i].PosX=class'UTComp_HudSettings'.default.UTCompCrosshairs[i].OffsetX;
-        CHTexture[i].PosY=class'UTComp_HudSettings'.default.UTCompCrosshairs[i].OffsetY;
+        CHTexture[i].PosX=class'UTComp_ClientHudSettings'.static.Get().UTCompCrosshairs[i].OffsetX;
+        CHTexture[i].PosY=class'UTComp_ClientHudSettings'.static.Get().UTCompCrosshairs[i].OffsetY;
         CHTexture[i].ScaleMode = SM_None;
         CHTexture[i].Scale=1.00;
-        CHTexture[i].Tints[0]=class'UTComp_HudSettings'.default.UTCompCrosshairs[i].CrossColor;
-        CHTexture[i].Tints[1]=class'UTComp_HudSettings'.default.UTCompCrosshairs[i].CrossColor;
+        CHTexture[i].Tints[0]=class'UTComp_ClientHudSettings'.static.Get().UTCompCrosshairs[i].CrossColor;
+        CHTexture[i].Tints[1]=class'UTComp_ClientHudSettings'.static.Get().UTCompCrosshairs[i].CrossColor;
     }
 
-    if ( class'UTComp_HudSettings'.default.bEnableCrosshairSizing && LastPickupTime > Level.TimeSeconds - 0.4 )
+    if ( class'UTComp_ClientHudSettings'.static.Get().bEnableCrosshairSizing && LastPickupTime > Level.TimeSeconds - 0.4 )
 	{
 		if ( LastPickupTime > Level.TimeSeconds - 0.2 )
 			for(i=0; i<CHTexture.Length; i++)
@@ -1044,6 +1047,18 @@ simulated function WideDrawWeaponBar(Canvas C)
 
 simulated function DrawWeaponBar(Canvas C)
 {
+	if (!bWSDChecked && Level.EngineVersion != "")
+	{
+		bWSD = int(Level.EngineVersion) >= 3374;
+		bWSDChecked = True;
+	}
+
+	if (bWSD)
+	{
+		Super.DrawWeaponBar( C );
+		return;
+	}
+
 	WideDrawWeaponBar(C);
 }
 
@@ -1191,8 +1206,8 @@ simulated function UpdatePrecacheMaterials()
 {
 	local int i;
 
-    for (i=0; i<class'UTComp_HudSettings'.default.UTCompCrosshairs.Length && class'UTComp_HudSettings'.default.bEnableUTCompCrosshairs; i++ )
-		Level.AddPrecacheMaterial(class'UTComp_HudSettings'.default.UTCompCrosshairs[i].CrossTex);
+    for (i=0; i<class'UTComp_ClientHudSettings'.static.Get().UTCompCrosshairs.Length && class'UTComp_ClientHudSettings'.static.Get().bEnableUTCompCrosshairs; i++ )
+		Level.AddPrecacheMaterial(class'UTComp_ClientHudSettings'.static.Get().UTCompCrosshairs[i].CrossTex);
 
     super.UpdatePrecacheMaterials();
 }
@@ -1212,16 +1227,16 @@ function DisplayEnemyName(Canvas C, PlayerReplicationInfo PRI)
 
 defaultproperties
 {
-    XShifts(1)=0.5
-    XShifts(2)=1.0
-    XShifts(3)=1.0
-    XShifts(4)=1.0
-    XShifts(5)=0.5
-    XShifts(8)=0.5
-    YShifts(3)=0.5
-    YShifts(4)=1.0
-    YShifts(5)=1.0
-    YShifts(6)=1.0
-    YShifts(7)=0.5
-    YShifts(8)=0.5
+	XShifts(1)=0.500000
+	XShifts(2)=1.000000
+	XShifts(3)=1.000000
+	XShifts(4)=1.000000
+	XShifts(5)=0.500000
+	XShifts(8)=0.500000
+	YShifts(3)=0.500000
+	YShifts(4)=1.000000
+	YShifts(5)=1.000000
+	YShifts(6)=1.000000
+	YShifts(7)=0.500000
+	YShifts(8)=0.500000
 }

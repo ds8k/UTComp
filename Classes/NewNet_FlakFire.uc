@@ -1,4 +1,3 @@
-
 //-----------------------------------------------------------
 //
 //-----------------------------------------------------------
@@ -438,6 +437,6 @@ function UnTimeTravel()
 
 defaultproperties
 {
-    FakeProjectileClass=Class'UTCompvBoM.NewNet_Fake_FlakChunk'
-    ProjectileClass=Class'UTCompvBoM.NewNet_FlakChunk'
+	FakeProjectileClass=Class'UTCompvBoM.NewNet_Fake_FlakChunk'
+	ProjectileClass=Class'UTCompvBoM.NewNet_FlakChunk'
 }

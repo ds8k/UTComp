@@ -42,22 +42,28 @@ simulated function BringUp(optional Weapon PrevWeapon)
         LastFOV = PlayerController(Instigator.Controller).DesiredFOV;
     }
 
-    CurrentScope.BringUp(PrevWeapon);
+    if (CurrentScope != None) {
+        CurrentScope.BringUp(PrevWeapon);
+    }
+
     Super.BringUp();
 }
 
 simulated function bool PutDown()
 {
-  if (Instigator.Controller.IsA( 'PlayerController' )) {
-    PlayerController(Instigator.Controller).EndZoom();
-  }
+    if (Instigator.Controller.IsA( 'PlayerController' )) {
+        PlayerController(Instigator.Controller).EndZoom();
+    }
 
-  if (Super.PutDown() ) {
-    CurrentScope.PutDown();
-    return true;
-  }
+    if (Super.PutDown()) {
+        if (CurrentScope != None) {
+            CurrentScope.PutDown();
+        }
 
-  return false;
+        return true;
+    }
+
+    return false;
 }
 
 simulated function SetScope()
@@ -370,6 +376,6 @@ simulated function SpawnBeamEffect(vector HitLocation, vector HitNormal, vector 
 
 defaultproperties
 {
-    FireModeClass(0)=Class'UTCompvBoM.NewNet_SuperShockBeamFire'
-    FireModeClass(1)=Class'UTCompvBoM.UTComp_Zoom'
+	FireModeClass(0)=Class'UTCompvBoM.NewNet_SuperShockBeamFire'
+	FireModeClass(1)=Class'UTCompvBoM.UTComp_Zoom'
 }

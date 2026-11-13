@@ -1,4 +1,3 @@
-
 class NewNet_Fake_FlakChunk extends FlakChunk;
 
 simulated function ProcessTouch (Actor Other, vector HitLocation)
@@ -20,5 +19,5 @@ simulated function ProcessTouch (Actor Other, vector HitLocation)
 
 defaultproperties
 {
-    bNetTemporary=False
+	bNetTemporary=False
 }

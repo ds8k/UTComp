@@ -1,4 +1,3 @@
-
 class NewNet_Fake_ShockProjectile extends ShockProjectile;
 
 simulated function Destroyed()
@@ -19,5 +18,5 @@ simulated function ProcessTouch (Actor Other, vector HitLocation)
 
 defaultproperties
 {
-    bCollideActors=False
+	bCollideActors=False
 }

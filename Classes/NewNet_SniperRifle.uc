@@ -1,4 +1,3 @@
-
 class NewNet_SniperRifle extends UTComp_SniperRifle
     HideDropDown
 	CacheExempt;
@@ -252,6 +251,6 @@ simulated function bool StartFire(int Mode)
 
 defaultproperties
 {
-    FireModeClass=Class'UTCompvBoM.NewNet_SniperFire'
-    PickupClass=Class'UTCompvBoM.NewNet_SniperRiflePickup'
+	FireModeClass(0)=Class'UTCompvBoM.NewNet_SniperFire'
+	PickupClass=Class'UTCompvBoM.NewNet_SniperRiflePickup'
 }

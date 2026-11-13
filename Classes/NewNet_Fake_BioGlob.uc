@@ -1,4 +1,3 @@
-
 class NewNet_Fake_BioGlob extends BioGlob;
 
 simulated function Destroyed()

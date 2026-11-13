@@ -1,7 +1,6 @@
-
 class NewNet_ONSAVRiLPickup extends ONSAVRiLPickup;
 
 defaultproperties
 {
-    InventoryType=Class'UTCompvBoM.NewNet_ONSAvril'
+	InventoryType=Class'UTCompvBoM.NewNet_ONSAvril'
 }

@@ -1,4 +1,3 @@
-
 class UTComp_GameRules extends GameRules;
 
 var MutUTComp UTCompMutator;
@@ -191,6 +190,6 @@ function Reset()
 
 defaultproperties
 {
-    bFirstRun=True
-    bFirstEndOT=True
+	bFirstRun=True
+	bFirstEndOT=True
 }

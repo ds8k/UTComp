@@ -2,7 +2,7 @@ class UTComp_WeaponEffect extends Object abstract;
 
 static function Play(
     PlayerController Context,
-    UTComp_Settings Settings,
+    UTComp_ClientSettings Settings,
     Pawn Source,
     vector SourceLocation,
     vector Direction,

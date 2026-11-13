@@ -1,4 +1,3 @@
-
 class UTComp_ClassicSniperFire extends ClassicSniperFire;
 
 event ModeDoFire()

@@ -1,5 +1,3 @@
-
-
 class UTComp_Menu_Voting_Settings extends UTComp_Menu_MainMenu;
 
 var automated GUIComboBox co_Skins, co_Hitsounds, co_TeamOverlay;
@@ -107,143 +105,160 @@ event Opened(GUIComponent Sender)
 
 defaultproperties
 {
-    Begin Object Class=XInterface.GUIComboBox Name=SkinsComboBox
-        WinTop=0.4
-        WinLeft=0.382187
-        WinWidth=0.25
-        WinHeight=0.03
-        OnKeyEvent=InternalOnKeyEvent
-    End Object
-    Begin Object Class=XInterface.GUIComboBox Name=HitsoundsComboBox
-        WinTop=0.45
-        WinLeft=0.382187
-        WinWidth=0.25
-        WinHeight=0.03
-        OnKeyEvent=InternalOnKeyEvent
-    End Object
-    Begin Object Class=XInterface.GUIComboBox Name=TeamOverlayComboBox
-        WinTop=0.5
-        WinLeft=0.382187
-        WinWidth=0.25
-        WinHeight=0.03
-        OnKeyEvent=InternalOnKeyEvent
-    End Object
-    Begin Object Class=XInterface.GUIComboBox Name=WarmupComboBox
-        WinTop=0.622918
-        WinLeft=0.382187
-        WinWidth=0.25
-        WinHeight=0.035
-        OnKeyEvent=InternalOnKeyEvent
-    End Object
-    Begin Object Class=XInterface.GUIComboBox Name=NewNetComboBox
-        WinTop=0.672918
-        WinLeft=0.382187
-        WinWidth=0.25
-        WinHeight=0.035
-        OnKeyEvent=InternalOnKeyEvent
-    End Object
-    Begin Object Class=XInterface.GUIButton Name=SkinsButton
-        Caption="Call Vote"
-        WinTop=0.395
-        WinLeft=0.665625
-        WinWidth=0.1175
-        WinHeight=0.0425
-        OnClick=InternalOnClick
-        OnKeyEvent=InternalOnKeyEvent
-    End Object
-    Begin Object Class=XInterface.GUIButton Name=HitsoundsButton
-        Caption="Call Vote"
-        WinTop=0.445
-        WinLeft=0.665625
-        WinWidth=0.1175
-        WinHeight=0.0425
-        OnClick=InternalOnClick
-        OnKeyEvent=InternalOnKeyEvent
-    End Object
-    Begin Object Class=XInterface.GUIButton Name=TeamOverlayButton
-        Caption="Call Vote"
-        WinTop=0.495
-        WinLeft=0.665625
-        WinWidth=0.1175
-        WinHeight=0.0425
-        OnClick=InternalOnClick
-        OnKeyEvent=InternalOnKeyEvent
-    End Object
-    Begin Object Class=XInterface.GUIButton Name=WarmupButton
-        Caption="Call Vote"
-        WinTop=0.615834
-        WinLeft=0.665625
-        WinWidth=0.1175
-        WinHeight=0.0475
-        OnClick=InternalOnClick
-        OnKeyEvent=InternalOnKeyEvent
-    End Object
-    Begin Object Class=XInterface.GUIButton Name=NewNetButton
-        Caption="Call Vote"
-        WinTop=0.665834
-        WinLeft=0.665625
-        WinWidth=0.1175
-        WinHeight=0.0475
-        OnClick=InternalOnClick
-        OnKeyEvent=InternalOnKeyEvent
-    End Object
-    Begin Object Class=XInterface.GUILabel Name=TeamOverlayLabel
-        Caption="Team Overlay"
-        TextColor=(R=255,G=255,B=255,A=255)
-        WinTop=0.495
-        WinLeft=0.162
-    End Object
-    Begin Object Class=XInterface.GUILabel Name=WarmupLabel
-        Caption="Warmup"
-        TextColor=(R=255,G=255,B=255,A=255)
-        WinTop=0.611668
-        WinLeft=0.160125
-    End Object
-    Begin Object Class=XInterface.GUILabel Name=NewNetLabel
-        Caption="Enhanced Netcode"
-        TextColor=(R=255,G=255,B=255,A=255)
-        WinTop=0.661667
-        WinLeft=0.160125
-    End Object
-    Begin Object Class=XInterface.GUILabel Name=DemnoHeadingLabel
-        Caption="--- These settings require a map reload to take effect ---"
-        TextColor=(R=230,G=200,B=0,A=255)
-        WinTop=0.562085
-        WinLeft=0.176562
-    End Object
-    Begin Object Class=XInterface.GUILabel Name=SkinsLabel
-        Caption="Skins"
-        TextColor=(R=255,G=255,B=255,A=255)
-        WinTop=0.395
-        WinLeft=0.162
-    End Object
-    Begin Object Class=XInterface.GUILabel Name=HitsoundsLabel
-        Caption="Hitsounds"
-        TextColor=(R=255,G=255,B=255,A=255)
-        WinTop=0.445
-        WinLeft=0.162
-    End Object
-    Begin Object Class=XInterface.GUILabel Name=RestartLabel
-        Caption="--- These settings are applied instantly after the vote passes ---"
-        TextColor=(R=230,G=200,B=0,A=255)
-        WinTop=0.332917
-        WinLeft=0.11875
-    End Object
-    co_Skins=SkinsComboBox
-    co_Hitsounds=HitsoundsComboBox
-    co_TeamOverlay=TeamOverlayComboBox
-    co_Warmup=WarmupComboBox
-    co_NewNet=NewNetComboBox
-    bu_Skins=SkinsButton
-    bu_Hitsounds=HitsoundsButton
-    bu_TeamOverlay=TeamOverlayButton
-    bu_Warmup=WarmupButton
-    bu_newNet=NewNetButton
-    l_Skins=SkinsLabel
-    l_HitSounds=HitsoundsLabel
-    l_TeamOverlay=TeamOverlayLabel
-    l_Warmup=WarmupLabel
-    l_Restart=DemnoHeadingLabel
-    l_NoRestart=RestartLabel
-    l_NewNet=NewNetLabel
+	Begin Object Class=GUIComboBox Name=SkinsComboBox
+		WinTop=0.400000
+		WinLeft=0.382187
+		WinWidth=0.250000
+		WinHeight=0.030000
+		OnKeyEvent=SkinsComboBox.InternalOnKeyEvent
+	End Object
+	co_Skins=GUIComboBox'UTCompvBoM.UTComp_Menu_Voting_Settings.SkinsComboBox'
+
+	Begin Object Class=GUIComboBox Name=HitsoundsComboBox
+		WinTop=0.450000
+		WinLeft=0.382187
+		WinWidth=0.250000
+		WinHeight=0.030000
+		OnKeyEvent=HitsoundsComboBox.InternalOnKeyEvent
+	End Object
+	co_Hitsounds=GUIComboBox'UTCompvBoM.UTComp_Menu_Voting_Settings.HitsoundsComboBox'
+
+	Begin Object Class=GUIComboBox Name=TeamOverlayComboBox
+		WinTop=0.500000
+		WinLeft=0.382187
+		WinWidth=0.250000
+		WinHeight=0.030000
+		OnKeyEvent=TeamOverlayComboBox.InternalOnKeyEvent
+	End Object
+	co_TeamOverlay=GUIComboBox'UTCompvBoM.UTComp_Menu_Voting_Settings.TeamOverlayComboBox'
+
+	Begin Object Class=GUIComboBox Name=WarmupComboBox
+		WinTop=0.622918
+		WinLeft=0.382187
+		WinWidth=0.250000
+		WinHeight=0.035000
+		OnKeyEvent=WarmupComboBox.InternalOnKeyEvent
+	End Object
+	co_Warmup=GUIComboBox'UTCompvBoM.UTComp_Menu_Voting_Settings.WarmupComboBox'
+
+	Begin Object Class=GUIComboBox Name=NewNetComboBox
+		WinTop=0.672918
+		WinLeft=0.382187
+		WinWidth=0.250000
+		WinHeight=0.035000
+		OnKeyEvent=NewNetComboBox.InternalOnKeyEvent
+	End Object
+	co_NewNet=GUIComboBox'UTCompvBoM.UTComp_Menu_Voting_Settings.NewNetComboBox'
+
+	Begin Object Class=GUIButton Name=SkinsButton
+		Caption="Call Vote"
+		WinTop=0.395000
+		WinLeft=0.665625
+		WinWidth=0.117500
+		WinHeight=0.042500
+		OnClick=UTComp_Menu_Voting_Settings.InternalOnClick
+		OnKeyEvent=SkinsButton.InternalOnKeyEvent
+	End Object
+	bu_Skins=GUIButton'UTCompvBoM.UTComp_Menu_Voting_Settings.SkinsButton'
+
+	Begin Object Class=GUIButton Name=HitsoundsButton
+		Caption="Call Vote"
+		WinTop=0.445000
+		WinLeft=0.665625
+		WinWidth=0.117500
+		WinHeight=0.042500
+		OnClick=UTComp_Menu_Voting_Settings.InternalOnClick
+		OnKeyEvent=HitsoundsButton.InternalOnKeyEvent
+	End Object
+	bu_Hitsounds=GUIButton'UTCompvBoM.UTComp_Menu_Voting_Settings.HitsoundsButton'
+
+	Begin Object Class=GUIButton Name=TeamOverlayButton
+		Caption="Call Vote"
+		WinTop=0.495000
+		WinLeft=0.665625
+		WinWidth=0.117500
+		WinHeight=0.042500
+		OnClick=UTComp_Menu_Voting_Settings.InternalOnClick
+		OnKeyEvent=TeamOverlayButton.InternalOnKeyEvent
+	End Object
+	bu_TeamOverlay=GUIButton'UTCompvBoM.UTComp_Menu_Voting_Settings.TeamOverlayButton'
+
+	Begin Object Class=GUIButton Name=WarmupButton
+		Caption="Call Vote"
+		WinTop=0.615834
+		WinLeft=0.665625
+		WinWidth=0.117500
+		WinHeight=0.047500
+		OnClick=UTComp_Menu_Voting_Settings.InternalOnClick
+		OnKeyEvent=WarmupButton.InternalOnKeyEvent
+	End Object
+	bu_Warmup=GUIButton'UTCompvBoM.UTComp_Menu_Voting_Settings.WarmupButton'
+
+	Begin Object Class=GUIButton Name=NewNetButton
+		Caption="Call Vote"
+		WinTop=0.665834
+		WinLeft=0.665625
+		WinWidth=0.117500
+		WinHeight=0.047500
+		OnClick=UTComp_Menu_Voting_Settings.InternalOnClick
+		OnKeyEvent=NewNetButton.InternalOnKeyEvent
+	End Object
+	bu_newNet=GUIButton'UTCompvBoM.UTComp_Menu_Voting_Settings.NewNetButton'
+
+	Begin Object Class=GUILabel Name=SkinsLabel
+		Caption="Skins"
+		TextColor=(B=255,G=255,R=255)
+		WinTop=0.395000
+		WinLeft=0.162000
+	End Object
+	l_Skins=GUILabel'UTCompvBoM.UTComp_Menu_Voting_Settings.SkinsLabel'
+
+	Begin Object Class=GUILabel Name=HitsoundsLabel
+		Caption="Hitsounds"
+		TextColor=(B=255,G=255,R=255)
+		WinTop=0.445000
+		WinLeft=0.162000
+	End Object
+	l_HitSounds=GUILabel'UTCompvBoM.UTComp_Menu_Voting_Settings.HitsoundsLabel'
+
+	Begin Object Class=GUILabel Name=TeamOverlayLabel
+		Caption="Team Overlay"
+		TextColor=(B=255,G=255,R=255)
+		WinTop=0.495000
+		WinLeft=0.162000
+	End Object
+	l_TeamOverlay=GUILabel'UTCompvBoM.UTComp_Menu_Voting_Settings.TeamOverlayLabel'
+
+	Begin Object Class=GUILabel Name=WarmupLabel
+		Caption="Warmup"
+		TextColor=(B=255,G=255,R=255)
+		WinTop=0.611668
+		WinLeft=0.160125
+	End Object
+	l_Warmup=GUILabel'UTCompvBoM.UTComp_Menu_Voting_Settings.WarmupLabel'
+
+	Begin Object Class=GUILabel Name=DemnoHeadingLabel
+		Caption="--- These settings require a map reload to take effect ---"
+		TextColor=(B=0,G=200,R=230)
+		WinTop=0.562085
+		WinLeft=0.176562
+	End Object
+	l_Restart=GUILabel'UTCompvBoM.UTComp_Menu_Voting_Settings.DemnoHeadingLabel'
+
+	Begin Object Class=GUILabel Name=RestartLabel
+		Caption="--- These settings are applied instantly after the vote passes ---"
+		TextColor=(B=0,G=200,R=230)
+		WinTop=0.332917
+		WinLeft=0.118750
+	End Object
+	l_NoRestart=GUILabel'UTCompvBoM.UTComp_Menu_Voting_Settings.RestartLabel'
+
+	Begin Object Class=GUILabel Name=NewNetLabel
+		Caption="Enhanced Netcode"
+		TextColor=(B=255,G=255,R=255)
+		WinTop=0.661667
+		WinLeft=0.160125
+	End Object
+	l_NewNet=GUILabel'UTCompvBoM.UTComp_Menu_Voting_Settings.NewNetLabel'
+
 }

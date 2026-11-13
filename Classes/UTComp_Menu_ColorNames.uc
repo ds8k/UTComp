@@ -1,5 +1,3 @@
-
-
 class UTComp_Menu_ColorNames extends UTComp_Menu_MainMenu;
 
 var automated GUILabel l_ColorNameLetters[20];
@@ -24,7 +22,7 @@ function InitComponent(GUIController MyController, GUIComponent MyOwner)
 
      Super.InitComponent(myController,MyOwner);
 
-     for(i=0; i<class'UTComp_Settings'.default.ColoredName.Length; i++)
+     for(i=0; i<class'UTComp_ClientSettings'.static.Get().ColoredName.Length; i++)
          co_SavedNames.AddItem(BS_xPlayer(PlayerOwner()).FindColoredName(i));
      co_SavedNames.ReadOnly(True);
 
@@ -32,10 +30,10 @@ function InitComponent(GUIController MyController, GUIComponent MyOwner)
 
      SetColorSliders(0);
 
-     ch_ColorChat.Checked(class'UTComp_Settings'.default.bEnableColoredNamesInTalk);
+     ch_ColorChat.Checked(class'UTComp_ClientSettings'.static.Get().bEnableColoredNamesInTalk);
      ch_ColorScoreboard.Checked(class'UTComp_ScoreBoard'.default.bEnableColoredNamesOnScoreboard);
-     ch_ColorQ3.Checked(class'UTComp_Settings'.default.bAllowColoredMessages);
-     ch_EnemyNames.Checked(class'UTComp_Settings'.default.bEnableColoredNamesOnEnemies);
+     ch_ColorQ3.Checked(class'UTComp_ClientSettings'.static.Get().bAllowColoredMessages);
+     ch_EnemyNames.Checked(class'UTComp_ClientSettings'.static.Get().bEnableColoredNamesOnEnemies);
    //  ch_ColorRedBlue.Checked(class'UTComp_xDeathMessage'.default.bEnableTeamColoredDeaths);
    //  ch_ColorDeath.Checked(class'UTComp_xDeathMessage'.default.drawcolorednamesindeathmessages);
      co_DeathSelect.AddItem("Disabled");
@@ -55,14 +53,14 @@ function InitSliderAndLetters()
 
      for(i=0; i<Len(PlayerOwner().PlayerReplicationInfo.PlayerName); i++)
      {
-          class'UTComp_Settings'.default.ColorName[i].A=255;     //make sure someone didnt change this
+          class'UTComp_ClientSettings'.static.Get().ColorName[i].A=255;     //make sure someone didnt change this
           l_ColorNameLetters[i].TextFont="UT2LargeFont";
           l_ColorNameLetters[i].WinTop=0.50;
           l_ColorNameLetters[i].WinWidth=0.029;
           l_ColorNameLetters[i].WinLeft=(0.50-(0.50*0.030*Len(PlayerOwner().PlayerReplicationInfo.PlayerName))+(0.030*i));
           l_ColorNameLetters[i].StyleName="TextLabel";
           l_ColorNameLetters[i].Caption=Right(Left(PlayerOwner().PlayerReplicationInfo.PlayerName, (i+1)), 1);
-          l_ColorNameLetters[i].TextColor=class'UTComp_Settings'.default.ColorName[i];
+          l_ColorNameLetters[i].TextColor=class'UTComp_ClientSettings'.static.Get().ColorName[i];
           l_ColorNameLetters[i].TextAlign=TXTA_Center;
      }
      for(i=Len(PlayerOwner().PlayerReplicationInfo.PlayerName); i<20; i++)
@@ -80,19 +78,19 @@ function SpecialInitSliderAndLetters(int j)
 {
      local int i;
 
-     for(i=0; i<Len(class'UTComp_Settings'.default.ColoredName[j].SavedName); i++)
+     for(i=0; i<Len(class'UTComp_ClientSettings'.static.Get().ColoredName[j].SavedName); i++)
      {
-          class'UTComp_Settings'.default.ColorName[i].A=255;     //make sure someone didnt change this
+          class'UTComp_ClientSettings'.static.Get().ColorName[i].A=255;     //make sure someone didnt change this
           l_ColorNameLetters[i].TextFont="UT2LargeFont";
           l_ColorNameLetters[i].WinTop=0.50;
           l_ColorNameLetters[i].WinWidth=0.029;
-          l_ColorNameLetters[i].WinLeft=(0.50-(0.50*0.030*Len(class'UTComp_Settings'.default.ColoredName[j].SavedName))+(0.030*i));
+          l_ColorNameLetters[i].WinLeft=(0.50-(0.50*0.030*Len(class'UTComp_ClientSettings'.static.Get().ColoredName[j].SavedName))+(0.030*i));
           l_ColorNameLetters[i].StyleName="TextLabel";
-          l_ColorNameLetters[i].Caption=Right(Left(class'UTComp_Settings'.default.ColoredName[j].SavedName, (i+1)), 1);
-          l_ColorNameLetters[i].TextColor=class'UTComp_Settings'.default.ColoredName[j].SavedColor[i];
+          l_ColorNameLetters[i].Caption=Right(Left(class'UTComp_ClientSettings'.static.Get().ColoredName[j].SavedName, (i+1)), 1);
+          l_ColorNameLetters[i].TextColor=class'UTComp_ClientSettings'.static.Get().ColoredName[j].SavedColor[i];
           l_ColorNameLetters[i].TextAlign=TXTA_Center;
      }
-     for(i=Len(class'UTComp_Settings'.default.ColoredName[j].SavedName); i<20; i++)
+     for(i=Len(class'UTComp_ClientSettings'.static.Get().ColoredName[j].SavedName); i<20; i++)
           l_ColorNameLetters[i].Caption="";
 
       sl_LetterSelect.MinValue=1;
@@ -104,9 +102,9 @@ function SpecialInitSliderAndLetters(int j)
 }
 function SetColorSliders(byte offset)
 {
-    sl_RedColor.SetValue(class'UTComp_Settings'.default.colorname[offset].R);
-    sl_BlueColor.SetValue(class'UTComp_Settings'.default.colorname[offset].B);
-    sl_GreenColor.SetValue(class'UTComp_Settings'.default.colorname[offset].G);
+    sl_RedColor.SetValue(class'UTComp_ClientSettings'.static.Get().colorname[offset].R);
+    sl_BlueColor.SetValue(class'UTComp_ClientSettings'.static.Get().colorname[offset].B);
+    sl_GreenColor.SetValue(class'UTComp_ClientSettings'.static.Get().colorname[offset].G);
 }
 
 function InternalOnChange( GUIComponent C )
@@ -114,23 +112,23 @@ function InternalOnChange( GUIComponent C )
 
     switch(C)
     {
-    case ch_ColorChat: class'UTComp_Settings'.default.bEnableColoredNamesInTalk=ch_ColorChat.IsChecked();  break;
+    case ch_ColorChat: class'UTComp_ClientSettings'.static.Get().bEnableColoredNamesInTalk=ch_ColorChat.IsChecked();  break;
     case ch_ColorScoreboard: class'UTComp_ScoreBoard'.default.bEnableColoredNamesOnScoreboard=ch_ColorScoreboard.IsChecked(); break;
-    case ch_ColorQ3: class'UTComp_Settings'.default.bAllowColoredMessages=ch_ColorQ3.IsChecked(); break;
-    case ch_EnemyNames: class'UTComp_Settings'.default.bEnableColoredNamesOnEnemies=ch_EnemyNames.IsChecked(); break;
+    case ch_ColorQ3: class'UTComp_ClientSettings'.static.Get().bAllowColoredMessages=ch_ColorQ3.IsChecked(); break;
+    case ch_EnemyNames: class'UTComp_ClientSettings'.static.Get().bEnableColoredNamesOnEnemies=ch_EnemyNames.IsChecked(); break;
   //  case ch_ColorRedBlue: class'UTComp_xDeathMessage'.default.bEnableTeamColoredDeaths=ch_ColorRedBlue.IsChecked(); break;
  //   case ch_ColorDeath: class'UTComp_xDeathMessage'.default.drawcolorednamesindeathmessages=ch_ColorDeath.IsChecked(); break;
     case co_DeathSelect:  class'UTComp_xDeathMessage'.default.bEnableTeamColoredDeaths=(co_DeathSelect.GetIndex()==2);
                           class'UTComp_xDeathMessage'.default.drawcolorednamesindeathmessages=(co_DeathSelect.GetIndex()==1); break;
     case sl_LetterSelect: SetColorSliders(sl_LetterSelect.Value-1); break;
 
-    case sl_RedColor:   class'UTComp_Settings'.default.ColorName[sl_LetterSelect.Value-1].R=sl_RedColor.Value;
+    case sl_RedColor:   class'UTComp_ClientSettings'.static.Get().ColorName[sl_LetterSelect.Value-1].R=sl_RedColor.Value;
                         BS_xPlayer(PlayerOwner()).SetColoredNameOldStyle();
                         l_ColorNameLetters[sl_LetterSelect.Value-1].TextColor.R=sl_RedColor.Value;  break;
-    case sl_BlueColor:  class'UTComp_Settings'.default.ColorName[sl_LetterSelect.Value-1].B=sl_BlueColor.Value;
+    case sl_BlueColor:  class'UTComp_ClientSettings'.static.Get().ColorName[sl_LetterSelect.Value-1].B=sl_BlueColor.Value;
                         BS_xPlayer(PlayerOwner()).SetColoredNameOldStyle();
                         l_ColorNameLetters[sl_LetterSelect.Value-1].TextColor.B=sl_BlueColor.Value;  break;
-    case sl_GreenColor: class'UTComp_Settings'.default.ColorName[sl_LetterSelect.Value-1].G=sl_GreenColor.Value;
+    case sl_GreenColor: class'UTComp_ClientSettings'.static.Get().ColorName[sl_LetterSelect.Value-1].G=sl_GreenColor.Value;
                         BS_xPlayer(PlayerOwner()).SetColoredNameOldStyle();
                         l_ColorNameLetters[sl_LetterSelect.Value-1].TextColor.G=sl_GreenColor.Value;  break;
 
@@ -140,9 +138,7 @@ function InternalOnChange( GUIComponent C )
     }
     BS_xPlayer(PlayerOwner()).MakeSureSaveConfig();
     class'BS_xPlayer'.Static.StaticSaveConfig();
-    class'UTComp_ScoreBoard'.Static.StaticSaveConfig();
-    class'UTComp_xDeathMessage'.Static.StaticSaveConfig();
-    class'UTComp_Settings'.static.staticSaveConfig();
+    class'UTComp_ClientSettings'.static.Get().Save();
 }
 
 function bool InternalOnClick( GUIComponent Sender )
@@ -155,35 +151,35 @@ function bool InternalOnClick( GUIComponent Sender )
     case bu_SaveName:
                        BS_xPlayer(PlayerOwner()).SaveNewColoredName();
                        co_SavedNames.ReadOnly(False);
-                       co_SavedNames.AddItem(BS_xPlayer(PlayerOwner()).AddNewColoredName(class'UTComp_Settings'.default.ColoredName.Length-1));
+                       co_SavedNames.AddItem(BS_xPlayer(PlayerOwner()).AddNewColoredName(class'UTComp_ClientSettings'.static.Get().ColoredName.Length-1));
                        co_SavedNames.ReadOnly(True); break;
 
 
-    case bu_DeleteName:  if(class'UTComp_Settings'.default.ColoredName.Length>co_SavedNames.GetIndex() && co_SavedNames.GetIndex()>=0)
-                             class'UTComp_Settings'.default.ColoredName.Remove(co_SavedNames.GetIndex(), 1);
-                        // BS_xPlayer(PlayerOwner()).ColoredName=class'UTComp_Settings'.default.ColoredName;
+    case bu_DeleteName:  if(class'UTComp_ClientSettings'.static.Get().ColoredName.Length>co_SavedNames.GetIndex() && co_SavedNames.GetIndex()>=0)
+                             class'UTComp_ClientSettings'.static.Get().ColoredName.Remove(co_SavedNames.GetIndex(), 1);
+                        // BS_xPlayer(PlayerOwner()).ColoredName=class'UTComp_ClientSettings'.static.Get().ColoredName;
                          co_SavedNames.ReadOnly(False);
                          co_SavedNames.RemoveItem(co_SavedNames.GetIndex());
                          co_SavedNames.ReadOnly(True); break;
 
     case bu_ResetWhite:   for(i=0; i<20; i++)
                           {
-                              class'UTComp_Settings'.default.colorname[i].R=255;
-                              class'UTComp_Settings'.default.colorname[i].G=255;
-                              class'UTComp_Settings'.default.colorname[i].B=255;
+                              class'UTComp_ClientSettings'.static.Get().colorname[i].R=255;
+                              class'UTComp_ClientSettings'.static.Get().colorname[i].G=255;
+                              class'UTComp_ClientSettings'.static.Get().colorname[i].B=255;
                               l_ColorNameLetters[i].TextColor.R=255;
                               l_ColorNameLetters[i].TextColor.G=255;
                               l_ColorNameLetters[i].TextColor.B=255;
                           }   break;
     case bu_Apply:
                     BS_xPlayer(PlayerOwner()).SetColoredNameOldStyleCustom(,co_SavedNames.GetIndex());
-                    class'UTComp_Settings'.default.CurrentSelectedColoredName=co_savedNames.GetIndex();
+                    class'UTComp_ClientSettings'.static.Get().CurrentSelectedColoredName=co_savedNames.GetIndex();
                     SpecialInitSliderAndLetters(co_SavedNames.GetIndex());
                     SetColorSliders(sl_LetterSelect.Value-1);  break;
     }
     BS_xPlayer(PlayerOwner()).MakeSureSaveConfig();
     class'BS_xPlayer'.Static.StaticSaveConfig();
-    class'UTComp_Settings'.static.staticSaveConfig();
+    class'UTComp_ClientSettings'.static.Get().Save();
 
     Super.InternalOnClick(Sender);
     return true;
@@ -191,229 +187,266 @@ function bool InternalOnClick( GUIComponent Sender )
 
 defaultproperties
 {
-    Begin Object Class=XInterface.GUISlider Name=LetterSlider
-        Value=1.0
-        bIntSlider=True
-        WinTop=0.535
-        OnClick=InternalOnClick
-        OnMousePressed=InternalOnMousePressed
-        OnMouseRelease=InternalOnMouseRelease
-        OnChange=InternalOnChange
-        OnKeyEvent=InternalOnKeyEvent
-        OnCapturedMouseMove=InternalCapturedMouseMove
-    End Object
-    Begin Object Class=XInterface.GUISlider Name=GreenSlider
-        MaxValue=255.0
-        bIntSlider=True
-        WinTop=0.65
-        WinLeft=0.6
-        WinWidth=0.3
-        OnClick=InternalOnClick
-        OnMousePressed=InternalOnMousePressed
-        OnMouseRelease=InternalOnMouseRelease
-        OnChange=InternalOnChange
-        OnKeyEvent=InternalOnKeyEvent
-        OnCapturedMouseMove=InternalCapturedMouseMove
-    End Object
-    Begin Object Class=XInterface.GUISlider Name=BlueSlider
-        MaxValue=255.0
-        bIntSlider=True
-        WinTop=0.7
-        WinLeft=0.6
-        WinWidth=0.3
-        OnClick=InternalOnClick
-        OnMousePressed=InternalOnMousePressed
-        OnMouseRelease=InternalOnMouseRelease
-        OnChange=InternalOnChange
-        OnKeyEvent=InternalOnKeyEvent
-        OnCapturedMouseMove=InternalCapturedMouseMove
-    End Object
-    Begin Object Class=XInterface.GUISlider Name=RedSlider
-        MaxValue=255.0
-        bIntSlider=True
-        WinTop=0.6
-        WinLeft=0.6
-        WinWidth=0.3
-        OnClick=InternalOnClick
-        OnMousePressed=InternalOnMousePressed
-        OnMouseRelease=InternalOnMouseRelease
-        OnChange=InternalOnChange
-        OnKeyEvent=InternalOnKeyEvent
-        OnCapturedMouseMove=InternalCapturedMouseMove
-    End Object
-    Begin Object Class=XInterface.moCheckBox Name=ColorChatCheck
-        Caption="Show colored names in chat messages"
-        OnCreateComponent=InternalOnCreateComponent
-        WinTop=0.33
-        WinLeft=0.2
-        WinWidth=0.6
-        OnChange=InternalOnChange
-    End Object
-    Begin Object Class=XInterface.moCheckBox Name=ColorScoreboardCheck
-        Caption="Show colored names on scoreboard"
-        OnCreateComponent=InternalOnCreateComponent
-        WinTop=0.365
-        WinLeft=0.2
-        WinWidth=0.6
-        OnChange=InternalOnChange
-    End Object
-    Begin Object Class=XInterface.moCheckBox Name=Colorq3Check
-        Caption="Show colored text in chat messages(Q3 Style)"
-        OnCreateComponent=InternalOnCreateComponent
-        WinTop=0.433814
-        WinLeft=0.2
-        WinWidth=0.6
-        OnChange=InternalOnChange
-    End Object
-    Begin Object Class=XInterface.moCheckBox Name=EnemyNamesCheck
-        Caption="Show colored enemy names on targeting"
-        OnCreateComponent=InternalOnCreateComponent
-        WinTop=0.4
-        WinLeft=0.2
-        WinWidth=0.6
-        OnChange=InternalOnChange
-    End Object
-    Begin Object Class=XInterface.GUIComboBox Name=ComboSaved
-        WinTop=0.61232
-        WinLeft=0.140625
-        WinWidth=0.3
-        WinHeight=0.031875
-        OnChange=InternalOnChange
-        OnKeyEvent=InternalOnKeyEvent
-    End Object
-    Begin Object Class=XInterface.GUIButton Name=ButtonSave
-        Caption="Save"
-        WinTop=0.65
-        WinLeft=0.142187
-        WinWidth=0.133437
-        OnClick=InternalOnClick
-        OnKeyEvent=InternalOnKeyEvent
-    End Object
-    Begin Object Class=XInterface.GUIButton Name=ButtonDelete
-        Caption="Delete"
-        WinTop=0.65
-        WinLeft=0.303125
-        WinWidth=0.133125
-        OnClick=InternalOnClick
-        OnKeyEvent=InternalOnKeyEvent
-    End Object
-    Begin Object Class=XInterface.GUIButton Name=ButtonWhite
-        Caption="Reset entire name to white"
-        WinTop=0.739585
-        WinLeft=0.540625
-        WinWidth=0.344063
-        OnClick=InternalOnClick
-        OnKeyEvent=InternalOnKeyEvent
-    End Object
-    Begin Object Class=XInterface.GUIButton Name=ButtonApply
-        Caption="Use This Name"
-        WinTop=0.695833
-        WinLeft=0.140625
-        WinWidth=0.297188
-        OnClick=InternalOnClick
-        OnKeyEvent=InternalOnKeyEvent
-    End Object
-    Begin Object Class=XInterface.moComboBox Name=ColorDeathCombo
-        Caption="Death Message Color:"
-        OnCreateComponent=InternalOnCreateComponent
-        WinTop=0.46799
-        WinLeft=0.168749
-        WinWidth=0.660936
-        OnChange=InternalOnChange
-    End Object
-    Begin Object Class=XInterface.GUILabel Name=Label0
-    End Object
-    Begin Object Class=XInterface.GUILabel Name=Label1
-    End Object
-    Begin Object Class=XInterface.GUILabel Name=Label2
-    End Object
-    Begin Object Class=XInterface.GUILabel Name=Label3
-    End Object
-    Begin Object Class=XInterface.GUILabel Name=Label4
-    End Object
-    Begin Object Class=XInterface.GUILabel Name=Label5
-    End Object
-    Begin Object Class=XInterface.GUILabel Name=Label6
-    End Object
-    Begin Object Class=XInterface.GUILabel Name=Label7
-    End Object
-    Begin Object Class=XInterface.GUILabel Name=Label8
-    End Object
-    Begin Object Class=XInterface.GUILabel Name=Label9
-    End Object
-    Begin Object Class=XInterface.GUILabel Name=Label10
-    End Object
-    Begin Object Class=XInterface.GUILabel Name=Label11
-    End Object
-    Begin Object Class=XInterface.GUILabel Name=Label12
-    End Object
-    Begin Object Class=XInterface.GUILabel Name=Label13
-    End Object
-    Begin Object Class=XInterface.GUILabel Name=Label14
-    End Object
-    Begin Object Class=XInterface.GUILabel Name=Label15
-    End Object
-    Begin Object Class=XInterface.GUILabel Name=Label16
-    End Object
-    Begin Object Class=XInterface.GUILabel Name=Label17
-    End Object
-    Begin Object Class=XInterface.GUILabel Name=Label18
-    End Object
-    Begin Object Class=XInterface.GUILabel Name=Label19
-    End Object
-    Begin Object Class=XInterface.GUILabel Name=RedLabel
-        Caption="Red"
-        TextColor=(R=255,G=0,B=64,A=255)
-        WinTop=0.5875
-        WinLeft=0.528125
-    End Object
-    Begin Object Class=XInterface.GUILabel Name=BlueLabel
-        Caption="Blue"
-        TextColor=(R=0,G=0,B=255,A=255)
-        WinTop=0.685414
-        WinLeft=0.528125
-    End Object
-    Begin Object Class=XInterface.GUILabel Name=GreenLabel
-        Caption="Green"
-        TextColor=(R=0,G=255,B=64,A=255)
-        WinTop=0.635417
-        WinLeft=0.528125
-    End Object
-    l_ColorNameLetters(0)=Label0
-    l_ColorNameLetters(1)=Label1
-    l_ColorNameLetters(2)=Label2
-    l_ColorNameLetters(3)=Label3
-    l_ColorNameLetters(4)=Label4
-    l_ColorNameLetters(5)=Label5
-    l_ColorNameLetters(6)=Label6
-    l_ColorNameLetters(7)=Label7
-    l_ColorNameLetters(8)=Label8
-    l_ColorNameLetters(9)=Label9
-    l_ColorNameLetters(10)=Label10
-    l_ColorNameLetters(11)=Label11
-    l_ColorNameLetters(12)=Label12
-    l_ColorNameLetters(13)=Label13
-    l_ColorNameLetters(14)=Label14
-    l_ColorNameLetters(15)=Label15
-    l_ColorNameLetters(16)=Label16
-    l_ColorNameLetters(17)=Label17
-    l_ColorNameLetters(18)=Label18
-    l_ColorNameLetters(19)=Label19
-    ch_ColorChat=ColorChatCheck
-    ch_ColorScoreboard=ColorScoreboardCheck
-    ch_ColorQ3=Colorq3Check
-    ch_EnemyNames=EnemyNamesCheck
-    co_SavedNames=ComboSaved
-    bu_SaveName=ButtonSave
-    bu_DeleteName=ButtonDelete
-    bu_ResetWhite=ButtonWhite
-    bu_Apply=ButtonApply
-    sl_RedColor=RedSlider
-    sl_BlueColor=BlueSlider
-    sl_GreenColor=GreenSlider
-    l_RedLabel=RedLabel
-    l_BlueLabel=BlueLabel
-    l_GreenLabel=GreenLabel
-    sl_LetterSelect=LetterSlider
-    co_DeathSelect=ColorDeathCombo
+	Begin Object Class=GUILabel Name=Label0
+	End Object
+	l_ColorNameLetters(0)=GUILabel'UTCompvBoM.UTComp_Menu_ColorNames.Label0'
+
+	Begin Object Class=GUILabel Name=Label1
+	End Object
+	l_ColorNameLetters(1)=GUILabel'UTCompvBoM.UTComp_Menu_ColorNames.Label1'
+
+	Begin Object Class=GUILabel Name=Label2
+	End Object
+	l_ColorNameLetters(2)=GUILabel'UTCompvBoM.UTComp_Menu_ColorNames.Label2'
+
+	Begin Object Class=GUILabel Name=Label3
+	End Object
+	l_ColorNameLetters(3)=GUILabel'UTCompvBoM.UTComp_Menu_ColorNames.Label3'
+
+	Begin Object Class=GUILabel Name=Label4
+	End Object
+	l_ColorNameLetters(4)=GUILabel'UTCompvBoM.UTComp_Menu_ColorNames.Label4'
+
+	Begin Object Class=GUILabel Name=Label5
+	End Object
+	l_ColorNameLetters(5)=GUILabel'UTCompvBoM.UTComp_Menu_ColorNames.Label5'
+
+	Begin Object Class=GUILabel Name=Label6
+	End Object
+	l_ColorNameLetters(6)=GUILabel'UTCompvBoM.UTComp_Menu_ColorNames.Label6'
+
+	Begin Object Class=GUILabel Name=Label7
+	End Object
+	l_ColorNameLetters(7)=GUILabel'UTCompvBoM.UTComp_Menu_ColorNames.Label7'
+
+	Begin Object Class=GUILabel Name=Label8
+	End Object
+	l_ColorNameLetters(8)=GUILabel'UTCompvBoM.UTComp_Menu_ColorNames.Label8'
+
+	Begin Object Class=GUILabel Name=Label9
+	End Object
+	l_ColorNameLetters(9)=GUILabel'UTCompvBoM.UTComp_Menu_ColorNames.Label9'
+
+	Begin Object Class=GUILabel Name=Label10
+	End Object
+	l_ColorNameLetters(10)=GUILabel'UTCompvBoM.UTComp_Menu_ColorNames.Label10'
+
+	Begin Object Class=GUILabel Name=Label11
+	End Object
+	l_ColorNameLetters(11)=GUILabel'UTCompvBoM.UTComp_Menu_ColorNames.Label11'
+
+	Begin Object Class=GUILabel Name=Label12
+	End Object
+	l_ColorNameLetters(12)=GUILabel'UTCompvBoM.UTComp_Menu_ColorNames.Label12'
+
+	Begin Object Class=GUILabel Name=Label13
+	End Object
+	l_ColorNameLetters(13)=GUILabel'UTCompvBoM.UTComp_Menu_ColorNames.Label13'
+
+	Begin Object Class=GUILabel Name=Label14
+	End Object
+	l_ColorNameLetters(14)=GUILabel'UTCompvBoM.UTComp_Menu_ColorNames.Label14'
+
+	Begin Object Class=GUILabel Name=Label15
+	End Object
+	l_ColorNameLetters(15)=GUILabel'UTCompvBoM.UTComp_Menu_ColorNames.Label15'
+
+	Begin Object Class=GUILabel Name=Label16
+	End Object
+	l_ColorNameLetters(16)=GUILabel'UTCompvBoM.UTComp_Menu_ColorNames.Label16'
+
+	Begin Object Class=GUILabel Name=Label17
+	End Object
+	l_ColorNameLetters(17)=GUILabel'UTCompvBoM.UTComp_Menu_ColorNames.Label17'
+
+	Begin Object Class=GUILabel Name=Label18
+	End Object
+	l_ColorNameLetters(18)=GUILabel'UTCompvBoM.UTComp_Menu_ColorNames.Label18'
+
+	Begin Object Class=GUILabel Name=Label19
+	End Object
+	l_ColorNameLetters(19)=GUILabel'UTCompvBoM.UTComp_Menu_ColorNames.Label19'
+
+	Begin Object Class=moCheckBox Name=ColorChatCheck
+		Caption="Show colored names in chat messages"
+		OnCreateComponent=ColorChatCheck.InternalOnCreateComponent
+		WinTop=0.330000
+		WinLeft=0.200000
+		WinWidth=0.600000
+		OnChange=UTComp_Menu_ColorNames.InternalOnChange
+	End Object
+	ch_ColorChat=moCheckBox'UTCompvBoM.UTComp_Menu_ColorNames.ColorChatCheck'
+
+	Begin Object Class=moCheckBox Name=ColorScoreboardCheck
+		Caption="Show colored names on scoreboard"
+		OnCreateComponent=ColorScoreboardCheck.InternalOnCreateComponent
+		WinTop=0.365000
+		WinLeft=0.200000
+		WinWidth=0.600000
+		OnChange=UTComp_Menu_ColorNames.InternalOnChange
+	End Object
+	ch_ColorScoreboard=moCheckBox'UTCompvBoM.UTComp_Menu_ColorNames.ColorScoreboardCheck'
+
+	Begin Object Class=moCheckBox Name=Colorq3Check
+		Caption="Show colored text in chat messages(Q3 Style)"
+		OnCreateComponent=Colorq3Check.InternalOnCreateComponent
+		WinTop=0.433814
+		WinLeft=0.200000
+		WinWidth=0.600000
+		OnChange=UTComp_Menu_ColorNames.InternalOnChange
+	End Object
+	ch_ColorQ3=moCheckBox'UTCompvBoM.UTComp_Menu_ColorNames.Colorq3Check'
+
+	Begin Object Class=moCheckBox Name=EnemyNamesCheck
+		Caption="Show colored enemy names on targeting"
+		OnCreateComponent=EnemyNamesCheck.InternalOnCreateComponent
+		WinTop=0.400000
+		WinLeft=0.200000
+		WinWidth=0.600000
+		OnChange=UTComp_Menu_ColorNames.InternalOnChange
+	End Object
+	ch_EnemyNames=moCheckBox'UTCompvBoM.UTComp_Menu_ColorNames.EnemyNamesCheck'
+
+	Begin Object Class=GUIComboBox Name=ComboSaved
+		WinTop=0.612320
+		WinLeft=0.140625
+		WinWidth=0.300000
+		WinHeight=0.031875
+		OnChange=UTComp_Menu_ColorNames.InternalOnChange
+		OnKeyEvent=ComboSaved.InternalOnKeyEvent
+	End Object
+	co_SavedNames=GUIComboBox'UTCompvBoM.UTComp_Menu_ColorNames.ComboSaved'
+
+	Begin Object Class=GUIButton Name=ButtonSave
+		Caption="Save"
+		WinTop=0.650000
+		WinLeft=0.142187
+		WinWidth=0.133437
+		OnClick=UTComp_Menu_ColorNames.InternalOnClick
+		OnKeyEvent=ButtonSave.InternalOnKeyEvent
+	End Object
+	bu_SaveName=GUIButton'UTCompvBoM.UTComp_Menu_ColorNames.ButtonSave'
+
+	Begin Object Class=GUIButton Name=ButtonDelete
+		Caption="Delete"
+		WinTop=0.650000
+		WinLeft=0.303125
+		WinWidth=0.133125
+		OnClick=UTComp_Menu_ColorNames.InternalOnClick
+		OnKeyEvent=ButtonDelete.InternalOnKeyEvent
+	End Object
+	bu_DeleteName=GUIButton'UTCompvBoM.UTComp_Menu_ColorNames.ButtonDelete'
+
+	Begin Object Class=GUIButton Name=ButtonWhite
+		Caption="Reset entire name to white"
+		WinTop=0.739585
+		WinLeft=0.540625
+		WinWidth=0.344063
+		OnClick=UTComp_Menu_ColorNames.InternalOnClick
+		OnKeyEvent=ButtonWhite.InternalOnKeyEvent
+	End Object
+	bu_ResetWhite=GUIButton'UTCompvBoM.UTComp_Menu_ColorNames.ButtonWhite'
+
+	Begin Object Class=GUIButton Name=ButtonApply
+		Caption="Use This Name"
+		WinTop=0.695833
+		WinLeft=0.140625
+		WinWidth=0.297188
+		OnClick=UTComp_Menu_ColorNames.InternalOnClick
+		OnKeyEvent=ButtonApply.InternalOnKeyEvent
+	End Object
+	bu_Apply=GUIButton'UTCompvBoM.UTComp_Menu_ColorNames.ButtonApply'
+
+	Begin Object Class=GUISlider Name=RedSlider
+		MaxValue=255.000000
+		bIntSlider=True
+		WinTop=0.600000
+		WinLeft=0.600000
+		WinWidth=0.300000
+		OnClick=RedSlider.InternalOnClick
+		OnMousePressed=RedSlider.InternalOnMousePressed
+		OnMouseRelease=RedSlider.InternalOnMouseRelease
+		OnChange=UTComp_Menu_ColorNames.InternalOnChange
+		OnKeyEvent=RedSlider.InternalOnKeyEvent
+		OnCapturedMouseMove=RedSlider.InternalCapturedMouseMove
+	End Object
+	sl_RedColor=GUISlider'UTCompvBoM.UTComp_Menu_ColorNames.RedSlider'
+
+	Begin Object Class=GUISlider Name=BlueSlider
+		MaxValue=255.000000
+		bIntSlider=True
+		WinTop=0.700000
+		WinLeft=0.600000
+		WinWidth=0.300000
+		OnClick=BlueSlider.InternalOnClick
+		OnMousePressed=BlueSlider.InternalOnMousePressed
+		OnMouseRelease=BlueSlider.InternalOnMouseRelease
+		OnChange=UTComp_Menu_ColorNames.InternalOnChange
+		OnKeyEvent=BlueSlider.InternalOnKeyEvent
+		OnCapturedMouseMove=BlueSlider.InternalCapturedMouseMove
+	End Object
+	sl_BlueColor=GUISlider'UTCompvBoM.UTComp_Menu_ColorNames.BlueSlider'
+
+	Begin Object Class=GUISlider Name=GreenSlider
+		MaxValue=255.000000
+		bIntSlider=True
+		WinTop=0.650000
+		WinLeft=0.600000
+		WinWidth=0.300000
+		OnClick=GreenSlider.InternalOnClick
+		OnMousePressed=GreenSlider.InternalOnMousePressed
+		OnMouseRelease=GreenSlider.InternalOnMouseRelease
+		OnChange=UTComp_Menu_ColorNames.InternalOnChange
+		OnKeyEvent=GreenSlider.InternalOnKeyEvent
+		OnCapturedMouseMove=GreenSlider.InternalCapturedMouseMove
+	End Object
+	sl_GreenColor=GUISlider'UTCompvBoM.UTComp_Menu_ColorNames.GreenSlider'
+
+	Begin Object Class=GUILabel Name=RedLabel
+		Caption="Red"
+		TextColor=(R=255)
+		WinTop=0.587500
+		WinLeft=0.528125
+	End Object
+	l_RedLabel=GUILabel'UTCompvBoM.UTComp_Menu_ColorNames.RedLabel'
+
+	Begin Object Class=GUILabel Name=BlueLabel
+		Caption="Blue"
+		TextColor=(B=255)
+		WinTop=0.685414
+		WinLeft=0.528125
+	End Object
+	l_BlueLabel=GUILabel'UTCompvBoM.UTComp_Menu_ColorNames.BlueLabel'
+
+	Begin Object Class=GUILabel Name=GreenLabel
+		Caption="Green"
+		TextColor=(G=255)
+		WinTop=0.635417
+		WinLeft=0.528125
+	End Object
+	l_GreenLabel=GUILabel'UTCompvBoM.UTComp_Menu_ColorNames.GreenLabel'
+
+	Begin Object Class=GUISlider Name=LetterSlider
+		Value=1.000000
+		bIntSlider=True
+		WinTop=0.535000
+		OnClick=LetterSlider.InternalOnClick
+		OnMousePressed=LetterSlider.InternalOnMousePressed
+		OnMouseRelease=LetterSlider.InternalOnMouseRelease
+		OnChange=UTComp_Menu_ColorNames.InternalOnChange
+		OnKeyEvent=LetterSlider.InternalOnKeyEvent
+		OnCapturedMouseMove=LetterSlider.InternalCapturedMouseMove
+	End Object
+	sl_LetterSelect=GUISlider'UTCompvBoM.UTComp_Menu_ColorNames.LetterSlider'
+
+	Begin Object Class=moComboBox Name=ColorDeathCombo
+		Caption="Death Message Color:"
+		OnCreateComponent=ColorDeathCombo.InternalOnCreateComponent
+		WinTop=0.467990
+		WinLeft=0.168749
+		WinWidth=0.660936
+		OnChange=UTComp_Menu_ColorNames.InternalOnChange
+	End Object
+	co_DeathSelect=moComboBox'UTCompvBoM.UTComp_Menu_ColorNames.ColorDeathCombo'
+
 }

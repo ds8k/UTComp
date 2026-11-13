@@ -1,5 +1,3 @@
-
-
 class UTComp_ONSGrenadeFire extends ONSGrenadeFire;
 
 event ModeDoFire()

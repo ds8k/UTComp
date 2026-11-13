@@ -1,4 +1,3 @@
-
 class NewNet_SeekingRocketProj extends SeekingRocketProj;
 
 var PlayerController PC;
@@ -34,7 +33,7 @@ simulated function PostNetBeginPlay()
 
 simulated function bool CheckOwned()
 {
-    if(class'UTComp_Settings'.default.bEnableEnhancedNetCode==false)
+    if(class'UTComp_ClientSettings'.static.Get().bEnableEnhancedNetCode==false)
         return false;
     bOwned = (PC!=None && PC.Pawn!=None && PC.Pawn == Instigator);
     return bOwned;

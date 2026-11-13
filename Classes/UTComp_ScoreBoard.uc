@@ -1,8 +1,6 @@
-
-
 class UTComp_ScoreBoard extends UTComp_ScoreBoardDM;
-#exec texture Import File=textures\UTCompLogo.TGA Name=UTCompLogo Mips=Off Alpha=1
-#exec texture Import File=textures\ScoreboardText.TGA Name=ScoreboardText Mips=Off Alpha=1
+//#exec texture Import File=textures\UTCompLogo.TGA Name=UTCompLogo Mips=Off Alpha=1
+//#exec texture Import File=textures\ScoreboardText.TGA Name=ScoreboardText Mips=Off Alpha=1
 
 var font MainFont, NotReducedFont, sortareducedfont, ReducedFont, SoTiny;
 
@@ -10,10 +8,11 @@ var localized string  fraglimitteam ;
 var int TmpFontSize ;
 var float tmp1,tmp2,tmp3;
 var UTComp_Warmup uWarmup;
-var config bool bEnableColoredNamesOnScoreboard;
-var config bool bDrawStats;
-var config bool bDrawPickups;
-var config bool bOverrideDisplayStats;
+// Saved by UTComp_ClientSettings (UTCompSHO.ini), which sets these default values.
+var bool bEnableColoredNamesOnScoreboard;
+var bool bDrawStats;
+var bool bDrawPickups;
+var bool bOverrideDisplayStats;
 
 function DrawTitle2(Canvas Canvas)
 {
@@ -507,12 +506,12 @@ simulated function DrawPlayerInformation(Canvas C, PlayerReplicationInfo PRI, fl
 
 defaultproperties
 {
-    fraglimitteam="SCORE LIMIT:"
-    TmpFontSize=1
-    tmp1=0.156
-    tmp2=0.172
-    tmp3=0.189
-    bEnableColoredNamesOnScoreboard=True
-    bDrawStats=True
-    bDrawPickups=True
+	fraglimitteam="SCORE LIMIT:"
+	TmpFontSize=1
+	tmp1=0.156000
+	tmp2=0.172000
+	tmp3=0.189000
+	bEnableColoredNamesOnScoreboard=True
+	bDrawStats=True
+	bDrawPickups=True
 }

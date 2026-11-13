@@ -1,4 +1,3 @@
-
 class UTComp_AssaultGrenade extends AssaultGrenade;
 
 event ModeDoFire()

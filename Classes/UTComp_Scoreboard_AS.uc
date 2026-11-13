@@ -1,5 +1,3 @@
-
-
 class UTComp_Scoreboard_AS extends Scoreboard_Assault;
 
 var font Smallerfont;
@@ -1080,8 +1078,8 @@ function DrawOtherStats(Canvas C)
         bShouldDraw=True;
         if(UxP.NormalWepStatsPrim[i]!=0 || UxP.NormalWepStatsAlt[i]!=0 || UxP.NormalWepStatsAltHit[i]!=0 || UxP.NormalWepStatsPrimHit[i]!=0)
         {
-            for(j=0; j<class'UTComp_Settings'.default.DontDrawInStats.Length; j++)
-                if(class'UTComp_Settings'.default.DontDrawInStats[j]==i)
+            for(j=0; j<class'UTComp_ClientSettings'.static.Get().DontDrawInStats.Length; j++)
+                if(class'UTComp_ClientSettings'.static.Get().DontDrawInStats[j]==i)
                     bShouldDraw=False;
             if(bShouldDraw)
             {
@@ -1269,8 +1267,8 @@ function DrawStats(Canvas C)
         bShouldDraw=True;
         if(UxP.UTCompPRI.NormalWepStatsPrim[i]!=0 || UxP.UTCompPRI.NormalWepStatsAlt[i]!=0 || UxP.NormalWepStatsAlt[i].Hits!=0 || UxP.NormalWepStatsPrim[i].Hits!=0)
         {
-            for(j=0; j<class'UTComp_Settings'.default.DontDrawInStats.Length; j++)
-                if(class'UTComp_Settings'.default.DontDrawInStats[j]==i)
+            for(j=0; j<class'UTComp_ClientSettings'.static.Get().DontDrawInStats.Length; j++)
+                if(class'UTComp_ClientSettings'.static.Get().DontDrawInStats[j]==i)
                     bShouldDraw=False;
             if(bShouldDraw)
             {
